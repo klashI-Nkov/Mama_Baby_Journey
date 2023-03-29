@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1098972673166",
+    "project_id": "mama-and-baby-journey",
+    "storage_bucket": "mama-and-baby-journey.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098972673166:android:c418f6f4434b1c2c1985df",
+        "android_client_info": {
+          "package_name": "com.example.mamababyjourney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098972673166-g5top56qn2g6hj0ttf9n19c5olbpnqeo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9WQZ0CbboTRUn6e5eAs4O4R75MwW6j10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098972673166-g5top56qn2g6hj0ttf9n19c5olbpnqeo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
