@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/No_Action_Bar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Sing_in">
+
+  <!--Radio Buttons-->
+  <LinearLayout
+      android:layout_width="200dp"
+      android:layout_height="48dp"
+      android:orientation="horizontal"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.16000003">
+
+    <RadioButton
+        android:id="@+id/Doctor_R_B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1"
+
+        android:layoutDirection="rtl"
+        android:text="طبيب"
+        android:textAlignment="textStart"
+        android:textSize="20sp" />
+
+    <RadioButton
+        android:id="@+id/mothe_R_B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1"
+        android:checked="true"
+
+        android:layoutDirection="rtl"
+        android:text="أم"
+        android:textAlignment="textStart"
+        android:textSize="20sp" />
+
+  </LinearLayout>
+
+  <!--Email Edit Text-->
+  <EditText
+      android:id="@+id/editTextTextPersonName"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+
+      android:layout_marginStart="30dp"
+      android:layout_marginEnd="30dp"
+      android:background="@drawable/edit_text_shape"
+      android:drawableLeft="@drawable/email"
+
+      android:drawablePadding="65dp"
+      android:ems="10"
+
+      android:hint="البريد الإلكتروني"
+      android:inputType="textEmailAddress"
+
+      android:paddingStart="20dp"
+      android:textAlignment="viewStart"
+      android:textColor="@color/black"
+      android:textColorHint="@color/black"
+      android:textSize="20sp"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.258" />
+
+  <!--Password Edit Text-->
+  <EditText
+      android:id="@+id/editTextTextPersonName2"
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+
+      android:layout_marginStart="30dp"
+      android:layout_marginEnd="30dp"
+      android:background="@drawable/edit_text_shape"
+
+      android:drawableLeft="@drawable/lock"
+      android:drawablePadding="85dp"
+
+      android:ems="10"
+      android:hint="كلمة المرور"
+
+      android:inputType="textPassword"
+      android:paddingStart="20dp"
+      android:textAlignment="viewStart"
+      android:textColorHint="@color/black"
+      android:textSize="20sp"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.37" />
+
+
+  <!--Sing In Button-->
+  <androidx.appcompat.widget.AppCompatButton
+      android:id="@+id/button"
+      style="@style/ButtonStyle"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="30dp"
+
+      android:layout_marginEnd="30dp"
+      android:text="تسجيل الدخول"
+      android:textSize="20sp"
+
+      android:theme="@style/ButtonStyle"
+
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
