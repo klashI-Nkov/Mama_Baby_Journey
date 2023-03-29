@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.example.mamababyjourney.databinding.ActivitySingInBinding;
 
@@ -16,6 +17,7 @@ public class Sing_in extends AppCompatActivity
     @Override
     protected void onCreate ( Bundle savedInstanceState )
     {
+        getWindow ( ) . setFlags ( WindowManager. LayoutParams . FLAG_FULLSCREEN , WindowManager . LayoutParams . FLAG_FULLSCREEN  ) ;
         super.onCreate ( savedInstanceState );
         Objects.requireNonNull ( getSupportActionBar ( ) ).hide();
         binding = ActivitySingInBinding . inflate ( getLayoutInflater ( ) );

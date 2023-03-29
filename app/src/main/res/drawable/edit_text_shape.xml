@@ -3,6 +3,10 @@
     android:shape="rectangle" >
 
     <corners android:radius="22dp" />
-    <solid android:color="@color/white" />
+    <solid
+        android:color="?attr/Edit_Text_background"/>
+
+
+
 
 </shape>

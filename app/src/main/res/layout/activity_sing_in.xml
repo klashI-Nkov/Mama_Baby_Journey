@@ -1,110 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/No_Action_Bar"
+
+    style="@style/screen_Background"
+
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     tools:context=".Sing_in">
 
-  <!--Radio Buttons-->
-  <LinearLayout
-      android:layout_width="200dp"
-      android:layout_height="48dp"
-      android:orientation="horizontal"
-
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.16000003">
-
-    <RadioButton
-        android:id="@+id/Doctor_R_B"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_weight="1"
-
-        android:layoutDirection="rtl"
-        android:text="طبيب"
-        android:textAlignment="textStart"
-        android:textSize="20sp" />
-
-    <RadioButton
-        android:id="@+id/mothe_R_B"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_weight="1"
-        android:checked="true"
-
-        android:layoutDirection="rtl"
-        android:text="أم"
-        android:textAlignment="textStart"
-        android:textSize="20sp" />
-
-  </LinearLayout>
 
   <!--Email Edit Text-->
   <EditText
       android:id="@+id/editTextTextPersonName"
+      style="@style/EditTextStyle"
       android:layout_width="match_parent"
-      android:layout_height="50dp"
 
+      android:layout_height="50dp"
       android:layout_marginStart="30dp"
       android:layout_marginEnd="30dp"
-      android:background="@drawable/edit_text_shape"
-      android:drawableLeft="@drawable/email"
+      android:drawableStart="@drawable/email"
 
-      android:drawablePadding="65dp"
+
       android:ems="10"
-
       android:hint="البريد الإلكتروني"
-      android:inputType="textEmailAddress"
 
+      android:inputType="textEmailAddress"
       android:paddingStart="20dp"
-      android:textAlignment="viewStart"
-      android:textColor="@color/black"
-      android:textColorHint="@color/black"
+
+      android:textAlignment="center"
       android:textSize="20sp"
+      android:theme="@style/EditTextStyle"
 
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.258" />
+      app:layout_constraintVertical_bias="0.258"
+      tools:ignore="Autofill,HardcodedText,RtlSymmetry,VisualLintTextFieldSize" />
 
   <!--Password Edit Text-->
   <EditText
       android:id="@+id/editTextTextPersonName2"
+      style="@style/EditTextStyle"
       android:layout_width="match_parent"
+
       android:layout_height="50dp"
-
       android:layout_marginStart="30dp"
+
       android:layout_marginEnd="30dp"
-      android:background="@drawable/edit_text_shape"
+      android:drawableStart="@drawable/lock"
 
-      android:drawableLeft="@drawable/lock"
       android:drawablePadding="85dp"
-
       android:ems="10"
-      android:hint="كلمة المرور"
 
+      android:hint="كلمة المرور"
       android:inputType="textPassword"
+
       android:paddingStart="20dp"
       android:textAlignment="viewStart"
-      android:textColorHint="@color/black"
       android:textSize="20sp"
-
+      android:theme="@style/EditTextStyle"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.37" />
+      app:layout_constraintVertical_bias="0.37"
+      tools:ignore="Autofill,HardcodedText,RtlSymmetry,VisualLintTextFieldSize" />
 
 
   <!--Sing In Button-->
@@ -113,22 +78,117 @@
       style="@style/ButtonStyle"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+
+
       android:layout_marginStart="30dp"
-
-
-
-
       android:layout_marginEnd="30dp"
       android:text="تسجيل الدخول"
-      android:textSize="20sp"
 
+      android:textSize="20sp"
       android:theme="@style/ButtonStyle"
 
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toTopOf="parent"
+      tools:ignore="HardcodedText,VisualLintButtonSize" />
+
+  <TextView
+      android:id="@+id/textView"
+      style="@style/TextViewStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+
+      android:clickable="true"
+      android:focusable="true"
+      android:fontFamily="@font/pacifico"
+      android:text="Mama  Baby Journey"
+      android:textAlignment="center"
+      android:textSize="40sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.494"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.05"
+      tools:ignore="HardcodedText" />
+
+  <TextView
+      android:id="@+id/textView5"
+      style="@style/TextViewStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+
+      android:clickable="true"
+
+      android:focusable="true"
+      android:text="هل نسيت كلمة السر"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.611"
+      tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+  <TextView
+      android:id="@+id/textView3"
+      style="@style/TextViewStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="مستخدم جديد"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.498"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.711"
+      tools:ignore="HardcodedText" />
+
+  <TextView
+      android:id="@+id/textView4"
+      style="@style/TextViewStyle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="تسجيل الدخول باستخدام"
+      android:textSize="20sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.497"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.788"
+      tools:ignore="HardcodedText" />
+
+  <ImageView
+      android:id="@+id/imageView2"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:clickable="true"
+      android:focusable="true"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.684"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.901"
+      app:srcCompat="@drawable/google_icon"
+      tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+  <ImageView
+      android:id="@+id/imageView"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:clickable="true"
+      android:focusable="true"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.313"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.901"
+      app:srcCompat="@drawable/facebook_icon"
+      tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
