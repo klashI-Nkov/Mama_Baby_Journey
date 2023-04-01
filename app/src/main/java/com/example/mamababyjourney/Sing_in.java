@@ -1,14 +1,12 @@
 package com.example.mamababyjourney;
 
-import androidx.appcompat.app.ActionBar;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.WindowManager;
-
 import com.example.mamababyjourney.databinding.ActivitySingInBinding;
-
 import java.util.Objects;
 
 public class Sing_in extends AppCompatActivity
@@ -24,4 +22,7 @@ public class Sing_in extends AppCompatActivity
         setContentView ( binding . getRoot ( ) );
 
     }
+
+
+
 }
