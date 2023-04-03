@@ -22,7 +22,7 @@
         <item name="android:background">@drawable/shapes_edit_text_shape</item>
         <item name="Edit_Text_background">#FFFFFF</item>
         <item name="Icons_Colors">@color/black</item>
-        <item name="stroke_color">@color/white</item>
+        <item name="stroke_color">@color/black</item>
     </style>
 
     <style name="TextViewStyle">
@@ -30,12 +30,16 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="arrow_style">
-        <item name="srcCompat">@drawable/arrow_dark</item>
-    </style>
-
     <style name="screen_Background">
         <item name="android:background">#333333</item>
     </style>
 
+    <style name="Float_Hint_Background_Color">
+
+        <item name="android:background">#333333</item>
+
+    </style>
+
+    <!--    <color name="fsdfsd" tools:ignore="MissingDefaultResource">@color/white</color>-->
 </resources>
+
