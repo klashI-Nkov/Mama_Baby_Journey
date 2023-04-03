@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources
+    xmlns:tools="http://schemas.android.com/tools">
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -8,9 +10,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="c1">#fbe3b2</color>
+    <color name="c2">#f5e3d9</color>
+    <color name="c3">#e5d0c5</color>
+    <color name="c4">#d7c9bc</color>
+    <color name="c5">#e4c7b8</color>
+    <color name="c6">#e0cfb7</color>
 
+    <attr name="stroke_color" format="color" />
     <attr name="Edit_Text_background" format="color" />
     <attr name="Icons_Colors" format="color" />
-
 
 </resources>
