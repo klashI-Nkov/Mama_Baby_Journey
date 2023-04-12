@@ -3,18 +3,12 @@ package com.example.mamababyjourney;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Toast;
-
 import com.example.mamababyjourney.databinding.ActivitySingInBinding;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
@@ -90,10 +84,28 @@ public class Sing_in extends AppCompatActivity
 
         } );*/
 
-        binding.passFloatHint.setVisibility ( View.INVISIBLE );
+        binding.PassFloatHint.setVisibility ( View.INVISIBLE );
         binding.EmailFloatHint.setVisibility ( View.INVISIBLE );
 
     }
+
+    public void Show_Email_Float_Hint ( View view )
+    {
+        if ( binding . EmailFloatHint . isCursorVisible () )
+             binding . EmailFloatHint . setVisibility ( View . VISIBLE ) ;
+        else
+            binding . EmailFloatHint . setVisibility ( View . INVISIBLE ) ;
+    }
+
+    public void Show_Pass_Float_Hint ( View view )
+    {
+        if (
+               ( binding . PassFloatHint . getVisibility ( ) == View . INVISIBLE ) &&
+              !( binding . EmailEditText . getText ( ) . toString () . isEmpty ( ) )
+           )
+                 binding . PassFloatHint . setVisibility ( View . VISIBLE ) ;
+    }
+
 
     TextWatcher watcher = new TextWatcher ( )
     {
@@ -106,9 +118,9 @@ public class Sing_in extends AppCompatActivity
                 binding.EmailFloatHint.setVisibility ( View.INVISIBLE );
 
             if ( ! ( binding.passwordEditText.getText ().toString ().isEmpty () ) )
-                binding.passFloatHint.setVisibility ( View.VISIBLE );
+                binding.PassFloatHint.setVisibility ( View.VISIBLE );
             else
-                binding.passFloatHint.setVisibility ( View.INVISIBLE );
+                binding.PassFloatHint.setVisibility ( View.INVISIBLE );
 
         }
 

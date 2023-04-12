@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
@@ -12,35 +11,113 @@
     android:layout_height="match_parent"
     tools:context=".Sing_in">
 
-
     <!--Email Edit Text-->
 
     <!--Password Edit Text-->
+    <TextView
+        android:id="@+id/textView"
+        style="@style/TextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pacifico"
+        android:text="Mama Baby Journey"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024"
+        tools:ignore="HardcodedText" />
+
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sing_Up_BTN"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
 
-        android:onClick="Go_to_Sing_Up"
+        android:layout_marginEnd="50dp"
         android:text="تسجيل الدخول"
+
         android:textSize="20sp"
         android:theme="@style/EditTextStyle"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.642"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+
+        android:id="@+id/password_edit_text"
+
+        style="@style/EditTextStyle"
+        android:layout_width="match_parent"
+
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:drawableStart="@drawable/icons_lock_icon"
+
+        android:drawablePadding="10dp"
+        android:ems="10"
+
+        android:hint="كلمة المرور"
+        android:inputType="textPassword"
+
+        android:clickable="true"
+        android:onClick="Show_Pass_Float_Hint"
+
+        android:layoutDirection="rtl"
+
+        android:paddingStart="13dp"
+        android:textAlignment="textEnd"
+        android:textDirection="rtl"
+        android:textSize="16sp"
+        android:theme="@style/EditTextStyle"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.576" />
+        app:layout_constraintVertical_bias="0.396"
+        tools:ignore="Autofill,HardcodedText,RtlSymmetry,VisualLintTextFieldSize" />
+
+    <TextView
+        android:id="@+id/textView5"
+        style="@style/TextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:clickable="true"
+
+        android:focusable="true"
+        android:text="نسيت كلمة السر ؟"
+        android:textSize="14sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.481"
+        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/Email_Edit_text"
         style="@style/EditTextStyle"
-        android:layout_width="match_parent"
 
+        android:onClick="Show_Email_Float_Hint"
+
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
@@ -64,11 +141,31 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.174"
+        app:layout_constraintVertical_bias="0.24"
         tools:ignore="Autofill,HardcodedText,RtlSymmetry,VisualLintTextFieldSize" />
 
     <TextView
-        android:id="@+id/Email_float_hint"
+        android:id="@+id/Pass_Float_Hint"
+        style="@style/Float_Hint_Background_Color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:clickable="true"
+        android:focusable="true"
+
+        android:text="كلمة المرور"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35346215"
+        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/Email_Float_Hint"
         style="@style/Float_Hint_Background_Color"
         android:layout_width="wrap_content"
 
@@ -85,83 +182,7 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141"
-        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
-
-
-    <EditText
-
-        android:id="@+id/password_edit_text"
-
-        style="@style/EditTextStyle"
-        android:layout_width="match_parent"
-
-        android:layout_height="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:drawableStart="@drawable/icons_lock_icon"
-
-
-        android:drawablePadding="10dp"
-        android:ems="10"
-
-        android:hint="كلمة المرور"
-        android:inputType="textPassword"
-
-
-        android:layoutDirection="rtl"
-
-        android:paddingStart="13dp"
-        android:textAlignment="textEnd"
-        android:textDirection="rtl"
-        android:textSize="16sp"
-        android:theme="@style/EditTextStyle"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328"
-        tools:ignore="Autofill,HardcodedText,RtlSymmetry,VisualLintTextFieldSize" />
-
-    <TextView
-        android:id="@+id/pass_float_hint"
-        style="@style/Float_Hint_Background_Color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:clickable="true"
-        android:focusable="true"
-
-        android:text="كلمة المرور"
-        android:textSize="16sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.287"
-        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/textView5"
-        style="@style/TextViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:clickable="true"
-
-        android:focusable="true"
-        android:text="نسيت كلمة السر ؟"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417"
+        app:layout_constraintVertical_bias="0.205"
         tools:ignore="HardcodedText,TouchTargetSizeCheck" />
 
     <TextView
