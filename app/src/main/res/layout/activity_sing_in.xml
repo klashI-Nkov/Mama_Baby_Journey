@@ -28,28 +28,6 @@
         tools:ignore="HardcodedText" />
 
     <!--Email Edit Text-->
-
-    <TextView
-        android:id="@+id/Email_Float_Hint"
-        style="@style/Float_Hint_Background_Color"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-
-        android:clickable="true"
-        android:focusable="true"
-
-        android:text="البريد الإلكتروني"
-        android:textSize="16sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.205"
-        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
-
     <EditText
         android:id="@+id/Email_Edit_text"
         style="@style/EditTextStyle"
@@ -136,7 +114,7 @@
 
     <!--Sing In Button-->
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/sing_Up_BTN"
+        android:id="@+id/sing_In_BTN"
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -155,6 +133,43 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.642"
         tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/Email_Float_Hint"
+        style="@style/Float_Hint_Background_Color"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:clickable="true"
+        android:focusable="true"
+
+        android:text="البريد الإلكتروني"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205"
+        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/Pass_Float_Hint"
+        style="@style/Float_Hint_Background_Color"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="كلمة المرور"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.360"
+        tools:ignore="Autofill,HardcodedText" />
 
     <TextView
         android:id="@+id/textView4"
@@ -202,22 +217,6 @@
         app:layout_constraintVertical_bias="0.907"
         app:srcCompat="@drawable/icons_google_icon"
         tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/textView"
-        style="@style/Float_Hint_Background_Color"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="البريد الإلكتروني"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.217"
-        tools:ignore="Autofill,HardcodedText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
