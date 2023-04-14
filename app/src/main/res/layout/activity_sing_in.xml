@@ -169,7 +169,7 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Pass_Float_Hint"
         style="@style/Float_Hint_Background_Color"
         android:layoutDirection="rtl"
         android:layout_width="wrap_content"
