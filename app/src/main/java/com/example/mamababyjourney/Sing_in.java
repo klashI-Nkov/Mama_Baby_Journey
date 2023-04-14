@@ -1,6 +1,5 @@
 package com.example.mamababyjourney;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -88,24 +87,6 @@ public class Sing_in extends AppCompatActivity
         binding.EmailFloatHint.setVisibility ( View.INVISIBLE );
 
     }
-
-    public void Show_Email_Float_Hint ( View view )
-    {
-        if ( binding . EmailFloatHint . isCursorVisible () )
-             binding . EmailFloatHint . setVisibility ( View . VISIBLE ) ;
-        else
-            binding . EmailFloatHint . setVisibility ( View . INVISIBLE ) ;
-    }
-
-    public void Show_Pass_Float_Hint ( View view )
-    {
-        if (
-               ( binding . PassFloatHint . getVisibility ( ) == View . INVISIBLE ) &&
-              !( binding . EmailEditText . getText ( ) . toString () . isEmpty ( ) )
-           )
-                 binding . PassFloatHint . setVisibility ( View . VISIBLE ) ;
-    }
-
 
     TextWatcher watcher = new TextWatcher ( )
     {

@@ -19,11 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
-        app:srcCompat="@drawable/gg" />
+        app:srcCompat="@drawable/logo" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/Sing_In_BTN"
         style="@style/EditTextStyle"
+        android:theme="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -33,7 +34,6 @@
         android:onClick="Go_to_Sing_In"
         android:text="تسجيل الدخول"
         android:textSize="20sp"
-        android:theme="@style/EditTextStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

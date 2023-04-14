@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources >
 
     <style name="Theme.MamaBabyJourney" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
@@ -38,7 +38,11 @@
 
     </style>
 
-
+    <style name="Icon_BG">
+        <item name="android:background">@drawable/icons_bg_shape</item>
+        <item name="Edit_Text_background">#0A000000</item>
+        <item name="stroke_color">#73000000</item>
+    </style>
 
 </resources>
 
