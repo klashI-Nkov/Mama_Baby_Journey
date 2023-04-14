@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layoutDirection="rtl"
     android:id="@+id/con"
-
     style="@style/screen_Background"
 
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+    android:layoutDirection="rtl"
     tools:context=".Sing_in">
 
     <TextView
@@ -30,6 +29,7 @@
         tools:ignore="HardcodedText" />
 
     <!--Email Edit Text-->
+
     <TextView
         android:id="@+id/Email_Float_Hint"
         style="@style/Float_Hint_Background_Color"
@@ -82,25 +82,6 @@
         tools:ignore="Autofill,HardcodedText" />
 
     <!--Password Edit Text-->
-    <TextView
-        android:id="@+id/Pass_Float_Hint"
-        style="@style/Float_Hint_Background_Color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:clickable="true"
-        android:focusable="true"
-
-        android:text="كلمة المرور"
-        android:textSize="16sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35346215"
-        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
 
     <EditText
 
@@ -114,16 +95,13 @@
 
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-
-        android:paddingStart="13dp"
-        android:paddingEnd="13dp"
-
         android:drawableEnd="@drawable/icons_lock_icon"
-
 
         android:hint="كلمة المرور"
         android:inputType="textPassword"
 
+        android:paddingStart="13dp"
+        android:paddingEnd="13dp"
 
         android:textAlignment="textEnd"
         android:textSize="16sp"
@@ -197,10 +175,10 @@
     <ImageView
         android:id="@+id/imageView4"
         style="@style/Icon_BG"
-        android:theme="@style/Icon_BG"
         android:layout_width="55dp"
         android:layout_height="59dp"
         android:padding="10dp"
+        android:theme="@style/Icon_BG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.247"
@@ -213,10 +191,10 @@
     <ImageView
         android:id="@+id/imageView5"
         style="@style/Icon_BG"
-        android:theme="@style/Icon_BG"
         android:layout_width="55dp"
         android:layout_height="59dp"
         android:padding="10dp"
+        android:theme="@style/Icon_BG"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.71"
@@ -225,5 +203,22 @@
         app:layout_constraintVertical_bias="0.907"
         app:srcCompat="@drawable/icons_google_icon"
         tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/Float_Hint_Background_Color"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="البريد الإلكتروني"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.217"
+        tools:ignore="Autofill,HardcodedText" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
