@@ -28,11 +28,13 @@ public class Sign_Up extends AppCompatActivity {
         binding = ActivitySignUpBinding . inflate ( getLayoutInflater ( ) ) ;
         setContentView ( binding . getRoot ( ) ) ;
 
-        binding . EmailEditText . addTextChangedListener ( watcher ) ;
-        binding . passwordEditText . addTextChangedListener ( watcher ) ;
+        binding . UEmailEditText . addTextChangedListener ( watcher ) ;
+        binding . UPasswordEditText . addTextChangedListener ( watcher ) ;
+        binding . ConfirmPasswordEditText . addTextChangedListener ( watcher ) ;
 
-        binding . PassFloatHint . setVisibility ( View. INVISIBLE ) ;
-        binding . EmailFloatHint . setVisibility ( View . INVISIBLE ) ;
+        binding . UEmailFloatHint . setVisibility ( View. INVISIBLE ) ;
+        binding . UPassFloatHint . setVisibility ( View . INVISIBLE ) ;
+        binding . ConfirmPassFloatHint . setVisibility ( View . INVISIBLE ) ;
 
     }
 
@@ -41,15 +43,20 @@ public class Sign_Up extends AppCompatActivity {
         @Override
         public void onTextChanged ( CharSequence s , int start , int before , int count )
         {
-            if ( !( binding . EmailEditText . getText ( ) . toString ( ) . isEmpty ( ) ) )
-            { binding . EmailFloatHint . setVisibility ( View . VISIBLE ) ; }
+            if ( !( binding . UEmailEditText . getText ( ) . toString ( ) . isEmpty ( ) ) )
+                    binding . UEmailFloatHint . setVisibility ( View . VISIBLE ) ;
             else
-            { binding . EmailFloatHint . setVisibility ( View . INVISIBLE ) ; }
+                    binding . UEmailFloatHint . setVisibility ( View . INVISIBLE ) ;
 
-            if ( !( binding . passwordEditText . getText ( ) . toString ( ) . isEmpty ( ) ) )
-            { binding . PassFloatHint . setVisibility ( View . VISIBLE ) ; }
+            if ( !( binding . UPasswordEditText . getText ( ) . toString ( ) . isEmpty ( ) ) )
+                    binding . UPassFloatHint . setVisibility ( View . VISIBLE ) ;
             else
-            { binding . PassFloatHint . setVisibility ( View . INVISIBLE ) ; }
+                    binding . UPassFloatHint . setVisibility ( View . INVISIBLE ) ;
+
+            if ( !( binding . ConfirmPasswordEditText . getText ( ) . toString ( ) . isEmpty ( ) ) )
+                    binding . ConfirmPassFloatHint . setVisibility ( View . VISIBLE ) ;
+            else
+                    binding . ConfirmPassFloatHint . setVisibility ( View . INVISIBLE ) ;
 
         }
 

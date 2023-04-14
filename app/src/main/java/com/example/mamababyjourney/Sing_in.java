@@ -40,14 +40,14 @@ public class Sing_in extends AppCompatActivity
         public void onTextChanged ( CharSequence s , int start , int before , int count )
         {
             if ( !( binding . EmailEditText . getText ( ) . toString ( ) . isEmpty ( ) ) )
-            { binding . EmailFloatHint . setVisibility ( View . VISIBLE ) ; }
+                   binding . EmailFloatHint . setVisibility ( View . VISIBLE ) ;
             else
-            { binding . EmailFloatHint . setVisibility ( View . INVISIBLE ) ; }
+                   binding . EmailFloatHint . setVisibility ( View . INVISIBLE ) ;
 
             if ( !( binding . passwordEditText . getText ( ) . toString ( ) . isEmpty ( ) ) )
-            { binding . PassFloatHint . setVisibility ( View . VISIBLE ) ; }
+                   binding . PassFloatHint . setVisibility ( View . VISIBLE ) ;
             else
-            { binding . PassFloatHint . setVisibility ( View . INVISIBLE ) ; }
+                   binding . PassFloatHint . setVisibility ( View . INVISIBLE ) ;
 
         }
 
