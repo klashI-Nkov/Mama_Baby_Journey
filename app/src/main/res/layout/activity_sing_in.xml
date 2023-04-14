@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/screen_Background"
 
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
     tools:context=".Sing_in">
 
     <TextView
@@ -19,6 +18,8 @@
         android:text="Mama Baby Journey"
         android:textAlignment="center"
         android:textSize="40sp"
+        android:layoutDirection="rtl"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -31,24 +32,26 @@
     <EditText
         android:id="@+id/Email_Edit_text"
         style="@style/EditTextStyle"
-        android:theme="@style/EditTextStyle"
+        android:layoutDirection="rtl"
 
         android:layout_width="match_parent"
+
         android:layout_height="50dp"
-
         android:layout_marginStart="30dp"
+
         android:layout_marginEnd="30dp"
-
-        android:paddingStart="13dp"
-        android:paddingEnd="13dp"
-
         android:drawableEnd="@drawable/icons_email_icon"
 
         android:hint="البريد الالكتروني"
-
         android:inputType="textEmailAddress"
 
+        android:paddingStart="13dp"
+
+        android:paddingEnd="13dp"
+
         android:textSize="16sp"
+
+        android:theme="@style/EditTextStyle"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,23 +68,25 @@
         android:id="@+id/password_edit_text"
 
         style="@style/EditTextStyle"
-        android:theme="@style/EditTextStyle"
+        android:layoutDirection="rtl"
 
         android:layout_width="match_parent"
-        android:layout_height="50dp"
 
+        android:layout_height="50dp"
         android:layout_marginStart="30dp"
+
         android:layout_marginEnd="30dp"
         android:drawableEnd="@drawable/icons_lock_icon"
-
         android:hint="كلمة المرور"
+
         android:inputType="textPassword"
-
         android:paddingStart="13dp"
-        android:paddingEnd="13dp"
 
+        android:paddingEnd="13dp"
         android:textAlignment="textEnd"
+
         android:textSize="16sp"
+        android:theme="@style/EditTextStyle"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,6 +99,8 @@
     <TextView
         android:id="@+id/textView5"
         style="@style/TextViewStyle"
+        android:layoutDirection="rtl"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -138,6 +145,8 @@
         android:id="@+id/Email_Float_Hint"
         style="@style/Float_Hint_Background_Color"
         android:layout_width="wrap_content"
+        android:layoutDirection="rtl"
+
 
         android:layout_height="wrap_content"
 
@@ -162,6 +171,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="كلمة المرور"
+        android:layoutDirection="rtl"
+
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -174,6 +185,8 @@
     <TextView
         android:id="@+id/textView4"
         style="@style/TextViewStyle"
+        android:layoutDirection="rtl"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" او باستخدام"
@@ -186,37 +199,40 @@
         app:layout_constraintVertical_bias="0.788"
         tools:ignore="HardcodedText" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        style="@style/Icon_BG"
-        android:layout_width="55dp"
-        android:layout_height="59dp"
-        android:padding="10dp"
-        android:theme="@style/Icon_BG"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907"
-        app:srcCompat="@drawable/icons_facebook_icon"
-        tools:ignore="ContentDescription" />
+        android:layoutDirection="rtl"
 
-    <ImageView
-        android:id="@+id/imageView5"
-        style="@style/Icon_BG"
-        android:layout_width="55dp"
-        android:layout_height="59dp"
-        android:padding="10dp"
-        android:theme="@style/Icon_BG"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.71"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907"
-        app:srcCompat="@drawable/icons_google_icon"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintVertical_bias="0.92">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            style="@style/Icon_BG"
+            android:layout_width="55dp"
+            android:layout_height="59dp"
+            android:layout_marginLeft="150dp"
+            android:padding="10dp"
+            android:theme="@style/Icon_BG"
+            app:srcCompat="@drawable/icons_google_icon"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            style="@style/Icon_BG"
+            android:layout_width="55dp"
+            android:layout_height="59dp"
+            android:padding="10dp"
+            android:theme="@style/Icon_BG"
+            app:srcCompat="@drawable/icons_facebook_icon"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
