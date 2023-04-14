@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layoutDirection="rtl"
@@ -10,40 +11,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Sing_in">
-
-    <!--Email Edit Text-->
-
-    <!--Password Edit Text-->
-
-    <ImageView
-        android:id="@+id/imageView4"
-        style="@style/Icon_BG"
-        android:layout_width="55dp"
-        android:layout_height="59dp"
-        android:padding="10dp"
-        android:theme="@style/Icon_BG"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907"
-        app:srcCompat="@drawable/icons_facebook_icon" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        style="@style/Icon_BG"
-        android:layout_width="55dp"
-        android:layout_height="59dp"
-        android:padding="10dp"
-        android:theme="@style/Icon_BG"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.71"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907"
-        app:srcCompat="@drawable/icons_google_icon" />
 
     <TextView
         android:id="@+id/textView1"
@@ -62,65 +29,112 @@
         app:layout_constraintVertical_bias="0.024"
         tools:ignore="HardcodedText" />
 
+    <!--Email Edit Text-->
+    <TextView
+        android:id="@+id/Email_Float_Hint"
+        style="@style/Float_Hint_Background_Color"
+        android:layout_width="wrap_content"
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/sing_Up_BTN"
-        style="@style/EditTextStyle"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
 
-        android:layout_marginEnd="50dp"
-        android:text="تسجيل الدخول"
+        android:clickable="true"
+        android:focusable="true"
 
-        android:textSize="20sp"
-        android:theme="@style/EditTextStyle"
+        android:text="البريد الإلكتروني"
+        android:textSize="16sp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintVertical_bias="0.205"
+        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/Email_Edit_text"
+        style="@style/EditTextStyle"
+        android:theme="@style/EditTextStyle"
+
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+
+        android:paddingStart="13dp"
+        android:paddingEnd="13dp"
+
+        android:drawableEnd="@drawable/icons_email_icon"
+
+        android:hint="البريد الالكتروني"
+
+        android:inputType="textEmailAddress"
+
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24"
+        tools:ignore="Autofill,HardcodedText" />
+
+    <!--Password Edit Text-->
+    <TextView
+        android:id="@+id/Pass_Float_Hint"
+        style="@style/Float_Hint_Background_Color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:clickable="true"
+        android:focusable="true"
+
+        android:text="كلمة المرور"
+        android:textSize="16sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35346215"
+        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
 
     <EditText
 
         android:id="@+id/password_edit_text"
 
         style="@style/EditTextStyle"
-        android:layout_width="match_parent"
+        android:theme="@style/EditTextStyle"
 
+        android:layout_width="match_parent"
         android:layout_height="50dp"
+
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:clickable="true"
 
-        android:drawableStart="@drawable/icons_lock_icon"
-        android:drawablePadding="10dp"
+        android:paddingStart="13dp"
+        android:paddingEnd="13dp"
 
-        android:ems="10"
-        android:focusable="true"
+        android:drawableEnd="@drawable/icons_lock_icon"
+
 
         android:hint="كلمة المرور"
         android:inputType="textPassword"
 
-        android:layoutDirection="rtl"
 
-        android:onClick="Show_Pass_Float_Hint"
-        android:paddingStart="13dp"
         android:textAlignment="textEnd"
-        android:textDirection="rtl"
         android:textSize="16sp"
 
-        android:theme="@style/EditTextStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4"
-        tools:ignore="Autofill,HardcodedText,RtlSymmetry,VisualLintTextFieldSize" />
+        tools:ignore="Autofill,HardcodedText" />
 
     <TextView
         android:id="@+id/textView5"
@@ -143,79 +157,27 @@
         app:layout_constraintVertical_bias="0.481"
         tools:ignore="HardcodedText,TouchTargetSizeCheck" />
 
-    <EditText
-        android:id="@+id/Email_Edit_text"
+    <!--Sing In Button-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/sing_Up_BTN"
         style="@style/EditTextStyle"
-
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
 
-        android:layout_height="50dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:drawableStart="@drawable/icons_email_icon"
-        android:drawablePadding="10dp"
+        android:layout_marginEnd="50dp"
+        android:text="تسجيل الدخول"
 
-        android:ems="10"
-        android:hint="البريد الالكتروني"
-
-        android:inputType="textEmailAddress"
-        android:layoutDirection="rtl"
-
-        android:onClick="Show_Email_Float_Hint"
-        android:paddingStart="13dp"
-        android:textDirection="rtl"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:theme="@style/EditTextStyle"
 
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.24"
-        tools:ignore="Autofill,HardcodedText,RtlSymmetry,VisualLintTextFieldSize" />
-
-    <TextView
-        android:id="@+id/Pass_Float_Hint"
-        style="@style/Float_Hint_Background_Color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:clickable="true"
-        android:focusable="true"
-
-        android:text="كلمة المرور"
-        android:textSize="16sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35346215"
-        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/Email_Float_Hint"
-        style="@style/Float_Hint_Background_Color"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-
-        android:clickable="true"
-        android:focusable="true"
-
-        android:text="البريد الإلكتروني"
-        android:textSize="16sp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.205"
-        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+        app:layout_constraintVertical_bias="0.642"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView4"
@@ -232,7 +194,36 @@
         app:layout_constraintVertical_bias="0.788"
         tools:ignore="HardcodedText" />
 
-    <!--Sing In Button-->
+    <ImageView
+        android:id="@+id/imageView4"
+        style="@style/Icon_BG"
+        android:theme="@style/Icon_BG"
+        android:layout_width="55dp"
+        android:layout_height="59dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.907"
+        app:srcCompat="@drawable/icons_facebook_icon"
+        tools:ignore="ContentDescription" />
 
+    <ImageView
+        android:id="@+id/imageView5"
+        style="@style/Icon_BG"
+        android:theme="@style/Icon_BG"
+        android:layout_width="55dp"
+        android:layout_height="59dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.907"
+        app:srcCompat="@drawable/icons_google_icon"
+        tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
