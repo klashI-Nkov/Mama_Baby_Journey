@@ -9,17 +9,20 @@
     android:layout_height="match_parent"
     tools:context=".Sing_in">
 
+
     <TextView
         android:id="@+id/textView1"
         style="@style/TextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_23sdp"
+        android:layout_marginEnd="@dimen/_23sdp"
         android:fontFamily="@font/pacifico"
-        android:text="Mama Baby Journey"
-        android:textAlignment="center"
-        android:textSize="40sp"
         android:layoutDirection="rtl"
+        android:text="Mama Baby Journey"
 
+        android:textAlignment="center"
+        android:textSize="@dimen/_31sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -36,20 +39,20 @@
 
         android:layout_width="match_parent"
 
-        android:layout_height="50dp"
-        android:layout_marginStart="30dp"
+        android:layout_height="@dimen/_39sdp"
+        android:layout_marginStart="@dimen/_23sdp"
 
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="@dimen/_23sdp"
         android:drawableEnd="@drawable/icons_email_icon"
 
         android:hint="البريد الالكتروني"
         android:inputType="textEmailAddress"
 
-        android:paddingStart="13dp"
+        android:paddingStart="@dimen/_10sdp"
 
-        android:paddingEnd="13dp"
+        android:paddingEnd="@dimen/_10sdp"
 
-        android:textSize="16sp"
+        android:textSize="@dimen/_12sdp"
 
         android:theme="@style/EditTextStyle"
 
@@ -72,20 +75,20 @@
 
         android:layout_width="match_parent"
 
-        android:layout_height="50dp"
-        android:layout_marginStart="30dp"
+        android:layout_height="@dimen/_39sdp"
+        android:layout_marginStart="@dimen/_23sdp"
 
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="@dimen/_23sdp"
         android:drawableEnd="@drawable/icons_lock_icon"
         android:hint="كلمة المرور"
 
         android:inputType="textPassword"
-        android:paddingStart="13dp"
+        android:paddingStart="@dimen/_10sdp"
 
-        android:paddingEnd="13dp"
+        android:paddingEnd="@dimen/_10sdp"
         android:textAlignment="textEnd"
 
-        android:textSize="16sp"
+        android:textSize="@dimen/_12sdp"
         android:theme="@style/EditTextStyle"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -104,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginEnd="35dp"
+        android:layout_marginEnd="@dimen/_27sdp"
         android:clickable="true"
         android:focusable="true"
         android:text="نسيت كلمة السر ؟"
@@ -125,12 +128,12 @@
         style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="@dimen/_39sdp"
 
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="@dimen/_39sdp"
         android:text="تسجيل الدخول"
 
-        android:textSize="20sp"
+        android:textSize="@dimen/_15sdp"
         android:theme="@style/EditTextStyle"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -147,14 +150,10 @@
         android:layout_width="wrap_content"
         android:layoutDirection="rtl"
 
-
         android:layout_height="wrap_content"
 
-        android:clickable="true"
-        android:focusable="true"
-
         android:text="البريد الإلكتروني"
-        android:textSize="16sp"
+        android:textSize="@dimen/_12sdp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -171,6 +170,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="كلمة المرور"
+        android:textSize="@dimen/_12sdp"
+
         android:layoutDirection="rtl"
 
 
@@ -179,7 +180,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.360"
+        app:layout_constraintVertical_bias="0.358"
         tools:ignore="Autofill,HardcodedText" />
 
     <TextView
@@ -190,7 +191,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" او باستخدام"
-        android:textSize="20sp"
+        android:textSize="@dimen/_15sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -215,10 +216,10 @@
         <ImageView
             android:id="@+id/imageView5"
             style="@style/Icon_BG"
-            android:layout_width="55dp"
-            android:layout_height="59dp"
-            android:layout_marginLeft="150dp"
-            android:padding="10dp"
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginLeft="@dimen/_116sdp"
+            android:padding="@dimen/_8sdp"
             android:theme="@style/Icon_BG"
             app:srcCompat="@drawable/icons_google_icon"
             tools:ignore="ContentDescription,RtlHardcoded" />
@@ -226,9 +227,9 @@
         <ImageView
             android:id="@+id/imageView4"
             style="@style/Icon_BG"
-            android:layout_width="55dp"
-            android:layout_height="59dp"
-            android:padding="10dp"
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:padding="@dimen/_8sdp"
             android:theme="@style/Icon_BG"
             app:srcCompat="@drawable/icons_facebook_icon"
             tools:ignore="ContentDescription" />
