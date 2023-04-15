@@ -1,16 +1,13 @@
 package com . example . mamababyjourney ;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.view.WindowManager;
-
-import com.example.mamababyjourney.databinding.ActivitySingInBinding;
-
-import java.util.Objects;
+import com      . example   . mamababyjourney.databinding.ActivitySingInBinding;
+import androidx . appcompat . app.AppCompatActivity;
+import android  . view      . WindowManager;
+import android  . text      . TextWatcher;
+import android  . text      . Editable;
+import java     . util      . Objects;
+import android  . os        . Bundle;
+import android  . view      . View;
 
 public class Sing_in extends AppCompatActivity
 {

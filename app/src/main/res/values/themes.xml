@@ -28,6 +28,15 @@
         <item name="stroke_color">#73000000</item>
     </style>
 
+    <style name="EditTextStyle2">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:background">@drawable/shapes_edit_text_shape</item>
+        <item name="Edit_Text_background">#0A000000</item>
+        <item name="Icons_Colors">@color/white</item>
+        <item name="stroke_color">@color/white</item>
+    </style>
+
     <style name="screen_Background">
         <item name="android:background">@color/white</item>
     </style>
@@ -42,6 +51,17 @@
         <item name="android:background">@drawable/icons_bg_shape</item>
         <item name="Edit_Text_background">#0A000000</item>
         <item name="stroke_color">#73000000</item>
+    </style>
+
+    <style name="Scroll_Style">
+        <item name="android:background">@drawable/shapes_scroll_shape</item>
+        <item name="Edit_Text_background">#190E0E0E</item>
+        <item name="No_Name">@color/white</item>
+
+    </style>
+
+    <style name="No_Name_Style">
+        <item name="No_Name">@android:color/transparent</item>
     </style>
 
 </resources>

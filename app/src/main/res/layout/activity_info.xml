@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/con"
+    style="@style/No_Name_Style"
+    android:theme="@style/No_Name_Style"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/info_page_bg"
+    android:fitsSystemWindows="true"
+    tools:context=".Info_Activity">
+
+    <ScrollView
+        android:id="@+id/ss"
+        style="@style/Scroll_Style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_23sdp"
+        android:layout_marginTop="@dimen/_23sdp"
+        android:layout_marginEnd="@dimen/_23sdp"
+        android:layout_marginBottom="@dimen/_23sdp"
+        android:background="@drawable/shapes_scroll_shape"
+        android:theme="@style/Scroll_Style"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+        <LinearLayout
+            style="@style/No_Name_Style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:theme="@style/No_Name_Style">
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                style="@style/EditTextStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_38sdp"
+
+                android:layout_marginStart="@dimen/_23sdp"
+                android:layout_marginTop="@dimen/_38sdp"
+
+                android:layout_marginEnd="@dimen/_23sdp"
+                android:drawableEnd="@drawable/icons_email_icon"
+
+                android:hint="البريد الالكتروني"
+                android:inputType="textEmailAddress"
+
+                android:layoutDirection="rtl"
+
+                android:paddingStart="@dimen/_10sdp"
+
+                android:paddingEnd="@dimen/_10sdp"
+
+                android:textSize="@dimen/_12sdp"
+                android:theme="@style/EditTextStyle2"
+                tools:ignore="Autofill,HardcodedText,DuplicateSpeakableTextCheck,TextContrastCheck,TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                style="@style/EditTextStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_38sdp"
+
+                android:layout_marginStart="@dimen/_23sdp"
+                android:layout_marginTop="@dimen/_46sdp"
+
+                android:layout_marginEnd="@dimen/_23sdp"
+                android:drawableEnd="@drawable/icons_email_icon"
+
+                android:hint="البريد الالكتروني"
+                android:inputType="textEmailAddress"
+
+                android:layoutDirection="rtl"
+
+                android:paddingStart="@dimen/_10sdp"
+
+                android:paddingEnd="@dimen/_10sdp"
+
+                android:textSize="@dimen/_12sdp"
+                android:theme="@style/EditTextStyle2"
+                tools:ignore="Autofill,HardcodedText,TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName3"
+                style="@style/EditTextStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_38sdp"
+
+                android:layout_marginStart="@dimen/_23sdp"
+                android:layout_marginTop="@dimen/_46sdp"
+
+                android:layout_marginEnd="@dimen/_23sdp"
+                android:drawableEnd="@drawable/icons_email_icon"
+
+                android:hint="البريد الالكتروني"
+                android:inputType="textEmailAddress"
+
+                android:layoutDirection="rtl"
+
+                android:paddingStart="@dimen/_10sdp"
+
+                android:paddingEnd="@dimen/_10sdp"
+
+                android:textSize="@dimen/_12sdp"
+                android:theme="@style/EditTextStyle2"
+                tools:ignore="Autofill,HardcodedText,TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName4"
+                style="@style/EditTextStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_38sdp"
+
+                android:layout_marginStart="@dimen/_23sdp"
+                android:layout_marginTop="@dimen/_46sdp"
+
+                android:layout_marginEnd="@dimen/_23sdp"
+                android:drawableEnd="@drawable/icons_email_icon"
+
+                android:hint="البريد الالكتروني"
+                android:inputType="textEmailAddress"
+
+                android:layoutDirection="rtl"
+
+                android:paddingStart="@dimen/_10sdp"
+
+                android:paddingEnd="@dimen/_10sdp"
+
+                android:textSize="@dimen/_12sdp"
+                android:theme="@style/EditTextStyle2"
+                tools:ignore="Autofill,HardcodedText,TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName5"
+                style="@style/EditTextStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_38sdp"
+
+                android:layout_marginStart="@dimen/_23sdp"
+                android:layout_marginTop="@dimen/_46sdp"
+
+                android:layout_marginEnd="@dimen/_23sdp"
+                android:drawableEnd="@drawable/icons_email_icon"
+
+                android:hint="البريد الالكتروني"
+                android:inputType="textEmailAddress"
+
+                android:layoutDirection="rtl"
+
+                android:paddingStart="@dimen/_10sdp"
+
+                android:paddingEnd="@dimen/_10sdp"
+
+                android:textSize="@dimen/_12sdp"
+                android:theme="@style/EditTextStyle2"
+                tools:ignore="Autofill,HardcodedText,TextContrastCheck" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName6"
+                style="@style/EditTextStyle2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_38sdp"
+
+                android:layout_marginStart="@dimen/_23sdp"
+                android:layout_marginTop="@dimen/_46sdp"
+                android:layout_marginEnd="@dimen/_23sdp"
+
+                android:layout_marginBottom="@dimen/_38sdp"
+                android:drawableEnd="@drawable/icons_email_icon"
+
+                android:hint="البريد الالكتروني"
+                android:inputType="textEmailAddress"
+
+                android:layoutDirection="rtl"
+
+                android:paddingStart="@dimen/_10sdp"
+
+                android:paddingEnd="@dimen/_10sdp"
+
+                android:textSize="@dimen/_12sdp"
+                android:theme="@style/EditTextStyle2"
+                tools:ignore="Autofill,HardcodedText,TextContrastCheck" />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
