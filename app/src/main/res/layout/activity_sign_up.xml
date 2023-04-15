@@ -32,9 +32,6 @@
         tools:ignore="HardcodedText" />
 
     <!--Email Edit Text-->
-
-    <!--Password Edit Text-->
-
     <EditText
         android:id="@+id/U_Email_Edit_text"
         style="@style/EditTextStyle"
@@ -47,13 +44,12 @@
 
         android:drawableEnd="@drawable/icons_email_icon"
         android:hint="البريد الالكتروني"
-
         android:inputType="textEmailAddress"
-        android:layoutDirection="rtl"
-
-        android:paddingStart="@dimen/_10sdp"
-
         android:paddingEnd="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_112sdp"
+        android:paddingStart="@dimen/_30sdp"
+        android:layoutDirection="rtl"
+        android:textAlignment="center"
 
         android:textSize="@dimen/_12sdp"
 
@@ -64,7 +60,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="Autofill,HardcodedText" />
 
     <TextView
@@ -73,18 +69,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginTop="@dimen/_99sdp"
         android:text="البريد الإلكتروني"
-        android:textSize="@dimen/_12sdp"
 
+        android:textSize="@dimen/_12sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1795"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText,TouchTargetSizeCheck" />
 
-    <!--Sing In Button-->
+    <!--Password Edit Text-->
     <EditText
 
         android:id="@+id/U_password_edit_text"
@@ -96,17 +93,18 @@
 
         android:layout_marginStart="@dimen/_23sdp"
         android:layout_marginEnd="@dimen/_23sdp"
+        android:layout_marginTop="@dimen/_173sdp"
+
 
         android:drawableEnd="@drawable/icons_lock_icon"
         android:hint="كلمة المرور"
         android:inputType="textPassword"
 
-        android:layoutDirection="rtl"
-        android:paddingStart="@dimen/_10sdp"
+        android:paddingStart="@dimen/_34sdp"
 
         android:paddingEnd="@dimen/_10sdp"
-        android:textAlignment="textEnd"
-
+        android:textAlignment="center"
+        android:layoutDirection="rtl"
         android:textSize="@dimen/_12sdp"
         android:theme="@style/EditTextStyle"
 
@@ -115,9 +113,29 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="Autofill,HardcodedText" />
 
+    <TextView
+        android:id="@+id/U_Pass_Float_Hint"
+        style="@style/Float_Hint_Background_Color"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_160sdp"
+
+        android:text="كلمة المرور"
+        android:textSize="@dimen/_12sdp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="Autofill,HardcodedText" />
+
+    <!--Confirm Password Edit Text-->
     <EditText
 
         android:id="@+id/Confirm_password_edit_text"
@@ -128,27 +146,28 @@
         android:layout_height="@dimen/_38sdp"
 
         android:layout_marginStart="@dimen/_23sdp"
-        android:layout_marginEnd="@dimen/_23sdp"
+        android:layout_marginTop="@dimen/_242sdp"
 
+        android:layout_marginEnd="@dimen/_23sdp"
         android:drawableEnd="@drawable/icons_lock_icon"
         android:hint="اعد كتابة كلمة المرور"
+
         android:inputType="textPassword"
-
         android:layoutDirection="rtl"
-        android:paddingStart="@dimen/_10sdp"
 
+        android:paddingStart="@dimen/_27sdp"
         android:paddingEnd="@dimen/_10sdp"
-        android:textAlignment="textEnd"
 
+        android:textAlignment="center"
         android:textSize="@dimen/_12sdp"
-        android:theme="@style/EditTextStyle"
 
+        android:theme="@style/EditTextStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.462"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="Autofill,HardcodedText" />
 
     <TextView
@@ -157,36 +176,20 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_229sdp"
         android:layoutDirection="rtl"
+
         android:text="اعد كتابة كلمة المرور"
-
         android:textSize="@dimen/_12sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="Autofill,HardcodedText" />
 
-    <TextView
-        android:id="@+id/U_Pass_Float_Hint"
-        style="@style/Float_Hint_Background_Color"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layoutDirection="rtl"
-        android:text="كلمة المرور"
-
-        android:textSize="@dimen/_12sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.292"
-        tools:ignore="Autofill,HardcodedText" />
-
+    <!--Sing Up Button-->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sing_Up_BTN"
         style="@style/EditTextStyle"
