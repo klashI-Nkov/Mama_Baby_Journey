@@ -7,9 +7,9 @@
     <solid android:color="?attr/Edit_Text_background"/>
     <stroke
         android:color="?attr/No_Name"
-        android:width="3dp"
+        android:width="@dimen/_2sdp"
     />
 
-    <corners android:radius="30dp"/>
+    <corners android:radius="@dimen/_54sdp"/>
 
 </shape>
