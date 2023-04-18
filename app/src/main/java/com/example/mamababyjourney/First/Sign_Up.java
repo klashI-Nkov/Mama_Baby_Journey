@@ -1,4 +1,4 @@
-package com.example.mamababyjourney;
+package com.example.mamababyjourney.First;
 
 import com.example.mamababyjourney.databinding.ActivitySignUpBinding;
 import androidx.appcompat.app.AppCompatActivity;

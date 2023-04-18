@@ -1,5 +1,6 @@
-package com.example.mamababyjourney;
+package com.example.mamababyjourney.First;
 
+import com.example.mamababyjourney.R;
 import com      . example   . mamababyjourney.databinding.ActivityInfoBinding;
 import androidx . appcompat . app.AppCompatActivity;
 import androidx . core      . content.ContextCompat;
@@ -28,7 +29,7 @@ public class Info_Activity extends AppCompatActivity
         int currentModeType = configuration . uiMode & Configuration . UI_MODE_NIGHT_MASK ;
 
         if ( currentModeType == Configuration . UI_MODE_NIGHT_YES )
-            getWindow ( ) . setStatusBarColor ( ContextCompat . getColor ( this , R . color . c8 ) ) ;
+            getWindow ( ) . setStatusBarColor ( ContextCompat . getColor ( this , R. color . c8 ) ) ;
         else
             getWindow ( ) . setStatusBarColor ( ContextCompat . getColor ( this , R . color . c7 ) ) ;
 

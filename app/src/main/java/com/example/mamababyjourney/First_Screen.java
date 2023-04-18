@@ -7,6 +7,9 @@ import android  . content   . Intent;
 import android  . os        . Bundle;
 import android  . view      . View;
 
+import com.example.mamababyjourney.First.Sign_Up;
+import com.example.mamababyjourney.First.Sing_in;
+
 public class First_Screen extends AppCompatActivity
 {
 
@@ -21,13 +24,13 @@ public class First_Screen extends AppCompatActivity
 
     public void Go_to_Sing_In ( View view )
     {
-        Intent intent = new Intent ( this , Sing_in . class ) ;
+        Intent intent = new Intent ( this , Sing_in. class ) ;
         startActivity ( intent ) ;
     }
 
     public void Go_to_Sing_Up ( View view )
     {
-        Intent intent = new Intent ( this , Sign_Up . class ) ;
+        Intent intent = new Intent ( this , Sign_Up. class ) ;
         startActivity ( intent ) ;
     }
 
