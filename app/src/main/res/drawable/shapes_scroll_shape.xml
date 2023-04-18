@@ -4,12 +4,17 @@
     android:shape="rectangle"
     >
 
-    <solid android:color="?attr/Edit_Text_background"/>
+    <solid android:color="?attr/BG"/>
     <stroke
-        android:color="?attr/No_Name"
+        android:color="?attr/stroke_color"
         android:width="@dimen/_2sdp"
     />
 
-    <corners android:radius="@dimen/_54sdp"/>
+    <corners
+        android:topLeftRadius="@dimen/_54sdp"
+        android:bottomRightRadius="@dimen/_54sdp"
+        android:topRightRadius="5dp"
+        android:bottomLeftRadius="5dp"
+    />
 
 </shape>

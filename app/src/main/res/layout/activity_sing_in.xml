@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     style="@style/screen_Background"
+    android:theme="@style/screen_Background"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,17 +13,22 @@
     <TextView
         android:id="@+id/textView1"
         style="@style/TextViewStyle"
+        android:layoutDirection="rtl"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_23sdp"
+
         android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_23sdp"
         android:layout_marginEnd="@dimen/_23sdp"
+
+        android:background="@android:color/transparent"
         android:fontFamily="@font/pacifico"
-        android:layoutDirection="rtl"
 
         android:text="Mama Baby Journey"
         android:textAlignment="center"
         android:textSize="@dimen/_31sdp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -36,7 +42,6 @@
         android:id="@+id/Email_Edit_text"
         style="@style/EditTextStyle"
         android:theme="@style/EditTextStyle"
-
         android:layoutDirection="rtl"
 
         android:layout_width="match_parent"
@@ -49,15 +54,12 @@
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
 
-
         android:drawableEnd="@drawable/icons_email_icon"
 
         android:hint="البريد الالكتروني"
         android:inputType="textEmailAddress"
         android:textAlignment="center"
         android:textSize="@dimen/_12sdp"
-
-
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,38 +69,15 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="Autofill,HardcodedText" />
 
-    <TextView
-        android:id="@+id/Email_Float_Hint"
-        style="@style/Float_Hint_Background_Color"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="@dimen/_112sdp"
-
-        android:paddingStart="@dimen/_4sdp"
-        android:paddingEnd="@dimen/_4sdp"
-
-        android:text="البريد الإلكتروني"
-        android:textSize="@dimen/_12sdp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
-
     <!--Password Edit Text-->
     <EditText
-
         android:id="@+id/password_edit_text"
         style="@style/EditTextStyle"
+        android:theme="@style/EditTextStyle"
 
+        android:layoutDirection="rtl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_39sdp"
-        android:layoutDirection="rtl"
 
         android:layout_marginTop="@dimen/_208sdp"
         android:layout_marginStart="@dimen/_23sdp"
@@ -114,7 +93,6 @@
         android:textAlignment="center"
         android:textSize="@dimen/_12sdp"
 
-        android:theme="@style/EditTextStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -124,43 +102,24 @@
         tools:ignore="Autofill,HardcodedText" />
 
     <TextView
-        android:id="@+id/Pass_Float_Hint"
-        style="@style/Float_Hint_Background_Color"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_195sdp"
-
-        android:paddingStart="@dimen/_4sdp"
-
-        android:paddingEnd="@dimen/_4sdp"
-        android:text="كلمة المرور"
-
-        android:textSize="@dimen/_12sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="Autofill,HardcodedText" />
-
-    <TextView
         android:id="@+id/textView5"
         style="@style/TextViewStyle"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_263sdp"
-
-        android:layout_marginEnd="@dimen/_27sdp"
-        android:clickable="true"
-        android:focusable="true"
         android:layoutDirection="rtl"
 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/_263sdp"
+        android:layout_marginEnd="@dimen/_27sdp"
+
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+
         android:text="نسيت كلمة السر ؟"
-        android:textSize="@dimen/_11sdp"
+        android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -173,17 +132,18 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sing_In_BTN"
         style="@style/EditTextStyle"
+        android:theme="@style/EditTextStyle"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_39sdp"
 
         android:layout_marginTop="@dimen/_338sdp"
+        android:layout_marginStart="@dimen/_39sdp"
         android:layout_marginEnd="@dimen/_39sdp"
 
         android:text="تسجيل الدخول"
         android:textSize="@dimen/_15sdp"
 
-        android:theme="@style/EditTextStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -195,13 +155,18 @@
     <TextView
         android:id="@+id/textView4"
         style="@style/TextViewStyle"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_428sdp"
         android:layoutDirection="rtl"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/_428sdp"
+
+        android:background="@android:color/transparent"
         android:text=" او باستخدام"
         android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -213,39 +178,42 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_477sdp"
         android:layoutDirection="rtl"
+        android:background="@android:color/transparent"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.92">
 
         <ImageView
             android:id="@+id/imageView5"
             style="@style/Icon_BG"
+            android:theme="@style/Icon_BG"
+
             android:layout_width="@dimen/_42sdp"
             android:layout_height="@dimen/_45sdp"
-            android:layout_marginLeft="@dimen/_116sdp"
+
+            android:layout_marginEnd="@dimen/_115sdp"
             android:padding="@dimen/_8sdp"
-            android:theme="@style/Icon_BG"
+
             app:srcCompat="@drawable/icons_google_icon"
-            tools:ignore="ContentDescription,RtlHardcoded" />
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/imageView4"
             style="@style/Icon_BG"
+            android:theme="@style/Icon_BG"
+
             android:layout_width="@dimen/_42sdp"
             android:layout_height="@dimen/_45sdp"
+
             android:padding="@dimen/_8sdp"
-            android:theme="@style/Icon_BG"
             app:srcCompat="@drawable/icons_facebook_icon"
             tools:ignore="ContentDescription" />
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

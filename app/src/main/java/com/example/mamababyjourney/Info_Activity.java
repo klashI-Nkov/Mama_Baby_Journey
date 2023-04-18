@@ -28,7 +28,7 @@ public class Info_Activity extends AppCompatActivity
         int currentModeType = configuration . uiMode & Configuration . UI_MODE_NIGHT_MASK ;
 
         if ( currentModeType == Configuration . UI_MODE_NIGHT_YES )
-            Objects . requireNonNull ( getSupportActionBar ( ) ) . hide ( ) ;
+            getWindow ( ) . setStatusBarColor ( ContextCompat . getColor ( this , R . color . c8 ) ) ;
         else
             getWindow ( ) . setStatusBarColor ( ContextCompat . getColor ( this , R . color . c7 ) ) ;
 

@@ -9,19 +9,28 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!-- For status Bar Color -->
+    <color name="c7">#D5EB4591</color>
+    <color name="c8">#190E0E0E</color>
+
+    <attr name="stroke_color" format="color" />
+    <attr name="BG" format="color" />
+    <attr name="Icons_Colors" format="color" />
+
+    <!-- this colors below it is for info page BG -->
+    <attr name="Start_Color" format="color" />
+    <attr name="Center_Color" format="color" />
+    <attr name="End_Color" format="color" />
+
+
+
+
     <color name="c1">#fbe3b2</color>
     <color name="c2">#f5e3d9</color>
     <color name="c3">#e5d0c5</color>
     <color name="c4">#d7c9bc</color>
     <color name="c5">#e4c7b8</color>
     <color name="c6">#e0cfb7</color>
-    <color name="c7">#D5EB4591</color>
-
-    <attr name="stroke_color" format="color" />
-    <attr name="Edit_Text_background" format="color" />
-    <attr name="Icons_Colors" format="color" />
-    <attr name="Float_Hint_Background_Color" format="color" />
-    <attr name="No_Name" format="color" />
-
+    <color name="c9">#09FFFFFF</color>
 
 </resources>

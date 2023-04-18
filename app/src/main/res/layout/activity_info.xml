@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/con"
-    style="@style/No_Name_Style"
-    android:theme="@style/No_Name_Style"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/screen_Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/info_page_bg"
-    android:fitsSystemWindows="true"
+    android:theme="@style/screen_Background"
     tools:context=".Info_Activity">
 
     <ScrollView
-        android:id="@+id/ss"
         style="@style/Scroll_Style"
+        android:theme="@style/Scroll_Style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_23sdp"
+
         android:layout_marginTop="@dimen/_23sdp"
-        android:layout_marginEnd="@dimen/_23sdp"
         android:layout_marginBottom="@dimen/_23sdp"
-        android:background="@drawable/shapes_scroll_shape"
-        android:theme="@style/Scroll_Style"
+        android:layout_marginStart="@dimen/_23sdp"
+        android:layout_marginEnd="@dimen/_23sdp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
