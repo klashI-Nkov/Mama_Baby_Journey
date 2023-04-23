@@ -28,9 +28,6 @@
         <item name="stroke_color">@color/white</item>
     </style>
 
-
-
-
     <style name="EditTextStyle2">
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
