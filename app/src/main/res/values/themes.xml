@@ -36,8 +36,6 @@
         <item name="stroke_color">#140E0E0E</item>
     </style>
 
-
-
     <style name="screen_Background">
         <item name="android:background">@drawable/info_page_bg</item>
         <item name="Start_Color">#9C1955</item>
