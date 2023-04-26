@@ -18,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="@dimen/_23sdp"
-        android:layout_marginEnd="@dimen/_23sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:layout_marginHorizontal="@dimen/_23sdp"
 
         android:background="@android:color/transparent"
         android:fontFamily="@font/pacifico"
@@ -34,7 +34,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.024"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText" />
 
     <!--Email Edit Text-->
@@ -47,11 +47,10 @@
         android:inputType="textEmailAddress"
 
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_38sdp"
+        android:layout_height="@dimen/_36sdp"
 
-        android:layout_marginTop="@dimen/_112sdp"
-        android:layout_marginStart="@dimen/_23sdp"
-        android:layout_marginEnd="@dimen/_23sdp"
+        android:layout_marginTop="@dimen/_132sdp"
+        android:layout_marginHorizontal="@dimen/_23sdp"
 
         android:paddingStart="@dimen/_30sdp"
         android:paddingEnd="@dimen/_10sdp"
@@ -77,14 +76,14 @@
         android:layoutDirection="rtl"
 
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_38sdp"
+        android:layout_height="@dimen/_36sdp"
 
-        android:layout_marginTop="@dimen/_173sdp"
-        android:layout_marginStart="@dimen/_23sdp"
-        android:layout_marginEnd="@dimen/_23sdp"
+        android:layout_marginTop="@dimen/_193sdp"
+        android:layout_marginHorizontal="@dimen/_23sdp"
+
 
         android:paddingStart="@dimen/_34sdp"
-        android:paddingEnd="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_9sdp"
 
         android:drawableEnd="@drawable/icons_lock_icon"
         android:hint="كلمة المرور"
@@ -111,12 +110,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_38sdp"
 
-        android:layout_marginTop="@dimen/_242sdp"
-        android:layout_marginStart="@dimen/_23sdp"
-        android:layout_marginEnd="@dimen/_23sdp"
+        android:layout_marginTop="@dimen/_262sdp"
 
-        android:paddingStart="@dimen/_27sdp"
-        android:paddingEnd="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_23sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
 
         android:drawableEnd="@drawable/icons_lock_icon"
         android:hint="اعد كتابة كلمة المرور"
@@ -138,81 +135,78 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/sing_Up_BTN"
         style="@style/EditTextStyle"
-        android:theme="@style/EditTextStyle"
-
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
 
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_394sdp"
+        android:layout_marginHorizontal="@dimen/_39sdp"
+
         android:onClick="Go_to_Info"
 
         android:text="انشاء حساب"
+
         android:textSize="@dimen/_15sdp"
+        android:theme="@style/EditTextStyle"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642"
-        tools:ignore="HardcodedText" />
-
-    <TextView
-        android:id="@+id/textView4"
-        style="@style/TextViewStyle"
-        android:layoutDirection="rtl"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:background="@android:color/transparent"
-        android:text=" او باستخدام"
-        android:textStyle="bold"
-        android:textSize="@dimen/_15sdp"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.788"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="HardcodedText" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layoutDirection="rtl"
-
         android:background="@android:color/transparent"
+        android:layout_marginTop="@dimen/_501sdp"
+        android:layoutDirection="rtl"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92">
+        app:layout_constraintVertical_bias="0.0">
 
         <ImageView
             android:id="@+id/imageView5"
             style="@style/Icon_BG"
-            android:theme="@style/Icon_BG"
-
             android:layout_width="@dimen/_42sdp"
+
             android:layout_height="@dimen/_45sdp"
 
-            android:layout_marginEnd="@dimen/_115sdp"
             android:padding="@dimen/_8sdp"
+            android:theme="@style/Icon_BG"
+
             app:srcCompat="@drawable/icons_google_icon"
             tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_23sdp"
+            android:background="@android:color/transparent"
+
+            android:layoutDirection="rtl"
+            android:text=" او باستخدام"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+
+            tools:ignore="HardcodedText" />
 
         <ImageView
             android:id="@+id/imageView4"
             style="@style/Icon_BG"
             android:layout_width="@dimen/_42sdp"
+
             android:layout_height="@dimen/_45sdp"
             android:padding="@dimen/_8sdp"
+
             android:theme="@style/Icon_BG"
             app:srcCompat="@drawable/icons_facebook_icon"
             tools:ignore="ContentDescription" />

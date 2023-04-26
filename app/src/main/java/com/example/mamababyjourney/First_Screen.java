@@ -1,6 +1,11 @@
 package com.example.mamababyjourney;
 
 import androidx . appcompat . app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android  . view      . WindowManager;
 import java     . util      . Objects;
 import android  . content   . Intent;
@@ -16,10 +21,12 @@ public class First_Screen extends AppCompatActivity
     @Override
     protected void onCreate ( Bundle savedInstanceState )
     {
-        getWindow ( ) . setFlags ( WindowManager . LayoutParams . FLAG_FULLSCREEN , WindowManager . LayoutParams . FLAG_FULLSCREEN ) ;
+        getWindow().setFlags( WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         Objects . requireNonNull ( getSupportActionBar ( ) ) . hide ( ) ;
+
         super . onCreate ( savedInstanceState ) ;
         setContentView ( R . layout . activity_first_screen ) ;
+        Permissions ();
     }
 
     public void Go_to_Sing_In ( View view )
@@ -33,5 +40,21 @@ public class First_Screen extends AppCompatActivity
         Intent intent = new Intent ( this , Sign_Up. class ) ;
         startActivity ( intent ) ;
     }
+    private void Permissions ()
+    {
 
+
+        if
+        (
+            ContextCompat.checkSelfPermission ( this , android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED &&
+            ContextCompat.checkSelfPermission ( this , android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED
+        )
+        {
+            ActivityCompat.requestPermissions ( this , new String[]{ android.Manifest.permission.ACCESS_FINE_LOCATION } , 1 );
+            ActivityCompat.requestPermissions ( this , new String[]{ android.Manifest.permission.ACCESS_COARSE_LOCATION } , 2 );
+            ActivityCompat.requestPermissions ( this , new String[]{ android.Manifest.permission.INTERNET } , 3 );
+            ActivityCompat.requestPermissions ( this , new String[]{ Manifest.permission.ACCESS_NETWORK_STATE } , 4 );
+        }
+
+    }
 }

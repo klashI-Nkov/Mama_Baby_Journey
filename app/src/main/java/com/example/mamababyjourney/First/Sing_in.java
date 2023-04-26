@@ -13,7 +13,7 @@ public class Sing_in extends AppCompatActivity
     @Override
     protected void onCreate ( Bundle savedInstanceState )
     {
-        getWindow ( ) . setFlags ( WindowManager . LayoutParams . FLAG_FULLSCREEN , WindowManager . LayoutParams . FLAG_FULLSCREEN ) ;
+        getWindow ( ) . setFlags ( WindowManager . LayoutParams . FLAG_LAYOUT_NO_LIMITS , WindowManager . LayoutParams . FLAG_LAYOUT_NO_LIMITS ) ;
         Objects . requireNonNull ( getSupportActionBar ( ) ) . hide ( ) ;
 
         super . onCreate ( savedInstanceState ) ;
