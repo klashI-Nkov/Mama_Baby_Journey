@@ -3,15 +3,12 @@ package com.example.mamababyjourney;
 import androidx . appcompat . app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
-import android.Manifest;
 import android.content.pm.PackageManager;
 import android  . view      . WindowManager;
 import java     . util      . Objects;
 import android  . content   . Intent;
 import android  . os        . Bundle;
 import android  . view      . View;
-
 import com.example.mamababyjourney.First.Sign_Up;
 import com.example.mamababyjourney.First.Sing_in;
 
@@ -51,9 +48,7 @@ public class First_Screen extends AppCompatActivity
         )
         {
             ActivityCompat.requestPermissions ( this , new String[]{ android.Manifest.permission.ACCESS_FINE_LOCATION } , 1 );
-            ActivityCompat.requestPermissions ( this , new String[]{ android.Manifest.permission.ACCESS_COARSE_LOCATION } , 2 );
-            ActivityCompat.requestPermissions ( this , new String[]{ android.Manifest.permission.INTERNET } , 3 );
-            ActivityCompat.requestPermissions ( this , new String[]{ Manifest.permission.ACCESS_NETWORK_STATE } , 4 );
+            ActivityCompat.requestPermissions ( this , new String[]{ android.Manifest.permission.ACCESS_COARSE_LOCATION } , 1 );
         }
 
     }

@@ -9,9 +9,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- For status Bar Color -->
-    <color name="c7">#D5EB4591</color>
-    <color name="c8">#190E0E0E</color>
+
+    <color name="c10">@android:color/transparent</color>
 
     <attr name="stroke_color" format="color" />
     <attr name="BG" format="color" />
@@ -22,8 +21,7 @@
     <attr name="Center_Color" format="color" />
     <attr name="End_Color" format="color" />
 
-
-
+    <color name="Snack_bar_BG_Color">#292929</color>
 
 
     <color name="c1">#fbe3b2</color>
@@ -32,6 +30,5 @@
     <color name="c4">#d7c9bc</color>
     <color name="c5">#e4c7b8</color>
     <color name="c6">#e0cfb7</color>
-    <color name="c9">#38000000</color>
 
 </resources>
