@@ -1,9 +1,7 @@
 package com.example.mamababyjourney.First;
 
 import com.example.mamababyjourney.R;
-import com.example.mamababyjourney.WorkaroundMapFragment;
 import com.example.mamababyjourney.databinding.ActivityInfoBinding;
-import com.google.android.gms.maps.GoogleMap;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -12,7 +10,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -28,7 +25,6 @@ public class Info_Activity extends AppCompatActivity implements AdapterView.OnIt
 {
     ActivityInfoBinding binding;
     EditText Name_editText;
-    private GoogleMap mMap;
 
 
     @SuppressLint ( "ClickableViewAccessibility" )
@@ -59,9 +55,6 @@ public class Info_Activity extends AppCompatActivity implements AdapterView.OnIt
 
         // for Auto Complete Text View hints
         adapter_initialization ( );
-
-        binding.DoctorRBTN.setChecked ( true );
-
 
 
     }
