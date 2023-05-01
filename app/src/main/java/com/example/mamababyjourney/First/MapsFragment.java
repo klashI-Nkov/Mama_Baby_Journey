@@ -55,6 +55,7 @@ public class MapsFragment extends Fragment
     {
         mMap = googleMap;
 
+        googleMap.getUiSettings().setAllGesturesEnabled(false);
         mMap.setMapType ( GoogleMap.MAP_TYPE_HYBRID );
 
         mMap.setMyLocationEnabled ( true );
