@@ -35,8 +35,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498"
-        tools:visibility="gone">
+        app:layout_constraintVertical_bias="0.498">
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -58,7 +57,7 @@
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:layout_weight="1"
                 android:layoutDirection="rtl"
-                android:onClick="Which_Radio_BTN_Checked"
+                android:onClick="Mom_Radio_BTN_Checked"
                 android:text="أم"
                 android:textSize="@dimen/_14sdp"
                 tools:ignore="HardcodedText" />
@@ -140,14 +139,12 @@
         android:gravity="center"
         android:theme="@style/Scroll_Style"
 
-        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        tools:visibility="gone">
+        app:layout_constraintVertical_bias="0.5">
 
         <LinearLayout
             style="@style/No_Name_Style"
@@ -173,7 +170,7 @@
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_weight="1"
                     android:layoutDirection="rtl"
-                    android:onClick="Which_Radio_BTN_Checked"
+                    android:onClick="Mom_Radio_BTN_Checked"
                     android:text="أم"
                     android:textSize="@dimen/_14sdp"
                     tools:ignore="HardcodedText" />
@@ -274,6 +271,7 @@
         android:paddingVertical="@dimen/_38sdp"
         android:theme="@style/Scroll_Style"
 
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -367,14 +365,13 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="حدد مكان العيادة على خرائط حوحل"
                 android:layout_marginHorizontal="@dimen/_38sdp"
                 android:layout_marginTop="@dimen/_24sdp"
                 android:layoutDirection="rtl"
+                android:text="حدد مكان العيادة على خرائط حوحل"
                 android:textAlignment="center"
-                android:textSize="@dimen/_14sdp"
-                />
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/Map_BTN"

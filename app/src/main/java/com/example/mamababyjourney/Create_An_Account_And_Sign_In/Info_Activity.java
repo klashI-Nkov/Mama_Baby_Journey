@@ -63,7 +63,13 @@ public class Info_Activity extends AppCompatActivity implements AdapterView.OnIt
             binding.MomData.setVisibility ( View.INVISIBLE );
             binding.DoctorData.setVisibility ( View.VISIBLE );
         }
-        else if ( binding.MomRBTN.isChecked ( ) || binding.MomRBTN2.isChecked ( ) )
+
+    }
+
+    public void Mom_Radio_BTN_Checked ( View view )
+    {
+
+         if ( binding.MomRBTN.isChecked ( ) || binding.MomRBTN2.isChecked ( ) )
         {
             binding.DoctorRBTN.setChecked ( false );
             binding.DoctorRBTN2.setChecked ( false );
@@ -75,6 +81,7 @@ public class Info_Activity extends AppCompatActivity implements AdapterView.OnIt
             binding.MomData.setVisibility ( View.VISIBLE );
         }
     }
+
 
     public void Add_Workplace_Dialog_Function ( View view )
     {
