@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import java.util.Objects;
 
+
 @SuppressWarnings ( { "unused" , "CommentedOutCode" } )
 @SuppressLint ( "ClickableViewAccessibility" )
 public class Info_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
