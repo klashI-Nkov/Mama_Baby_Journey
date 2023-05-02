@@ -2,16 +2,20 @@ package com.example.mamababyjourney.Create_An_Account_And_Sign_In;
 
 import com.example.mamababyjourney.R;
 import com.example.mamababyjourney.databinding.ActivityMapBinding;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.LatLng;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.annotation.SuppressLint;
@@ -22,10 +26,12 @@ import androidx.annotation.NonNull;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.Network;
@@ -46,6 +52,8 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
 {
 
     // اول شي المتغيرات الي مش حاط الها شرح في كومت بتلاقي شرحها في الفنكشن الي انا مستعملها فيه و بكون عامل هيك لانه شرحها بكون طويل شوي
+    Location currentLocation;
+    private FusedLocationProviderClient fusedLocationClient;
 
     private ConnectivityManager connectivity_Manager;
 
@@ -76,6 +84,9 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
 
         getWindow ( ).setStatusBarColor ( Color.TRANSPARENT );
 
+        fusedLocationClient= LocationServices.getFusedLocationProviderClient(this);
+
+        Location();
         Check_Location ( );
         Check_Internet ( );
 
@@ -132,6 +143,42 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+
+
+    private void Location()
+    {
+
+        if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED&&
+
+                ContextCompat.checkSelfPermission(this,android.Manifest.permission.ACCESS_COARSE_LOCATION)!= PackageManager.PERMISSION_GRANTED)
+        { ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},1);}
+
+        Task < Location > task=fusedLocationClient.getLastLocation();
+        task.addOnSuccessListener(location->
+        {
+
+            if(location!=null)
+            {
+                currentLocation=location;
+
+            }
+
+        });
+
+
+    }
+
+    @Override public void onRequestPermissionsResult(int requestCode,@NonNull String[]permissions,@NonNull int[]grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode,permissions,grantResults);
+
+        if(grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED)
+        {
+            Location();
+
+        }
+    }
+    // هاد الفنشكن مجرد ما تطلعي من الخارطه رح يتنفذ وما رح تفهمي الي جواته حتى لو قريتي الكومنتات لازم تشوقي الشرح الي في فنشكن ال Check_Location و الي في فنكشن ال Check_Internet عشان تفهمي شو الي جواته
     @Override
     protected void onPause ( )
     {
@@ -140,6 +187,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
         unregisterReceiver ( location_Receiver );
     }
 
+    // هاد الفنكشن هو الي بس تشتغل الخارطه بجهزها للعرض و مستعمله في فنكشن onCreate الي بستدعى او ما تفتحي الشاشه فرح يستدعى لما تفتحي الخارطه
     private void Map_Initialization ( )
     {
         // inti
@@ -148,7 +196,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync ( this );
     }
 
-    // هاد الفنكشن هو المسؤول عن البحث عن الموقع باستخدام الاسم لما نكتبه في البحث و مستعمله في فنكشن onCreate الي بستدعى او ما تفتحي الشاشه فرح يستدعى لما تفتحي الخارطه
+    // هاد الفنكشن هو المسؤول عن البحث عن الموقع باستخدام الاسم لما نكتبه في البحث و برضو لاني مستعمله في فنكشن onCreate و رح يستدعى لما تفتحي الخارطه
     private void Find_a_place ( )
     {
 
@@ -236,6 +284,16 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
             }
         };
 
+        /*
+         في هاد السطر
+          connectivity_Manager.registerDefaultNetworkCallback ( network_Callback );
+
+          تسجيل ل connectivity_Manager عشان يقدر يتحقق من النت اذا كان شغال او طافي عن طريق انه يستقبل التغيير في حالة الاتصال بالانترنت و وقتها بجي دور هاد الي فوق الي هو هاد
+
+           network_Callback = new ConnectivityManager.NetworkCallback ( )
+
+            وبعدل على قيمة is_Internet_Connected حسب حالة الاتصال بالانترنت
+         */
         connectivity_Manager.registerDefaultNetworkCallback ( network_Callback );
 
         /*
@@ -286,10 +344,8 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
                 // هون هاد المتغير الي برضو عرفناه قبل onCreate بتخزن فيه الحاله الحاليه لخدمة الموقع اذا كانت مشغله بتكون قيمته true و اذا كانت طافيه بتكون قيمته false
                 is_Location_Enabled = location_Manager.isProviderEnabled ( LocationManager.GPS_PROVIDER );
 
-                if ( is_Location_Enabled )
-                { Check_Location_And_Internet ( ); }
-                else
-                { Check_Location_And_Internet ( ); }
+                // هون شو ما كانت قيمة is_Location_Enabled كانت true او كانت false هاد الي تحت رح يتنفذ لانو قلنا انه فنكشن ال onReceive بستدعى لما
+                Check_Location_And_Internet ( );
             }
         };
 
@@ -436,3 +492,8 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
     }
 
 }
+
+
+
+
+
