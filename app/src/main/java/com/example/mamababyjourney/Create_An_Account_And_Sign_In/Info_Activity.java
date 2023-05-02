@@ -1,13 +1,10 @@
-package com.example.mamababyjourney.First;
+package com.example.mamababyjourney.Create_An_Account_And_Sign_In;
 
 import com.example.mamababyjourney.R;
 import com.example.mamababyjourney.databinding.ActivityInfoBinding;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -18,16 +15,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import java.util.Objects;
 
-
-
 @SuppressWarnings ( { "unused" , "CommentedOutCode" } )
+@SuppressLint ( "ClickableViewAccessibility" )
 public class Info_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     ActivityInfoBinding binding;
     EditText Name_editText;
 
 
-    @SuppressLint ( "ClickableViewAccessibility" )
     protected void onCreate ( Bundle savedInstanceState )
     {
 
@@ -39,23 +34,16 @@ public class Info_Activity extends AppCompatActivity implements AdapterView.OnIt
         setContentView ( binding.getRoot ( ) );
 
 
-// Find the container layout in the activity layout file
-        LinearLayout container = findViewById(R.id.fag);
-
-        // Create an instance of the fragment
-        MapsFragment myFragment = new MapsFragment();
-
-        // Get a FragmentManager and start a FragmentTransaction
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        // Add the fragment to the container layout
-        fragmentTransaction.add(container.getId(), myFragment);
-        fragmentTransaction.commit();
-
         // for Auto Complete Text View hints
         adapter_initialization ( );
 
+        binding.MapBTN.setOnClickListener ( v ->
+        {
+
+            Intent intent = new Intent ( this, Map.class );
+            startActivity ( intent );
+
+        } );
 
     }
 

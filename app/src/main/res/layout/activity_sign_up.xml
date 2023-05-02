@@ -9,7 +9,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".First.Sign_Up">
+    tools:context=".Create_An_Account_And_Sign_In.Sign_Up">
 
     <TextView
         android:id="@+id/textView1"

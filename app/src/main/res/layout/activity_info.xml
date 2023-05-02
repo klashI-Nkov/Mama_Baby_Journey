@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
@@ -8,7 +9,7 @@
 
     android:layout_height="match_parent"
     android:theme="@style/screen_Background"
-    tools:context=".First.Info_Activity">
+    tools:context=".Create_An_Account_And_Sign_In.Info_Activity">
 
     <!-- Mom Data -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -261,7 +262,7 @@
     </ScrollView>
 
     <!-- Workplace Data -->
-    <!--<ScrollView
+    <ScrollView
         android:id="@+id/Workplace_Data"
         style="@style/Scroll_Style"
         android:layout_width="match_parent"
@@ -303,134 +304,8 @@
                 android:paddingHorizontal="@dimen/_10sdp"
                 android:spinnerMode="dialog"
                 android:textDirection="rtl"
-                android:textSize="@dimen/_15sdp" />
-
-            &lt;!&ndash; Save Workplace Data BTN &ndash;&gt;
-            <EditText
-                android:id="@+id/Clinic_Name"
-                style="@style/EditTextStyle2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_38sdp"
-
-                android:layout_marginHorizontal="@dimen/_23sdp"
-                android:layout_marginTop="@dimen/_24sdp"
-
-                android:hint="اسم العيادة"
-
-                android:layoutDirection="rtl"
-                android:textAlignment="center"
-
                 android:textSize="@dimen/_15sdp"
-                android:theme="@style/EditTextStyle2"
-                tools:ignore="Autofill,HardcodedText,TextFields" />
-
-            <EditText
-                android:id="@+id/Clinic_Address"
-                style="@style/EditTextStyle2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_38sdp"
-
-                android:layout_marginHorizontal="@dimen/_23sdp"
-                android:layout_marginTop="@dimen/_24sdp"
-
-                android:hint="عنوان العيادة"
-
-                android:layoutDirection="rtl"
-                android:textAlignment="center"
-
-                android:textSize="@dimen/_15sdp"
-                android:theme="@style/EditTextStyle2"
-                tools:ignore="Autofill,HardcodedText,TextFields" />
-
-            <EditText
-                android:id="@+id/Clinic_Phone_Number"
-                style="@style/EditTextStyle2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_38sdp"
-
-                android:layout_marginHorizontal="@dimen/_23sdp"
-                android:layout_marginTop="@dimen/_24sdp"
-                android:ems="10"
-                android:hint="رقم هاتف العيادة"
-                android:imeOptions="actionGo"
-                android:inputType="number"
-                android:layoutDirection="rtl"
-                android:textAlignment="center"
-
-                android:textSize="@dimen/_15sdp"
-                android:theme="@style/EditTextStyle2"
-                tools:ignore="Autofill,HardcodedText,TextFields" />
-
-            <LinearLayout
-                android:id="@+id/fag"
-                android:layout_width="match_parent"
-                android:layout_height="405dp"
-                android:layout_marginHorizontal="@dimen/_23sdp"
-                android:layout_marginTop="@dimen/_24sdp"
-                android:orientation="vertical" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/Save_Workplace_Data"
-                style="@style/EditTextStyle2"
-                android:layout_width="match_parent"
-
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_38sdp"
-
-                android:layout_marginTop="@dimen/_24sdp"
-                android:text="حفظ"
-
-                android:textSize="@dimen/_15sdp"
-                android:theme="@style/EditTextStyle2"
-                tools:ignore="HardcodedText" />
-
-        </LinearLayout>
-
-    </ScrollView>-->
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/Workplace_Data"
-        style="@style/Scroll_Style"
-        android:layout_width="match_parent"
-
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="@dimen/_23sdp"
-        android:layout_marginTop="@dimen/_44sdp"
-        android:layout_marginBottom="@dimen/_65sdp"
-        android:paddingVertical="@dimen/_38sdp"
-        android:theme="@style/Scroll_Style"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
-
-        <LinearLayout
-            android:id="@+id/Workplace_Layout"
-            style="@style/No_Name_Style"
-            android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-
-            android:gravity="center"
-            android:orientation="vertical"
-            android:theme="@style/No_Name_Style">
-
-            <Spinner
-                android:id="@+id/Workplace"
-
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_38sdp"
-                android:layout_marginHorizontal="@dimen/_23sdp"
-                android:gravity="center"
-                android:layoutDirection="rtl"
-                android:paddingHorizontal="@dimen/_10sdp"
-                android:spinnerMode="dialog"
-                android:textDirection="rtl"
-                android:textSize="@dimen/_15sdp" />
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <!-- Save Workplace Data BTN -->
             <EditText
@@ -449,7 +324,7 @@
 
                 android:textSize="@dimen/_15sdp"
                 android:theme="@style/EditTextStyle2"
-                tools:ignore="Autofill,HardcodedText,TextFields" />
+                tools:ignore="Autofill,HardcodedText,TextFields,TextContrastCheck" />
 
             <EditText
                 android:id="@+id/Clinic_Address"
@@ -467,7 +342,7 @@
 
                 android:textSize="@dimen/_15sdp"
                 android:theme="@style/EditTextStyle2"
-                tools:ignore="Autofill,HardcodedText,TextFields" />
+                tools:ignore="Autofill,HardcodedText,TextFields,TextContrastCheck" />
 
             <EditText
                 android:id="@+id/Clinic_Phone_Number"
@@ -488,16 +363,33 @@
                 android:theme="@style/EditTextStyle2"
                 tools:ignore="Autofill,HardcodedText,TextFields" />
 
-            <LinearLayout
-                android:id="@+id/fag"
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="405dp"
-                android:layout_marginHorizontal="@dimen/_23sdp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="حدد مكان العيادة على خرائط حوحل"
+                android:layout_marginHorizontal="@dimen/_38sdp"
                 android:layout_marginTop="@dimen/_24sdp"
-                android:clickable="true"
-                android:orientation="vertical"
-                android:duplicateParentState="true"
-                android:focusable="true" />
+                android:layoutDirection="rtl"
+                android:textAlignment="center"
+                android:textSize="@dimen/_14sdp"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/Map_BTN"
+                style="@style/EditTextStyle2"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_38sdp"
+
+                android:layout_marginTop="@dimen/_24sdp"
+                android:text="الذهاب الى الخارطة"
+
+                android:textSize="@dimen/_15sdp"
+                android:theme="@style/EditTextStyle2"
+                tools:ignore="HardcodedText" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/Save_Workplace_Data"
@@ -516,6 +408,6 @@
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
