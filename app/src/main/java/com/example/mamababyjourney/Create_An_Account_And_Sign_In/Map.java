@@ -148,14 +148,13 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync ( this );
     }
 
-    // هاد الفنكشن هو المسؤول عن البحث عن الموقع باستخدام الاسم لما نكتبه في البحث و مستعمله في فنكشن onCreate الي بستدعى او ما تفتحي الشاشه فرح يستدعى لما تفتحي الخارطه
+    // هاد الفنكشن هو المسؤول عن البحث عن الموقع باستخدام الاسم لما نكتبه في البحث و برضو لاني مستعمله في فنكشن onCreate و رح يستدعى لما تفتحي الخارطه
     private void Find_a_place ( )
     {
 
-
         String location = binding.SearchEditText.getQuery ( ).toString ( );
 
-        AtomicReference < List < Address > > listAddress = new AtomicReference <> ( );
+        AtomicReference < List < Address > > listAddress = new AtomicReference < > ( );
 
         if ( !location.isEmpty ( ) )
         {
@@ -175,17 +174,13 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
                 }
                 else
                 { Snack_Bar ( "لا يوجد مكان بهذا الاسم\n\n جرب كتابة اسم مكان اخر" ); }
-
             }
             catch ( IOException e )
             {
                 e.printStackTrace ( );
                 Snack_Bar ( "Search failed: " + e.getMessage ( ) );
-
             }
-
         }
-
     }
 
     // للتحقق اذا كان النت شغال او مش شغال و برضو لاني مستعمله في فنكشن onCreate و رح يستدعى لما تفتحي الخارطه
