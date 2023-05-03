@@ -15,14 +15,12 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import java.util.Objects;
 
-
 @SuppressWarnings ( { "unused" , "CommentedOutCode" } )
 @SuppressLint ( "ClickableViewAccessibility" )
 public class Info_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
     ActivityInfoBinding binding;
     EditText Name_editText;
-
 
     protected void onCreate ( Bundle savedInstanceState )
     {
@@ -47,8 +45,6 @@ public class Info_Activity extends AppCompatActivity implements AdapterView.OnIt
         } );
 
     }
-
-
 
     public void Which_Radio_BTN_Checked ( View view )
     {
@@ -81,7 +77,6 @@ public class Info_Activity extends AppCompatActivity implements AdapterView.OnIt
             binding.MomData.setVisibility ( View.VISIBLE );
         }
     }
-
 
     public void Add_Workplace_Dialog_Function ( View view )
     {
