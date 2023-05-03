@@ -19,7 +19,9 @@ import java.util.Objects;
 @SuppressLint ( "ClickableViewAccessibility" )
 public class Info_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener
 {
+
     ActivityInfoBinding binding;
+
     EditText Name_editText;
 
     protected void onCreate ( Bundle savedInstanceState )
