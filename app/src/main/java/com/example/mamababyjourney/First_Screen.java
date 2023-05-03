@@ -37,6 +37,7 @@ public class First_Screen extends AppCompatActivity
         Intent intent = new Intent ( this , Sign_Up. class ) ;
         startActivity ( intent ) ;
     }
+
     private void Permissions ()
     {
 

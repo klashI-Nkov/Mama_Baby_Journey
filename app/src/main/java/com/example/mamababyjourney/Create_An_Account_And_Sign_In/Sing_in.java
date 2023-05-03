@@ -8,6 +8,7 @@ import android  . os        . Bundle;
 
 public class Sing_in extends AppCompatActivity
 {
+
     ActivitySingInBinding binding ;
 
     @Override
@@ -20,4 +21,5 @@ public class Sing_in extends AppCompatActivity
         binding = ActivitySingInBinding . inflate ( getLayoutInflater ( ) ) ;
         setContentView ( binding . getRoot ( ) ) ;
     }
+
 }
