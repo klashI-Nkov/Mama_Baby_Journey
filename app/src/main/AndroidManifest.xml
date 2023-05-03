@@ -21,7 +21,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAtEiYtdN_-kaFd0_pnBJHL6DviXfQjAEo" />
+            android:value="AIzaSyC01PNmd-_3bqJ3nH8mDcFQfTykoKjxRFo" />
 
         <activity
             android:name=".Create_An_Account_And_Sign_In.Info_Activity"
@@ -59,11 +59,8 @@
 
         <activity
             android:name=".Create_An_Account_And_Sign_In.Map"
-            android:exported="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:exported="true"
+            android:label="@string/title_activity_maps" />
 
         <meta-data
             android:name="preloaded_fonts"
