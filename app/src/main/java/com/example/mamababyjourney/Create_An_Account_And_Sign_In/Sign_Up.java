@@ -30,6 +30,7 @@ public class Sign_Up extends AppCompatActivity
         binding = ActivitySignUpBinding . inflate ( getLayoutInflater ( ) ) ;
         setContentView ( binding . getRoot ( ) ) ;
 
+        Buttons ( );
 
     }
 
