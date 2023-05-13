@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
@@ -34,7 +33,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText,TextContrastCheck"/>
+        tools:ignore="HardcodedText,TextContrastCheck" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -103,7 +102,7 @@
             android:textSize="@dimen/_14sdp"
             android:text="طبيب"
 
-            tools:ignore="HardcodedText,TextSizeCheck" />
+            tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
 
     </RadioGroup>
 
@@ -131,7 +130,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextSizeCheck,VisualLintTextFieldSize" />
+        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
 
     <!--Email Edit Text-->
     <EditText
@@ -161,7 +160,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Name_Edit_text"
-        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextSizeCheck,VisualLintTextFieldSize" />
+        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
 
     <!--Password Edit Text-->
     <EditText
@@ -191,7 +190,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/U_Email_Edit_text"
-        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextSizeCheck,VisualLintTextFieldSize" />
+        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextSizeCheck,VisualLintTextFieldSize,TextContrastCheck" />
 
     <!--Sing Up Button-->
     <androidx.appcompat.widget.AppCompatButton
@@ -205,8 +204,6 @@
 
         android:layout_marginTop="@dimen/_61sdp"
         android:layout_marginHorizontal="@dimen/_39sdp"
-
-        android:onClick="Go_to_Info"
 
         android:text="انشاء حساب"
 
@@ -244,8 +241,6 @@
             android:theme="@style/Icon_BG"
             style="@style/Icon_BG"
 
-            android:onClick="Sign_Up_By_Google"
-
             android:layout_width="@dimen/_42sdp"
             android:layout_height="@dimen/_45sdp"
 
@@ -253,7 +248,7 @@
 
             app:srcCompat="@drawable/icons_google_icon"
 
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/textView4"
@@ -280,8 +275,6 @@
             android:theme="@style/Icon_BG"
             style="@style/Icon_BG"
 
-            android:onClick="Sign_Up_By_Facebook"
-
             android:layout_width="@dimen/_42sdp"
             android:layout_height="@dimen/_45sdp"
 
@@ -289,7 +282,7 @@
 
             app:srcCompat="@drawable/icons_facebook_icon"
 
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
 
     </LinearLayout>
 

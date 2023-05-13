@@ -11,10 +11,9 @@ import android.content.Intent;
 import android.widget.Toast;
 import java.util.Objects;
 import android.os.Bundle;
-import android.view.View;
 
 @SuppressWarnings ( { "StatementWithEmptyBody" , "CommentedOutCode" , "deprecation" } )
-@SuppressLint ( { "WrongConstant" , "ShowToast" } )
+@SuppressLint ( { "WrongConstant" , "ShowToast", "ClickableViewAccessibility" } )
 
 public class Sign_Up extends AppCompatActivity
 {
@@ -30,30 +29,7 @@ public class Sign_Up extends AppCompatActivity
         super . onCreate ( savedInstanceState ) ;
         binding = ActivitySignUpBinding . inflate ( getLayoutInflater ( ) ) ;
         setContentView ( binding . getRoot ( ) ) ;
-    }
 
-    // هاد الفنكشن مربوط بزر انشاء الحساب و وظفيته انه ينقل المستخدم للشاشه الي بعد شاشة انشاء الحساب
-    public void Go_to_Info ( View view )
-    {
-        /*
-            هون في حالة المستخدم لما يسجل باستعمال الايميل كان ام او طبيب لو ما حدد صفته يعطل زر انشاء الحساب و ما يخليه قادر يكمل للشاشه الي
-            بعدها وبعرض اله مسج انه لازم يحدد صفته قبل ما يكمل اما اذا كان محدد فعادي بخليه يكمل من دون اي مشاكل
-         */
-        if ( !binding . MomRBTN . isChecked ( ) && !binding . DoctorRBTN . isChecked ( ) )
-        {
-            binding . singUpBTN . setEnabled ( false ) ;
-            Toast . makeText ( this , "يرجى تحديد صفتك قبل الانتقال الي  الصفحه التاليه" , Toast . LENGTH_LONG ) . show ( ) ;
-        }
-        else
-        { binding . singUpBTN . setEnabled ( true ) ; }
-
-
-        // هون كونه بس الام مطلوب منها الاسم بس فما رح يكون في الها بيانات تعبيها لهيك حاكي اله اذا المستخدم كان دكتور انقله لشاشة البيانات عشان يعبي البيانات اللازمه
-        if ( binding . DoctorRBTN . isChecked ( ) )
-        {
-            Intent intent = new Intent ( this , Info_Activity . class ) ;
-            startActivity ( intent ) ;
-        }
 
     }
 
@@ -76,38 +52,98 @@ public class Sign_Up extends AppCompatActivity
         }
     }
 
-    // هاد مربوط مع ايقونة التسجيل بواسطة قوقل
-    public void Sign_Up_By_Google ( View view )
+    // جديد
+
+    /*
+        هاد الفنكشن صح انه جديد لكن هو وحده الجديد اما الاكواد الي جواته قديمه والجديد في الموضوع انه الاكواد الي داخله
+        كانت تتنفذ عند حدث الضغط الخاص بالشي الي انا كاتب اله الكود
+
+        والي عملته هلا اني خليتها تتنفذ عند حدث اللمس للشي الي انا كاتب الكود عشانه
+
+        اول شي اسرع في الاستجابه و تاني شي اقل في الكود
+
+        ثالث شي الخاصيه الي سالتي عنها الصبح كانت المشكله لما كانت تتنفذ عند الضغط على ال Radio Buttons تاعين الام و الدكتور
+
+        الي كان يصير مرات ما كانت تشتغل و ما تتنفذ وبس استعملت حدث اللمس زبطت مباشره
+     */
+    private void Buttons ( )
     {
 
-        // هون بقله اذا المسخدم مش محدد شو صفته ادخل الاف و عطل انشاء الحساب باستخدام قوقل اما اذا حدد فعادي خليه يستعمله
-        if ( !binding . MomRBTN . isChecked ( ) && !binding . DoctorRBTN . isChecked ( ) )
-        { Toast . makeText ( this , "يرجى تحديد صفتك قبل الانتقال الي  الصفحه التاليه" , Toast . LENGTH_LONG ) . show ( ) ; }
-        else
+        // هاد مربوط مع ايقونة التسجيل بواسطة فيسبوك و ظيفته انه يفعل زر انشاء الحساب بعد ما تعطل لما الام او الدكتور كبسو عليه بدون ما يحددو الصفه
+        binding . FacebookIcon . setOnTouchListener ( ( v , event ) ->
         {
-            /*
-            binding  .  FacebookIcon       .  setEnabled ( true ) ;
-            binding  .  GoogleIcon         .  setEnabled ( true ) ;
-            */
-        }
+            // هون بقله اذا المسخدم مش محدد شو صفته ادخل الاف و عطل انشاء الحساب باستخدام قوقل اما اذا حدد فعادي خليه يستعمله
+            if ( !binding . MomRBTN . isChecked ( ) && !binding . DoctorRBTN . isChecked ( ) )
+                Toast . makeText ( this , "يرجى تحديد صفتك قبل الانتقال الي  الصفحه التاليه" , Toast . LENGTH_LONG ) . show ( ) ;
+            else
+            {
+                    /*
+                binding  .  FacebookIcon       .  setEnabled ( true ) ;
+                binding  .  GoogleIcon         .  setEnabled ( true ) ;
+                */
+            }
+            return false;
+        } );
+
+        // هاد بتنفذ عند لمس ال Radio Button تاع الدكتورو ظيفته انه يفعل زر انشاء الحساب بعد ما تعطل لما الدكتور كبس عليه بدون ما يحدد صفته
+        binding . DoctorRBTN   . setOnTouchListener ( ( v , event ) ->
+        {
+            binding.DoctorRBTN.setChecked ( true );
+            binding.singUpBTN.setEnabled ( true );
+            return false;
+        } );
+
+        // هاد مربوط مع ايقونة التسجيل بواسطة قوقل و ظيفته انه يفعل زر انشاء الحساب بعد ما تعطل لما الام او الدكتور كبسو عليه بدون ما يحددو الصفه
+        binding . GoogleIcon   . setOnTouchListener ( ( v , event ) ->
+        {
+            // هون بقله اذا المسخدم مش محدد شو صفته ادخل الاف و عطل انشاء الحساب باستخدام قوقل اما اذا حدد فعادي خليه يستعمله
+            if ( !binding . MomRBTN . isChecked ( ) && !binding . DoctorRBTN . isChecked ( ) )
+                Toast . makeText ( this , "يرجى تحديد صفتك قبل الانتقال الي  الصفحه التاليه" , Toast . LENGTH_LONG ) . show ( ) ;
+            else
+            {
+                    /*
+                binding  .  FacebookIcon       .  setEnabled ( true ) ;
+                binding  .  GoogleIcon         .  setEnabled ( true ) ;
+                */
+            }
+
+            return false;
+        } );
+
+        // هاد بتنفذ عند لمس زر انشاء الحساب و وظفيته انه ينقل المستخدم للشاشه الي بعد شاشة انشاء الحساب
+        binding . singUpBTN    . setOnTouchListener ( ( v , event ) ->
+        {
+             /*
+            هون في حالة المستخدم لما يسجل باستعمال الايميل كان ام او طبيب لو ما حدد صفته يعطل زر انشاء الحساب و ما يخليه قادر يكمل للشاشه الي
+            بعدها وبعرض اله مسج انه لازم يحدد صفته قبل ما يكمل اما اذا كان محدد فعادي بخليه يكمل من دون اي مشاكل
+         */
+            if ( !binding . MomRBTN . isChecked ( ) && !binding . DoctorRBTN . isChecked ( ) )
+            {
+                binding . singUpBTN . setEnabled ( false ) ;
+                Toast . makeText ( this , "يرجى تحديد صفتك قبل الانتقال الي  الصفحه التاليه" , Toast . LENGTH_LONG ) . show ( ) ;
+            }
+            else
+                binding . singUpBTN . setEnabled ( true ) ;
+
+            // هون كونه بس الام مطلوب منها الاسم بس فما رح يكون في الها بيانات تعبيها لهيك حاكي اله اذا المستخدم كان دكتور انقله لشاشة البيانات عشان يعبي البيانات اللازمه
+            if ( binding . DoctorRBTN . isChecked ( ) )
+            {
+                Intent intent = new Intent ( this , Info_Activity . class ) ;
+                startActivity ( intent ) ;
+            }
+
+            return false;
+        } );
+
+        // هاد بتنفذ عند لمس ال Radio Button تاع الام و ظيفته انه يفعل زر انشاء الحساب بعد ما تعطل لما الام كبست عليه بدون من تحدد صفتها
+        binding . MomRBTN      . setOnTouchListener ( ( v , event ) ->
+        {
+            binding.MomRBTN.setChecked ( true );
+            binding.singUpBTN.setEnabled ( true );
+            return false;
+        } );
 
     }
 
-    // هاد مربوط مع ايقونة التسجيل بواسطة فيسبوك
-    public void Sign_Up_By_Facebook ( View view )
-    {
-
-        // هون بقله اذا المسخدم مش محدد شو صفته ادخل الاف و عطل انشاء الحساب باستخدام فيسبوك اما اذا حدد فعادي خليه يستعمله
-        if ( !binding . MomRBTN . isChecked ( ) && !binding . DoctorRBTN . isChecked ( ) )
-        { Toast . makeText ( this , "يرجى تحديد صفتك قبل الانتقال الي  الصفحه التاليه" , Toast . LENGTH_LONG ) . show ( ) ; }
-        else
-        {
-            /*
-            binding  .  FacebookIcon       .  setEnabled ( true ) ;
-            binding  .  GoogleIcon         .  setEnabled ( true ) ;
-            */
-        }
-
-    }
 
 }
