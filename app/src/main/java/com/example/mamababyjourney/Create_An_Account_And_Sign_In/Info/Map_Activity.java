@@ -1,67 +1,50 @@
-package com.example.mamababyjourney.Create_An_Account_And_Sign_In;
+package com.example.mamababyjourney.Create_An_Account_And_Sign_In.Info;
 
-import com.example.mamababyjourney.databinding.ActivityMapBinding;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.gms.maps.model.LatLng;
-import androidx.fragment.app.FragmentActivity;
-import com.google.android.gms.maps.GoogleMap;
-import androidx.core.content.ContextCompat;
-import android.content.res.ColorStateList;
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
-import android.annotation.SuppressLint;
-import com.example.mamababyjourney.R;
-import android.content.IntentFilter;
-import androidx.annotation.NonNull;
-import android.widget.SearchView;
-import android.location.Geocoder;
-import android.location.Address;
-import android.widget.TextView;
-import android.content.Context;
-import android.net.NetworkInfo;
-import android.content.Intent;
-import android.graphics.Color;
 import android.net.Network;
-import java.io.IOException;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+
+import com.example.mamababyjourney.R;
+import com.example.mamababyjourney.databinding.ActivityMapBinding;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.io.IOException;
 import java.util.List;
 
 @SuppressWarnings ( { "unused" , "ConstantConditions" , "SpellCheckingInspection" } )
 
 @SuppressLint ( "MissingPermission" )
 
-public class Map extends FragmentActivity implements OnMapReadyCallback
+public class Map_Activity extends FragmentActivity implements OnMapReadyCallback
 {
-
-
-    /*
-        قبل كل شي و قبل ما تبلشي تقري تعليقات ي منار بدي اقلك كيف تمشي في قراية التعليقات
-
-        اول شي بتكبسي ctrl + A و بتحددي كل الكود بعدها بتضغطي ctrl + shift مع اشارة الناقص الي عند الارقام عشان تسكري الكود كامل
-
-        بعد ما تعملي هيك بتبلشي تقري شو مكتوب قبل كل فنكشن وتعرفي كل واحد شو بساوي و شو بعمل من الي مكتوب فوقه
-
-       بعد ما تخلصي قراية كل شي مكتوب قبل كل الفنشكنات بترجعي لاول الكود و بتفتحي اول فنشكن فيه و بتلبشي تقري في الكومنتات الي جواته لحتى تفهمي اكثر عن الكود وتعملي هيك مع كل الفنشكن لحد ما تخلصيهم
-
-       و ضروري جدا ي منار تلتزمي بالطريقه الي انا حكيت عنها لقرائة الكومنتات لانه غير هيك ما رح تفهمي
-
-       وضروري ي منار تعملي هاد الحكي
-
-      اول شي بتكبسي ctrl + A و بتحددي كل الكود بعدها بتضغطي ctrl + shift مع اشارة الناقص الي عند الارقام عشان تسكري الكود كامل
-
-       بعد ما تعملي هيك بتبلشي تقري شو مكتوب قبل كل فنكشن وتعرفي كل واحد شو بساوي و شو بعمل من الي مكتوب فوقه
-
-        لانه لو ما عملتيها ما رح تقدري تفهمي كيف الكود ماشي حتى لو قريت كل الكومنتات
-
-
-     */
-
 
     // اول شي المتغيرات الي مش حاط الها شرح في كومنت بتلاقي شرحها في الفنكشن الي انا مستعملها فيه و بكون عامل هيك لانه شرحها بكون طويل شوي
 
@@ -73,14 +56,11 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
 
     private LocationManager location_Manager ;
 
-    // هاد المتغير وظيفة انه يكون true في حالة كان النت شغال و false في حالة كان طافي
-    private boolean is_Internet_Connected ;
-
-    // هاد المتغير وظيفة انه يكون true في حالة كان الموقع شغال و false في حالة كان طافي
-    private boolean is_Location_Enabled ;
+    // هدول المتغيرين وظيفتهم انه ياكدو الي انه النت و الموقع شغالين او مطفيين
+    private boolean is_Internet_Connected , is_Location_Enabled;
 
     // هدول عشان اخزن فيهم احداثيات مكان العمل
-    private double longitude , latitude ;
+    private double longitude = 0 , latitude = 0 ;
 
     /*
         طبعا هاد غني عن التعريف و هو الي بربط كود الجافا بالتصميم ما بده شرح على ما اعتقد اذا حابه تعرفي عنه معلومات اكثر انسخي
@@ -101,6 +81,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
     {
 
         super . onCreate ( savedInstanceState ) ;
+
         binding = ActivityMapBinding . inflate ( getLayoutInflater ( ) ) ;
         setContentView ( binding . getRoot ( ) ) ;
 
@@ -134,73 +115,388 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
                 return false ;
             }
 
-        } ) ;
-
-        // هاد الفنكشن بتنفذ لما نضغط على زر الحفظ
-        binding.SaveWorkplaceOnMapBTN.setOnClickListener ( v ->
-        {
-            /*
-                هون احنا بنعرف اوجبكت من الكلاس Intent و بخليه يساوي intent
-                الشاشة الي قبلها و الي هي شاشة البيانات عشان لما نضغك على زر
-                الحفظ يرجعنا لشاشة البيانات
-             */
-            Intent intent = getIntent ( );
-
-            /*
-                هون باستعمال المتغير intent الي مربوط في intent الشاشة الي
-                قبل الشاشة الحالية استعدينا فننكشن ال putExtra و الي وظيفته
-                باختصار هي انه يرجع داتا للشاشة الي قبل
-
-                وباخد متغيرين الاول الي هو ال name و الثاني الي هو ال value
-
-                وال name بمثل اشي اسمه ال key او المفتاح وهاد بنستعمله في
-                الشاشة الي قبل الشاشة الحالية والي هي شاشة المعلومات عشان نحصل
-                ال value الي انبعثت عن طريق هاد الفنكشن
-             */
-            intent.putExtra ( "latitude" , latitude );
-            intent.putExtra ( "longitude" , longitude );
-
-            /*
-                ال setResult هي فنكشن تابعه للكلاس Activity
-                بتاخد متغيرين الاول هو ال resultCode و الثاني هو الداتا او ال
-                ؛ intent الي حطينا فيه البيانات الي بدنا نرجعها لشاشة المعلومات
-
-                هسه ال resultCode هو عبارة عن متغير بشير الى انه العمليه
-                كانت ناجحه ( هسه لتحت بقلك شو العمليه الي بقصدها ) وعشان
-                نحكي اله هاد الشي انه العمليه كانت ناجحه لازم نستدعي فنكشن
-                ال setResult عشان نحكي من خلاله انه العمليه كانت ناجحه و
-                نعطيه قيمة ال resultCode تساوي RESULT_OK وهاي ال
-                ؛RESULT_OK هي عبارة عن قيمه ثابته موجوده في كلاس ال Activity
-                 وتساوي -1 وتشير الى انه العملية كانت ناجحه
-                فلو جيتي حطيتي الماوس على ال RESULT_OK و كبستي
-                 ؛ctrl مع ضغطه على الماوس رح يدخلك على كلاس ال Activity
-                 و يعرض الك تعريف ال RESULT_OK ويفرجيكي قيمتها الي هي -1
-
-
-                هسه المقصود بالعمليه هو عملية شرح شو هي ال RESULT_OK بواسطة ال Activity الحالية و الي هي الخارطه
-
-                 وفي فنكشن ال setResult لما بدنا نرجع قيمه لل Activty الي
-                 قبل لازم نستعمل ال RESULT_OK كقيمه لل resultCode عشان
-                 في ال Activty الي قبل نقدر نحصل القيمه الي جايه من
-                 intent ال Activity الحالية والي هي الخارطه في حالتنا هون
-             */
-            setResult ( RESULT_OK , intent );
-
-            /*
-                هاد الفنكشن finish تابع لكلاس ال Activity و وظيفته انه بعد ما نبكس على زر الحفظ يحرر شاشة
-                الخارطه من الرام عشان ما يصير اشي اسمه memory leaks او resource leaks والي هم باختصار
-
-               بسببو انه الشاشه الي خلصنا منها تضل في الرام تسحب فيها طول استخدام التطبيق و تؤدي بالنهايه
-                انه الجهاز يصير يعلق
-
-                و فنكشن ال finsh كانه بتحكي للنظام انا خلص طلعت من الخارطه ما تخلي اي شي بخصها في الرام
-             */
-            finish ( );
         });
 
     }
 
-    // هاد الفنشكن مجرد ما تطلعي من الخارطه رح يتنفذ وما رح تفهمي الي جواته حتى لو قريتي الكومنتات لازم تشوقي الشرح الي في فنشكن ال Check_Location و الي في فنكشن ال Check_Internet بعدين ترجعي تقري الي جواته عشان تفهمي
+
+
+    // --------------- بداية الجزء الي فيه الفنكشن الي بخصو الازرار في هاي الشاشه ---------------
+
+    // هاد الفنكشن بتنفذ لما نضغط على زر الحفظ
+    public void Save_Workplace_On_Map_BTN ( View view )
+    {
+        // هون حاكي اله اذا الدكتور ما حدد مكان العمل لا تخليه يرجع لشاشة تعبئة بيانات مكان العمل الا بعد ما يحدد مكان العمل
+        if ( latitude != 0 && longitude != 0 )
+        {
+            // اول سطر و اخر سطرين داخل هاي الاف هم نفسهم الي موجودين في فنكشن ال Save_Workplace_Data_BTN في كلاس ال Workplace_Data_Activity
+
+            Intent intent = getIntent ( ) ;
+
+            /*
+                هدول السطرين
+
+                intent . putExtra ( "latitude" , latitude ) ;
+                intent . putExtra ( "longitude" , longitude ) ;
+
+                هم نفسهم الي موجودين في فنكشن ال Go_To_Map_BTN الي في كلاس ال Workplace_Data_Activity
+
+                لكن الي بفرق هون انه احنا في كلاس ال Workplace_Data_Activity في فنكشن ال Go_To_Map_BTN
+
+                كنا بنرسل داتا للخارطه اما في هاد الفنكشن احنا بنرجع داتا لكلاس Workplace_Data_Activity
+             */
+            intent . putExtra ( "latitude" , latitude ) ;
+            intent . putExtra ( "longitude" , longitude ) ;
+
+            setResult ( RESULT_OK , intent ) ;
+            finish ( ) ;
+        }
+        else
+        {
+
+            String workPlace_Type = getIntent ( ) . getExtras ( ) . getString ( "workPlace_Type" ) ;
+
+            Snack_Bar
+            (
+                "يرجى تحديد مكان " + workPlace_Type +
+                " قبل الضغط على زر الحفظ\n\nلتحديد مكان " + workPlace_Type + " يرجى الضغط مطولا على المكان المراد تحديده لتحديده"
+            );
+        }
+    }
+
+    // --------------- نهاية الجزء الي فيه الفنكشن الي بخصو الازرار في هاي الشاشه ---------------
+
+
+
+
+    /**/
+
+
+
+
+    // --------------- بداية الجزء الي فيه الفنكشن الي بخصو هاد الكلاس ---------------
+
+
+    // هاد الفنشكن بتنفذ لما نضغط على زر الرجوع الي موجود في الشاشه من تحت الي هو تاع النظام
+    @Override
+    public void onBackPressed ( )
+    {
+
+        String workPlace_Type = getIntent ( ) . getExtras ( ) . getString ( "workPlace_Type" ) ;
+
+        Snack_Bar
+        (
+            getIntent ( ) . getExtras ( ) . getString ( "Action" ) . equals ( "Add" ) ?
+
+            "لايمكنك الرجوع للشاشة السابقة\n\n يجب تحديد مكان " + workPlace_Type + " على الخريطة ثم الضغط على زر الحفظ"
+            :
+            "لايمكنك الرجوع الى الشاشة السابقه\n\n اذا كنت لم تقم بتعديل مكان " + workPlace_Type +
+            " على الخريطة يمكنك الضغط على زر الحفظ للرجوع الى الشاشة السابقة"
+        );
+    }
+
+
+    // هاد الفنكشن هو الي بس تشتغل الخارطه بجهزها للعرض و مستعمله في فنكشن onCreate الي بستدعى او ما تفتحي الشاشه فرح يستدعى لما تفتحي الخارطه
+    private void Map_Initialization ( )
+    {
+
+        // وملاحظه صغيره هون في الكومت الي تحت
+        /*
+            ال Fragment تمثل و تعتبر كجزء من ال Activity
+            والفرق بينهم انه ال Activity هي عبارة عن شاشة كامله بينما ال Fragment هي عبارة عن جزء من الشاشة الكاملة
+
+            يعني في المناقشه ان انسئلتي شو الفرق بينهم بتحكي الهم هاد الحكي
+
+            والفرق بينهم انه ال Activity هي عبارة عن شاشة كامله بينما ال Fragment هي عبارة عن جزء من الشاشة الكاملة
+
+            وذا حكو الك شو بتعرفي غير هيك بتحكي الهم بس هاد الي بعرفه لاني ما تعمقت في الفرق بينهم اكثر من هيك
+
+            يعني لو جيتي على كبستي ctrl مع كبسة على الماوس على كلمة map هون R . id . map رح ينقلك على ال Fragment الي في التصميم و الي فيها الخارطه
+
+            و حرف ال R هو عبارة عن كلاس في الاندرويد SDK بربط كود الجافا بالتصميم
+
+            في حالة انسئلتي عنه في المناقشه
+
+            والاندرويد SDK اختصار ل android softwaer devlopment kit
+
+            اذا حابه تعرفي معلومات اكثر عنه بتروحي على chat gpt
+
+            بتحكي اله بالحرف الواحد
+
+            بالتفصيل الممل اشرح لي ما هو ال android softwaer devlopment kit وما هي فائدته و وظفيته و ماذا يفعل
+
+            يعني خدي السطر الي فوق و حطيه في chat gpt وهاد عشان لو انسئلتي عنه تكوني عارفه شو هو
+         */
+
+        /*
+            هسه هون بنعرف اوبجكت من الكلاس SupportMapFragment و بنسميه mapFragment و بنربطه ب ال Fragment الي بتمثل او معروض فيها الخريطة
+
+            وال SupportMapFragment هي عبارة عن عنصر واجهة مستخدم بسمح للمبرمج بعرض خرائط قوقل في التطبيق
+
+
+            واجهة مستخدم  هي الشاشة الي بتعرض للمستخدم و بستعملها او بمعنى اخر الشاشات لو انسئلتي
+            في المناشقه شو هي واجهة المستخدم او شو هي ال ui الي هي اختصار ل  user interface
+            فلو انسئلتي في المناقشه شو هي واجهة المستخدم او شو هي ال  user interface او شو هي ال UI
+            بتحكي الهم هاد الحكي
+
+            هي الشاشة الي بتعرض للمستخدم و بستعملها او بمعنى اخر الشاشات
+         */
+        SupportMapFragment mapFragment = ( SupportMapFragment ) getSupportFragmentManager ( ) . findFragmentById ( R . id . map ) ;
+
+        // هون حطينا الاف عشان اذا كانت قيمة ال mapFragment  تساوي null ( لاشيء ) رح يصير خطا و يوقف التطبيق فلازم نتاكد انه مش null
+        if ( mapFragment != null )
+
+            /*
+                    هاد السطر وظيفته يحمل النا الخارطه من API الخرائط ولما حطينا قبله جملة اف
+                    حطينها عشان نتاكد انها ال Fragment في التصميم موجوده ومجهزه لحتى تنعرض فيها الخارطه
+                    لانه لو ما كانت موجوده او مش مجهزه للعرض الخارطه فيه رح يصير عنها خطا
+                    و ال getMapAsync هو فنكشن من الكلاس SupportMapFragment وهو المسؤول عن تحميل الخارطه من API الخرائط
+                 */
+            mapFragment . getMapAsync ( this ) ;
+    }
+
+    // هاد الفنكشن بتم استدعاؤه تلقائيا بعد ما يتنفذ الي جوا فنكشن ال Map_Initialization وبياخد اوجبكت من نوع GoogleMap
+    @Override
+    public void onMapReady ( @NonNull GoogleMap googleMap )
+    {
+
+        // هون بنقله والله الاوبجكت mMap الي عرفناه قبل ال onCreate من الكلاس GoogleMap خلي قيمته تساوي قيمة الاوبجكت الي اسمه googleMap
+        mMap = googleMap ;
+
+        /*
+            هون انا من خلال الاوبجكت الي اسمه mMap بحدد نوع او شكل الخريطه و
+            النوع الي انا مستعمله و هو هاد MAP_TYPE_HYBRID هو نوع هجين يعني
+            هايبرد وهو هايبرد لانه مزيج من نوع من الخرائط
+
+            الاول هون خرائط الاقمار الصناعيه الي بتشوفيه في الخارطه
+            والنوع الثاني هو النوع العادي الي بس بعطيكي خريطه مع اسماء الشوارع
+
+            ومستعمل هاد النوع لانو بدي لما استعمل خرائط الاقمار الصناعية يظهر الي اسماء الشوراع
+         */
+        mMap . setMapType ( GoogleMap . MAP_TYPE_HYBRID ) ;
+
+        // هون زر بظهر من زر تحديد الموقع الحالي لانه بكون مخفي من خلال تحويل قيمته الافتراضيه الي هي false الى true
+        mMap . setMyLocationEnabled ( true ) ;
+
+        // هون نفس الحكي لكن مع ازرار الكتبير و التصغير
+        mMap . getUiSettings ( ) . setZoomControlsEnabled ( true ) ;
+
+        longitude = getIntent ( ) . getExtras ( ) . getDouble ( "longitude" ) ;
+        latitude  = getIntent ( ) . getExtras ( ) . getDouble ( "latitude"  ) ;
+
+        if (  latitude != 0  &&  longitude != 0  )
+        {
+            LatLng loc = new LatLng ( latitude , longitude ) ;
+            mMap . addMarker ( new MarkerOptions ( ) . position ( loc ) ) ;
+            mMap . moveCamera ( CameraUpdateFactory . newLatLngZoom ( loc , 17 ) ) ;
+        }
+        else
+        {
+            FusedLocationProviderClient fusedLocationClient = LocationServices . getFusedLocationProviderClient ( this ) ;
+
+            Task < Location > task = fusedLocationClient . getLastLocation ( ) ;
+            task . addOnSuccessListener ( location ->
+            {
+                if ( location != null )
+                {
+
+                    LatLng Locat = new LatLng ( location . getLatitude ( ) , location . getLongitude ( ) ) ;
+                    mMap . moveCamera ( CameraUpdateFactory . newLatLngZoom ( Locat , 17 ) ) ;
+                }
+            });
+        }
+
+
+        /*
+            هاد الفنكشن بستدعى لما نضعط على اي مكان في الخارطه ومعطي امر جواته بمسح اي دبوس تم وضعه على الخارطه قبل
+
+           في حالة المستخدم بطل بده الدبوس الي حطه باستعمال فنكشن setOnMapLongClickListener و صار بده يتحرك لمكان ثاني
+         */
+        mMap . setOnMapClickListener ( latLng ->
+        {
+            mMap . clear ( ) ;
+            longitude = 0 ;
+            latitude  = 0 ;
+        }) ;
+
+        // هاد الفنكشن بستدعى لما اضل ضاغط ضغطه طويله على الخارطه
+        mMap . setOnMapLongClickListener ( latLng ->
+        {
+            // هون معطي امر بمسح اي دوبس انحط على الخارطه تحت بتعرفي ليه عامل هيك
+            mMap . clear ( ) ;
+
+            /*
+                هون عرفنا اوبجكت من الكلاس LatLng ومن خلال المتغير الي اسمه latlng الي بتمرر للفنكشن لما يستدعى بستدعي هدول الفنكشن
+
+                الاول و هو getLatitude و وظيفته انه يحدد النا موقع المكان الي كتبه المستخدم في خانة البحث على خط العرض
+
+                و الثاني الي هو هاد getLongitude و وظيفته انه يحدد النا موقع المكان الي كتبه المستخدم في خانة البحث على خط الطول
+
+                بعد هيك بخزن هاي الاحداثيات في الاوبجكت الي اسمه l_atlng عشان نستعملها في الانتقال الى المكان الي المستخدم كتبه في البحث
+
+                و ال LatLng هي عبارة عن كلاس في API خرائط قوقل بتخلينا نقدر نحط دبوس على احداثيات مكان محدد في الخارطه
+            */
+            LatLng l_atlng = new LatLng ( latLng . latitude , latLng . longitude ) ;
+
+
+            // هون و ببساطه ومن دون اطالة شرح و شرح كل شي في السطر ببساطه الي بصير انه بنحط دبوس على احداثيات المكان الي تخزنت في ال l_atlng لما المستخدم يضغط ضغطه طويله على مكان معين في الخارطه
+            mMap . addMarker ( new MarkerOptions ( ) . position ( l_atlng ) ) ;
+
+            //هون بخزن احداثيات مكان العمل في المتغيرات الي عرفتهم فوق قبل ال onCreate
+            longitude = latLng . longitude ;
+            latitude  = latLng . latitude  ;
+
+            /*
+                طيب هسه نجي لهاي ( ) mMap . clear انا حاكي بدي قبل ما ينحط الدبوس على الخارطه امسح اي دبوس موجود قبله بس ليه حاكي هيك
+
+                هسه هاد الفنكشن setOnMapLongClickListener انا مستعمله عشان شغله وحده بس
+                وهي انه لما الدكتور بده يحدد مكان عمله على الخارطه بده يضل ضاغط ضغطه طويله ليحدد المكان وبعدها بتخزن
+                المكان مع معلومات مكان العمل
+
+                هسه بزبط انه المكان الي حدده يتخزن مع معلومات مكان العمل من دون هاي ( ) mMap . clear ما في مشكله
+
+                لكن
+
+                عشان الدكتور يعرف انه المكان الي بده اياه لازم ينحط دبوس على المكان الي ضل ضغط عليه ضغطه طويله
+
+                طيب في حالة الدكتور غلط في تحديد المكان و او حب يغير المكان و هاي ( ) mMap . clear  ما كانت موجوده
+
+                الي بصير انه رح ينحط دبوس على اول مكان حدده ولما يجي يحدد المكان الجديد الي بده اياه رح يضل الدبوس موجود
+
+                ف برايك هل من المنطقي انه يضل ظاهر للدكتور على الخارطه انه محدد موقعين لمكان عمل واحد
+
+                اكيد لا لهيك انا قايل اله بس الدكتور يضل ضاغط ضغطه طويله اول شي شوف اذا في دبوس على الخارطه و امسحه قبل ما ينحط اي دبوس ثاني بتمنى تكون وصلت
+             */
+
+        });
+
+    }
+
+    // هاد الفنكشن هو المسؤول عن البحث عن الموقع باستخدام الاسم لما نكتبه في البحث
+    private void Find_a_place ( )
+    {
+        /*
+            هون بجيب النص من مربع البحث الي في الخارطه و وصلنا اله من خلال ال binding ولانه مش edit text عادي بل هو
+            عباره عن اشي اسمه SearchView مماثل ل edit text لكنه مخصص لعمليات البحث ما في فنكشن ال get text ألي في ال edit text العادي
+            في فنكنشن مشابهه و هي getQuery عشان نجيب النص الي كتبه المستخدم من مربع البحث
+         */
+        String location = binding . SearchEditText . getQuery ( ) . toString ( ) ;
+
+        // هون عرفنا لست من نوع Address عشان نخزن فيها معلومات العنوان الي رح نوصل اله من خلال اسمه الي بحطه المستخدم في خانة البحث
+        List < Address > listAddress ;
+
+        // هاد الشرط الي جوا الاف بمنع انه ننفذ الي جواتها في حالة المستخدم ما كتب شي في البحث و كبس على كبسة البحث
+        if ( !location . isEmpty ( ) )
+        {
+            /*
+                في السطر هاد Geocoder geocoder = new Geocoder ( this ) الي تحت بنعرف اوجبكت من الكلاس الي اسمه Geocoder
+                 هاد الكلاس وظيفته او شغله او الي بساويه
+                 هو انه من خلال الاسم الي بحطه المستخدم في البحث يجيب النا احداثيات المكان الي
+                 المستخدم كتب اسمه في البحث
+             */
+            Geocoder geocoder = new Geocoder ( this ) ;
+
+            // هاد السطر الي تحت حطيته لحتى ازود المدة الي باخدها ال geocoder لحتى يبحث فيها عن احداثيات المكان من خلال اسمه عشان لو كان النت ضعيف ما يطلع نفس الخطا الي كان يطلع الك لما تبحثي عن مكان
+            System . setProperty ( "android . location . Geocoder . SEARCH_TIME_OUT" , "30000" ) ;
+
+            try
+            {
+                /*
+                    هون باستعمال الاوبجكت geocoder الي عرفناه فوق بنستدعي فنكشن ال getFromLocationName الي تابع
+                    للكلاس Geocoder و الي
+                    بجيب النا احداثيات المكان الي انكتب اسمه في البحث و بخزنها في اللست الي اسمها listAddress طبعا في
+                    حالة كان موجود المكان
+                 */
+                listAddress = geocoder . getFromLocationName ( location , 1 ) ;
+
+                // هون اذا المكان الي انكتب اسمه في البحث موجود فالخارطه رح تنقلك اله مباشره من خلال الكود الي جوا الاف
+                if ( !listAddress . isEmpty ( ) )
+                {
+                    /*
+                         هون بنعرف متغير من نوع ادرس وبنخزن فيه احداثيات المكان الي جبناه من خلال هاد الفنكشن
+                          ؛getFromLocationName في السطر الي قبل الاف و الي هو هاد السطر
+                         listAddress = geocoder . getFromLocationName ( location , 1 ) ;
+                     */
+                    Address address = listAddress . get ( 0 ) ;
+
+                    /*
+                        هون عشان لما تصير عملية بحث جديده ما يضل في دبوس مثبت على المكان الي انبحث عنه في
+                        الاول بنعمل ازاله لاي دبوس اتثبت من عمليات بحث سابقه والغرض او الفكره من استعمالها هون هو
+                        نفس الغرض او الفكره من استعمالها في فنكشن ال setOnMapLongClickListener الي
+                        موجود في فنكشن ال onMapReady
+                     */
+                    mMap . clear ( ) ;
+
+                    /*
+                        هون عرفنا اوبجكت من الكلاس LatLng ومن خلال المتغير الي اسمه address باستعمال هدول الفنكشن
+
+                        الاول و هو getLatitude و وظيفته انه يحدد النا موقع المكان الي كتبه المستخدم في خانة البحث على خط العرض
+
+                        و الثاني الي هو هاد getLongitude و وظيفته انه يحدد النا موقع المكان الي كتبه المستخدم في خانة البحث على خط الطول
+
+                        بعد هيك بخزن هاي الاحداثيات في الاوبجكت الي اسمه latlng عشان نستعملها في الانتقال الى المكان الي المستخدم كتبه في البحث
+                     */
+                    LatLng latlng = new LatLng ( address . getLatitude ( ) , address . getLongitude ( ) ) ;
+
+                    /*
+                       هون من خلال الاوبجكت mMap الي عرفناه قبل ال onCreate من الكلاس الي اسمها GoogleMap بنستدعي الفنكشن
+                       الي اسمه animateCamera و الي وظيفته ينقل المستخدم للمكان
+                       الي كتب اسمه في البحث
+
+                      و ال CameraUpdateFactory هي عبارة عن الكلاس الي بيحرك الخارطه للمكان المستخدم
+                       كتب اسمه في البحث ومن خلاله بنستدعي الفنكشن newLatLngZoom والي وظيفه
+
+                       هي انه من ياخد احداثيات المكان من المتغير latlng مع نسبة زوم 18 و يعطيها للفنكشن animateCamera
+                       عشان ينقل المستخدم للمكان الي كتبه في البحث
+                     */
+                    mMap . animateCamera ( CameraUpdateFactory . newLatLngZoom ( latlng , 18 ) ) ;
+
+                    // هون و ببساطه ومن دون اطالة شرح و شرح كل شي في السطر ببساطه الي بصير انه بنحط دبوس على احداثيات المكان الي المستخدم كتب اسمه في البحث
+                    mMap . addMarker ( new MarkerOptions ( ) . position ( latlng ) ) ;
+                }
+
+                // في حالة ما كان المكان الي انكتب اسمه في البحث موجود رح تظهر هاي المسج
+                else
+                    Snack_Bar ( "لا يوجد مكان بهذا الاسم\n\n جرب كتابة اسم مكان اخر" ) ;
+            }
+
+            /*
+                 هاي وظيفتها انه في حالة صار اي خطا معروف يظهر في مسج واذا بدنا نحدد مسج معين في حالة صار خطا متوقع حدوثه
+                 لازم نكتب اسم الخطا الي ممكن يصير مع هاي الجمله IOException و بعدها جوا نكتب المسج الي بدنا اياه و الخطا
+                 الي كان يصير معك هو مثال على الي بحكي فيه يعني بدل ما يطلع الك الي كان يظهر بنقدر نحكي للمستخدم انه
+                 في ضعف في النت بدل الي كان يظهر الك
+             */
+            catch ( IOException e )
+            {
+                e . printStackTrace ( ) ;
+                Snack_Bar ( "Search failed: " + e . getMessage ( ) ) ;
+
+            }
+        }
+    }
+
+    private void Snack_Bar ( String Message )
+    {
+        Snackbar snackbar = Snackbar . make ( binding . constraint , Message , 7000 ) ;
+
+        snackbar . getView ( ) . setBackgroundTintList ( ColorStateList . valueOf ( ContextCompat . getColor ( this , R . color . Snack_bar_BG_Color ) ) ) ;
+
+        View snackbarView = snackbar . getView ( ) ;
+        TextView textView = snackbarView . findViewById ( com . google . android . material . R . id . snackbar_text ) ;
+
+        textView . setSingleLine ( false ) ;
+
+        textView . setTextColor ( ContextCompat . getColor ( this , R . color . white ) ) ;
+
+        textView . setTextSize ( 15 ) ;
+
+        textView . setTextAlignment ( View . TEXT_ALIGNMENT_CENTER ) ;
+
+        snackbar . show ( ) ;
+
+    }
+
+    // هاد الفنشكن مجرد ما تطلعي من الخارطه رح يتنفذ وما رح تفهمي الي جواته حتى لو قريتي الكومنتات لازم تشوفي الشرح الي في فنشكن ال Check_Location و الي في فنكشن ال Check_Internet بعدين ترجعي تقري الي جواته عشان تفهمي
     @Override
     protected void onPause ( )
     {
@@ -265,252 +561,17 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
         unregisterReceiver ( location_Receiver ) ;
     }
 
-    // هاد الفنكشن هو الي بس تشتغل الخارطه بجهزها للعرض و مستعمله في فنكشن onCreate الي بستدعى او ما تفتحي الشاشه فرح يستدعى لما تفتحي الخارطه
-    private void Map_Initialization ( )
-    {
 
-        // وملاحظه صغيره هون في الكومت الي تحت
-        /*
-            ال Fragment تمثل و تعتبر كجزء من ال Activity
-            والفرق بينهم انه ال Activity هي عبارة عن شاشة كامله بينما ال Fragment هي عبارة عن جزء من الشاشة الكاملة
+    // --------------- نهاية الجزء الي فيه الفنكشن الي بخصو هاد الكلاس ---------------
 
-            يعني في المناقشه ان انسئلتي شو الفرق بينهم بتحكي الهم هاد الحكي
 
-            والفرق بينهم انه ال Activity هي عبارة عن شاشة كامله بينما ال Fragment هي عبارة عن جزء من الشاشة الكاملة
 
-            وذا حكو الك شو بتعرفي غير هيك بتحكي الهم بس هاد الي بعرفه لاني ما تعمقت في الفرق بينهم اكثر من هيك
+    /* */
 
-            يعني لو جيتي على كبستي ctrl مع كبسة على الماوس على كلمة map هون R . id . map رح ينقلك على ال Fragment الي في التصميم و الي فيها الخارطه
 
-            و حرف ال R هو عبارة عن كلاس في الاندرويد SDK بربط كود الجافا بالتصميم
 
-            في حالة انسئلتي عنه في المناقشه
+    // --------------- بداية الجزء الي فيه الفنكشن الي بخصو التحقق من انه النت و خدمة الموقع شغالين ---------------
 
-            والاندرويد SDK اختصار ل android softwaer devlopment kit
-
-            اذا حابه تعرفي معلومات اكثر عنه بتروحي على chat gpt
-
-            بتحكي اله بالحرف الواحد
-
-            بالتفصيل الممل اشرح لي ما هو ال android softwaer devlopment kit وما هي فائدته و وظفيته و ماذا يفعل
-
-            يعني خدي السطر الي فوق و حطيه في chat gpt وهاد عشان لو انسئلتي عنه تكوني عارفه شو هو
-         */
-
-        /*
-            هسه هون بنعرف اوبجكت من الكلاس SupportMapFragment و بنسميه mapFragment و بنربطه ب ال Fragment الي بتمثل او معروض فيها الخريطة
-
-            وال SupportMapFragment هي عبارة عن عنصر واجهة مستخدم بسمح للمبرمج بعرض خرائط قوقل في التطبيق
-
-
-            واجهة مستخدم  هي الشاشة الي بتعرض للمستخدم و بستعملها او بمعنى اخر الشاشات لو انسئلتي
-            في المناشقه شو هي واجهة المستخدم او شو هي ال ui الي هي اختصار ل  user interface
-            فلو انسئلتي في المناقشه شو هي واجهة المستخدم او شو هي ال  user interface او شو هي ال UI
-            بتحكي الهم هاد الحكي
-
-            هي الشاشة الي بتعرض للمستخدم و بستعملها او بمعنى اخر الشاشات
-         */
-        SupportMapFragment mapFragment = ( SupportMapFragment ) getSupportFragmentManager ( ) . findFragmentById ( R . id . map ) ;
-
-        // هون حطينا الاف عشان اذا كانت قيمة ال mapFragment  تساوي null ( لاشيء ) رح يصير خطا و يوقف التطبيق فلازم نتاكد انه مش null
-        if (mapFragment!=null)
-
-            /*
-                هاد السطر وظيفته يحمل النا الخارطه من API الخرائط ولما حطينا قبله جملة اف
-                حطينها عشان نتاكد انها ال Fragment في التصميم موجوده ومجهزه لحتى تنعرض فيها الخارطه
-                لانه لو ما كانت موجوده او مش مجهزه للعرض الخارطه فيه رح يصير عنها خطا
-                و ال getMapAsync هو فنكشن من الكلاس SupportMapFragment وهو المسؤول عن تحميل الخارطه من API الخرائط
-             */
-            mapFragment . getMapAsync ( this ) ;
-    }
-
-    // هاد الفنكشن بتم استدعاؤه تلقائيا بعد ما يتنفذ الي جوا فنكشن ال Map_Initialization وبياخد اوجبكت من نوع GoogleMap
-    @Override
-    public void onMapReady ( @NonNull GoogleMap googleMap )
-    {
-        // هون بنقله والله الاوبجكت mMap الي عرفناه قبل ال onCreate من الكلاس GoogleMap خلي قيمته تساوي قيمة الاوبجكت الي اسمه googleMap
-        mMap = googleMap ;
-
-        /*
-            هون انا من خلال الاوبجكت الي اسمه mMap بحدد نوع او شكل الخريطه و
-            النوع الي انا مستعمله و هو هاد MAP_TYPE_HYBRID هو نوع هجين يعني
-            هايبرد وهو هايبرد لانه مزيج من نوع من الخرائط
-
-            الاول هون خرائط الاقمار الصناعيه الي بتشوفيه في الخارطه
-            والنوع الثاني هو النوع العادي الي بس بعطيكي خريطه مع اسماء الشوارع
-
-            ومستعمل هاد النوع لانو بدي لما استعمل خرائط الاقمار الصناعية يظهر الي اسماء الشوراع
-         */
-        mMap . setMapType ( GoogleMap . MAP_TYPE_HYBRID ) ;
-
-        // هون زر بظهر من زر تحديد الموقع الحالي لانه بكون مخفي من خلال تحويل قيمته الافتراضيه الي هي false الى true
-        mMap . setMyLocationEnabled ( true ) ;
-
-        // هون نفس الحكي لكن مع ازرار الكتبير و التصغير
-        mMap . getUiSettings ( ) . setZoomControlsEnabled ( true ) ;
-
-        /*
-            هاد الفنكشن بستدعى لما نضعط على اي مكان في الخارطه ومعطي امر جواته بمسح اي دبوس تم وضعه على الخارطه قبل
-
-           في حالة المستخدم بطل بده الدبوس الي حطه باستعمال فنكشن setOnMapLongClickListener و صار بده يتحرك لمكان ثاني
-         */
-        mMap . setOnMapClickListener ( latLng -> mMap . clear ( ) ) ;
-
-        // هاد الفنكشن بستدعى لما اضل ضاغط ضغطه طويله على الخارطه
-        mMap . setOnMapLongClickListener ( latLng ->
-        {
-            // هون معطي امر بمسح اي دوبس انحط على الخارطه تحت بتعرفي ليه عامل هيك
-            mMap . clear ( ) ;
-
-            /*
-                هون عرفنا اوبجكت من الكلاس LatLng ومن خلال المتغير الي اسمه latlng الي بتمرر للفنكشن لما يستدعى بستدعي هدول الفنكشن
-
-                الاول و هو getLatitude و وظيفته انه يحدد النا موقع المكان الي كتبه المستخدم في خانة البحث على خط العرض
-
-                و الثاني الي هو هاد getLongitude و وظيفته انه يحدد النا موقع المكان الي كتبه المستخدم في خانة البحث على خط الطول
-
-                بعد هيك بخزن هاي الاحداثيات في الاوبجكت الي اسمه l_atlng عشان نستعملها في الانتقال الى المكان الي المستخدم كتبه في البحث
-
-                و ال LatLng هي عبارة عن كلاس في API خرائط قوقل بتخلينا نقدر نحط دبوس على احداثيات مكان محدد في الخارطه
-            */
-            LatLng l_atlng = new LatLng ( latLng . latitude , latLng . longitude ) ;
-
-
-            // هون و ببساطه ومن دون اطالة شرح و شرح كل شي في السطر ببساطه الي بصير انه بنحط دبوس على احداثيات المكان الي تخزنت في ال l_atlng لما المستخدم يضغط ضغطه طويله على مكان معين في الخارطه
-            mMap . addMarker ( new MarkerOptions ( ) . position ( l_atlng ) ) ;
-
-            //هون بخزن احداثيات مكان العمل في المتغيرات الي عرفتهم فوق قبل ال onCreate
-            latitude = latLng . latitude ;
-            longitude = latLng . longitude ;
-
-            /*
-                طيب هسه نجي لهاي mMap . clear ( );  انا حاكي بدي قبل ما ينحط الدبوس على الخارطه امسح اي دبوس موجود قبله بس ليه حاكي هيك
-
-                هسه هاد الفنكشن setOnMapLongClickListener انا مستعمله عشان شغله وحده بس
-                وهي انه لما الدكتور بده يحدد مكان عمله على الخارطه بده يضل ضاغط ضغطه طويله ليحدد المكان وبعدها بتخزن
-                المكان مع معلومات مكان العمل
-
-                هسه بزبط انه المكان الي حدده يتخزن مع معلومات مكان العمل من دون هاي mMap . clear ( );  ما في مشكله
-
-                لكن
-
-                عشان الدكتور يعرف انه المكان الي بده اياه لازم ينحط دبوس على المكان الي ضل ضغط عليه ضغطه طويله
-
-                طيب في حالة الدكتور غلط في تحديد المكان و او حب يغير المكان و هاي mMap . clear ( );  ما كانت موجوده
-
-                الي بصير انه رح ينحط دبوس على اول مكان حدده ولما يجي يحدد المكان الجديد الي بده اياه رح يضل الدبوس موجود
-
-                ف برايك هل من المنطقي انه يضل ظاهر للدكتور على الخارطه انه محدد موقعين لمكان عمل واحد
-
-                اكيد لا لهيك انا قايل اله بس الدكتور يضل ضاغط ضغطه طويله اول شي شوف اذا في دبوس على الخارطه و امسحه قبل ما ينحط اي دبوس ثاني بتمنى تكون وصلت
-             */
-
-        } ) ;
-
-    }
-
-    // هاد الفنكشن هو المسؤول عن البحث عن الموقع باستخدام الاسم لما نكتبه في البحث
-    private void Find_a_place ( )
-    {
-        /*
-            هون بجيب النص من مربع البحث الي في الخارطه و وصلنا اله من خلال ال binding ولانه مش edit text عادي بل هو
-            عباره عن اشي اسمه SearchView مماثل ل edit text لكنه مخصص لعمليات البحث ما في فنكشن ال get text ألي في ال edit text العادي
-            في فنكنشن مشابهه و هي getQuery عشان نجيب النص الي كتبه المستخدم من مربع البحث
-         */
-        String location = binding . SearchEditText . getQuery ( ) . toString ( ) ;
-
-        // هون عرفنا لست من نوع Address عشان نخزن فيها معلومات العنوان الي رح نوصل اله من خلال اسمه الي بحطه المستخدم في خانة البحث
-        List < Address > listAddress ;
-
-        // هاد الشرط الي جوا الاف بمنع انه ننفذ الي جواتها في حالة المستخدم ما كتب شي في البحث و كبس على كبسة البحث
-        if ( !location . isEmpty ( ) )
-        {
-            /*
-                في السطر هاد Geocoder geocoder = new Geocoder ( Map . this );  الي تحت بنعرف اوجبكت من الكلاس الي اسمه Geocoder
-                 هاد الكلاس وظيفته او شغله او الي بساويه
-                 هو انه من خلال الاسم الي بحطه المستخدم في البحث يجيب النا احداثيات المكان الي
-                 المستخدم كتب اسمه في البحث
-             */
-            Geocoder geocoder = new Geocoder ( Map . this ) ;
-
-            // هاد السطر الي تحت حطيته لحتى ازود المدة الي باخدها ال geocoder لحتى يبحث فيها عن احداثيات المكان من خلال اسمه عشان لو كان النت ضعيف ما يطلع نفس الخطا الي كان يطلع الك لما تبحثي عن مكان
-            System . setProperty ( "android . location . Geocoder . SEARCH_TIME_OUT" , "30000" ) ;
-
-            try
-            {
-                /*
-                    هون باستعمال الاوبجكت geocoder الي عرفناه فوق بنستدعي فنكشن ال getFromLocationName الي تابع
-                    للكلاس Geocoder و الي
-                    بجيب النا احداثيات المكان الي انكتب اسمه في البحث و بخزنها في اللست الي اسمها listAddress طبعا في
-                    حالة كان موجود المكان
-                 */
-                listAddress = geocoder . getFromLocationName ( location , 1 ) ;
-
-                // هون اذا المكان الي انكتب اسمه في البحث موجود فالخارطه رح تنقلك اله مباشره من خلال الكود الي جوا الاف
-                if ( !listAddress . isEmpty ( ) )
-                {
-                    /*
-                         هون بنعرف متغير من نوع ادرس وبنخزن فيه احداثيات المكان الي جبناه من خلال هاد الفنكشن
-                          ؛getFromLocationName في السطر الي قبل الاف و الي هو هاد السطر
-                         listAddress = geocoder . getFromLocationName ( location , 1 ) ;
-                     */
-                    Address address = listAddress . get ( 0 ) ;
-
-                    /*
-                        هون عشان لما تصير عملية بحث جديده ما يضل في دبوس مثبت على المكان الي انبحث عنه في
-                        الاول بنعمل ازاله لاي دبوس اتثبت من عمليات بحث سابقه والغرض او الفكره من استعمالها هون هو
-                        نفس الغرض او الفكره من استعمالها في فنكشن ال setOnMapLongClickListener الي
-                        موجود في فنكشن ال onMapReady
-                     */
-                    mMap . clear () ;
-
-                    /*
-                        هون عرفنا اوبجكت من الكلاس LatLng ومن خلال المتغير الي اسمه address باستعمال هدول الفنكشن
-
-                        الاول و هو getLatitude و وظيفته انه يحدد النا موقع المكان الي كتبه المستخدم في خانة البحث على خط العرض
-
-                        و الثاني الي هو هاد getLongitude و وظيفته انه يحدد النا موقع المكان الي كتبه المستخدم في خانة البحث على خط الطول
-
-                        بعد هيك بخزن هاي الاحداثيات في الاوبجكت الي اسمه latlng عشان نستعملها في الانتقال الى المكان الي المستخدم كتبه في البحث
-                     */
-                    LatLng latlng = new LatLng ( address . getLatitude ( ) , address . getLongitude ( ) ) ;
-
-                    /*
-                       هون من خلال الاوبجكت mMap الي عرفناه قبل ال onCreate من الكلاس الي اسمها GoogleMap بنستدعي الفنكشن
-                       الي اسمه animateCamera و الي وظيفته ينقل المستخدم للمكان
-                       الي كتب اسمه في البحث
-
-                      و ال CameraUpdateFactory هي عبارة عن الكلاس الي بيحرك الخارطه للمكان المستخدم
-                       كتب اسمه في البحث ومن خلاله بنستدعي الفنكشن newLatLngZoom والي وظيفه
-
-                       هي انه من ياخد احداثيات المكان من المتغير latlng مع نسبة زوم 18 و يعطيها للفنكشن animateCamera
-                       عشان ينقل المستخدم للمكان الي كتبه في البحث
-                     */
-                    mMap . animateCamera ( CameraUpdateFactory . newLatLngZoom ( latlng , 18 ) ) ;
-
-                    // هون و ببساطه ومن دون اطالة شرح و شرح كل شي في السطر ببساطه الي بصير انه بنحط دبوس على احداثيات المكان الي المستخدم كتب اسمه في البحث
-                    mMap . addMarker ( new MarkerOptions ( ) . position ( latlng ) ) ;
-                }
-
-                // في حالة ما كان المكان الي انكتب اسمه في البحث موجود رح تظهر هاي المسج
-                else
-                    Snack_Bar ( "لا يوجد مكان بهذا الاسم\n\n جرب كتابة اسم مكان اخر" ) ;
-            }
-
-            /*
-                 هاي وظيفتها انه في حالة صار اي خطا معروف يظهر في مسج واذا بدنا نحدد مسج معين في حالة صار خطا متوقع حدوثه
-                 لازم نكتب اسم الخطا الي ممكن يصير مع هاي الجمله IOException و بعدها جوا نكتب المسج الي بدنا اياه و الخطا
-                 الي كان يصير معك هو مثال على الي بحكي فيه يعني بدل ما يطلع الك الي كان يظهر بنقدر نحكي للمستخدم انه
-                 في ضعف في النت بدل الي كان يظهر الك
-             */
-            catch ( IOException e )
-            {
-                e . printStackTrace ( ) ;
-                Snack_Bar ( "Search failed: " + e . getMessage ( ) ) ;
-
-            }
-        }
-    }
 
     // للتحقق اذا كان النت شغال او مش شغال و برضو لاني مستعمله في فنكشن onCreate و رح يستدعى لما تفتحي الخارطه
     private void Check_Internet ( )
@@ -568,7 +629,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
                 Check_Location_And_Internet ( ) ;
 
             }
-        } ;
+        };
 
         /*
           في هاد السطر
@@ -580,7 +641,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
 
            وبعدل على قيمة is_Internet_Connected حسب حالة الاتصال بالانترنت
          */
-        connectivity_Manager . registerDefaultNetworkCallback ( network_Callback ) ;
+        connectivity_Manager.registerDefaultNetworkCallback ( network_Callback ) ;
 
         /*
             ال NetworkInfo هي كلاس الي هي بالزبط بتعطيني الصافي انه النت متصل او فاصل
@@ -658,7 +719,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
                 // هون شو ما كانت قيمة is_Location_Enabled كانت true او كانت false هاد الي تحت رح يتنفذ لانو قلنا انه فنكشن ال onReceive بستدعى لما ال location_Receiver يستقبل BroadcastReceiver يعني لما يصير تغيير في جالة خدمة الموقع انها اتشغلت او انطفت
                 Check_Location_And_Internet ( ) ;
             }
-        } ;
+        };
 
         // في هاد السطر بنعرف اوبجكت من الكلاس  IntentFilter و اسمه  filter و وظيفته او لازمته انه يضل متبع مع حالة خدمة الموقع لما تطفي او تشتغل
 
@@ -674,7 +735,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
             لازم نعرف اوبجكت من الكلاس IntentFilter و نربط ال PROVIDERS_CHANGED_ACTION في هاد الاوبجكت الي عملناه بعدها
             بنسجله في الستتم انه والله في عندي intent متبع مع اي تغير او اي شي بصير وبخص الموقع
          */
-        IntentFilter filter = new IntentFilter ( LocationManager . PROVIDERS_CHANGED_ACTION ) ;
+        IntentFilter filter = new IntentFilter ( LocationManager.PROVIDERS_CHANGED_ACTION ) ;
 
         /*
             في هاد السطر بنعمل تسجيل ل location_Receiver و الفلتر الخاص فيه الي متبع مع خدمة الموقع عشان يقدر يتحقق من
@@ -704,7 +765,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
 
             لكن هون الفرق انه في ال is_Internet_Connected ما انجبرت اني احطه داخل هاد
 
-            networkCallback = new ConnectivityManager . NetworkCallback ()
+            networkCallback = new ConnectivityManager . NetworkCallback ( )
 
             ممكن لانه BroadcastReceiver و ال LocationManager
 
@@ -715,7 +776,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
             ف ممكن انه هاد السبب الي ما خلاني في فتكشن ال Check_Internet
             انجبر احط هاد is_Internet_Connected داخل هاد
 
-            networkCallback = new ConnectivityManager . NetworkCallback ()
+            networkCallback = new ConnectivityManager . NetworkCallback ( )
          */
         is_Location_Enabled = location_Manager . isProviderEnabled ( LocationManager . GPS_PROVIDER ) ;
 
@@ -750,7 +811,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
                     // هون عرفنا اوبجكت من الكلاس  TextView اسمه textView عشان نقدر نحدد مين هو ال text view الي بدنا نعرض للمتستخدم فيها نص المسج
                     TextView textView = findViewById ( R . id . textVie ) ;
                     textView . setText ( "لا يوجد انترنت يرجى التحقق من اتصالك بالانترنت و المحاوله مره اخرى" ) ;
-                } ) ;
+                });
             }
 
             // هون نفس الشي بس في حالة كان الموقع مطفي
@@ -761,7 +822,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
                     setContentView ( R . layout . check_location_and_internet_view ) ;
                     TextView textView = findViewById ( R . id . textVie ) ;
                     textView . setText ( "خدمة الموقع لديك متوقفه يرجى تشغيل خدمة الموقع للمتابعة" ) ;
-                } ) ;
+                });
             }
 
             // هون في حالة كان الموقع و النت مطفيين
@@ -772,61 +833,14 @@ public class Map extends FragmentActivity implements OnMapReadyCallback
                     setContentView ( R . layout . check_location_and_internet_view ) ;
                     TextView textView = findViewById ( R . id . textVie ) ;
                     textView . setText ( "لا يوجد اتصال بالانترنت و خدمة الموقع لديك متوقفه يرجى التحقق من الاتصال بالانترنت و تشغيل خدمة الموقع للمتابعة" ) ;
-                } ) ;
+                });
             }
         }
         else
-            runOnUiThread ( ( ) -> setContentView ( binding . getRoot ( ) ) ) ;
+            runOnUiThread ( ( ) -> setContentView ( binding.getRoot ( ) ) ) ;
     }
 
-    // لعرض رسالة في حالة المستخدم بحث عن اسم موقع غير موجود وهاد الفنكشن مستعمله في فنكشن Find_a_place المسؤول عن البحث عن الاماكن من خلال الاسم ولو جيتي حطيتي مؤشر الماوس عليه و ضغطتي ctrl مع كبسه يسار على الماوس رح يوديكي على فنكشن Find_a_place
-    private void Snack_Bar ( String Message )
-    {
-        /*
-            هون عرفنا اوبجكت من كلاس ال Snackbar
 
-            و من خلال فنكشن ال make بنشء سناك بار وباخد 3 متيغرات
-            الاول هو الشاشه او المكان الي رح يظهر فيها المسج
-
-            الثاني هي المسج الي بدي اعرضها للمستخدم وهاي االمسج جايه من االمتغير الي اسمه message الي فوق وهاي بعطيها القيمه الي
-            جواتها لما استدعي الفنكشن
-
-            المتغير الثالث هو المده الي رح يضل فيها المسج ظاهر يعني يا اما بظهر لمدة طويلة او لمده قصيره وال LENGTH_LONG يعني
-            مده طويله و LENGTH_SHORT يعني بظهر لفتره قصيرة
-
-            لكن انا هو مش مستعمل لا LENGTH_LONG ولا مستعمل LENGTH_SHORT حاكي اليه مباشره المده هي 5000 ملي ثانيه يعني 5
-            ثواني لانه كل 1000 ملي ثانيه بتساوي ثانيه وحده
-        */
-        Snackbar snackbar = Snackbar . make ( binding . constraint , Message , 7000 ) ;
-
-        // السطر الي تحت عشان اغير خلفية السناك بار
-        snackbar . getView ( ) . setBackgroundTintList ( ColorStateList . valueOf ( ContextCompat . getColor ( this , R . color . Snack_bar_BG_Color ) ) ) ;
-
-        /*
-            هدول السطرين الي تحت عملناهم عشان نقدر نوصل للتكتست تاع السناك بار و عشان نعدل في لون وحجم الخط الخاص فيه
-
-             وكونه السناك بار اداة مثل اي اداة اخرى فيعتبر view فبنعرف اوبجكت من الكلاس view و بعدها بنستعمل الاوبجكت الي
-             عرفناه فوق من كلاس snackbar لحتى تقله getview ونصل ل اداة التكست الي مستعملها ليعرض فيها المسج ونعدل
-             في حجم و لون الخط تبعها
-         */
-        View snackbarView = snackbar . getView ( ) ;
-        TextView textView = snackbarView . findViewById ( com . google . android . material . R . id . snackbar_text ) ;
-
-        // هاد السطر قلنا اله انه ما بدي كل المسج تظهر في سطر واحد بدي لو كانت اكثر من سطر تنعرض مثل ما هي مش كلها في سطر واحد
-        textView . setSingleLine ( false ) ;
-
-        // هون غيرنا لون الخط للتكست
-        textView . setTextColor ( ContextCompat . getColor ( this , R . color . white ) ) ;
-
-        // هون غيرنا حجم الخط
-        textView . setTextSize ( 15 ) ;
-
-        // هون غيرنا محاذاة النص و خلينا النص يصير في النص بدل ما هو على اليمين
-        textView . setTextAlignment ( View . TEXT_ALIGNMENT_CENTER ) ;
-
-        // وهاد السطر بشغل السناك بار و بعرض المسج الي بعثناها للفنكشن
-        snackbar . show ( ) ;
-
-    }
+    // --------------- نهاية الجزء الي فيه الفنكشن الي بخصو هاد الكلاس ---------------
 
 }
