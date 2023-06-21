@@ -1,6 +1,5 @@
 package com.example.mamababyjourney.Create_An_Account_And_Sign_In;
 
-
 import com.example.mamababyjourney.Create_An_Account_And_Sign_In.Info.Doctor_Data_Activity;
 import com.example.mamababyjourney.databinding.ActivitySignUpBinding;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +12,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,17 +95,6 @@ public class Sign_Up_Activity extends AppCompatActivity
             return false ;
         } );
 
-        // هاد بتنفذ عند لمس ال Radio Button تاع الدكتورو ظيفته انه يفعل زر انشاء الحساب بعد ما تعطل لما الدكتور كبس عليه بدون ما يحدد صفته
-        binding . DoctorRBTN . setOnTouchListener ( ( v , event ) ->
-        {
-            if ( event . getAction ( ) == MotionEvent.ACTION_DOWN )
-            {
-                binding . DoctorRBTN . setChecked ( true ) ;
-                binding . singUpBTN . setEnabled ( true ) ;
-            }
-            return false;
-        } );
-
         // هاد مربوط مع ايقونة التسجيل بواسطة قوقل و ظيفته انه يفعل زر انشاء الحساب بعد ما تعطل لما الام او الدكتور كبسو عليه بدون ما يحددو الصفه
         binding . GoogleIcon . setOnTouchListener ( ( v , event ) ->
         {
@@ -117,17 +107,6 @@ public class Sign_Up_Activity extends AppCompatActivity
                 {
 
                 }
-            }
-            return false;
-        } );
-
-        // هاد بتنفذ عند لمس ال Radio Button تاع الام و ظيفته انه يفعل زر انشاء الحساب بعد ما تعطل لما الام كبست عليه بدون من تحدد صفتها
-        binding . MomRBTN . setOnTouchListener ( ( v , event ) ->
-        {
-            if ( event . getAction ( ) == MotionEvent.ACTION_DOWN )
-            {
-                binding . MomRBTN . setChecked ( true ) ;
-                binding . singUpBTN . setEnabled ( true ) ;
             }
             return false;
         } );
