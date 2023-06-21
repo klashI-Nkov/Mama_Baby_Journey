@@ -79,7 +79,7 @@ public class Sign_Up_Activity extends AppCompatActivity
     private void Buttons ( )
     {
 
-        // هاد مربوط مع ايقونة التسجيل بواسطة فيسبوك و ظيفته انه يفعل زر انشاء الحساب بعد ما تعطل لما الام او الدكتور كبسو عليه بدون ما يحددو الصفه
+        // هاد بتنفذ لما نكبس على ايقونة التسجيل بواسطة فيسبوك
         binding . FacebookIcon . setOnTouchListener ( ( v , event ) ->
         {
             if ( event . getAction ( ) == MotionEvent.ACTION_DOWN )
@@ -91,7 +91,7 @@ public class Sign_Up_Activity extends AppCompatActivity
             return false ;
         } );
 
-        // هاد مربوط مع ايقونة التسجيل بواسطة قوقل و ظيفته انه يفعل زر انشاء الحساب بعد ما تعطل لما الام او الدكتور كبسو عليه بدون ما يحددو الصفه
+        // هاد بتنفذ لما نكبس على ايقونة التسجيل بواسطة قوقل
         binding . GoogleIcon . setOnTouchListener ( ( v , event ) ->
         {
             if ( event . getAction ( ) == MotionEvent.ACTION_DOWN )
