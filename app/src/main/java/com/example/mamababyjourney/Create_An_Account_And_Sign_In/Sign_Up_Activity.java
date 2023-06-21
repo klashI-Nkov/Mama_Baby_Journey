@@ -86,7 +86,7 @@ public class Sign_Up_Activity extends AppCompatActivity
             {
                 // هون بقله اذا المسخدم مش محدد شو صفته ادخل الاف و عطل انشاء الحساب باستخدام قوقل اما اذا حدد فعادي خليه يستعمله
                 if ( !binding.MomRBTN.isChecked ( ) && !binding.DoctorRBTN.isChecked ( ) )
-                    Snack_Bar ( "يرجى تحديد صفتك قبل المتابعه" );
+                    Snack_Bar ( "يرجى تحديد صفتك قبل المتابعه" ) ;
             }
             return false ;
         } );
@@ -98,7 +98,7 @@ public class Sign_Up_Activity extends AppCompatActivity
             {
                 // هون بقله اذا المسخدم مش محدد شو صفته ادخل الاف و عطل انشاء الحساب باستخدام قوقل اما اذا حدد فعادي خليه يستعمله
                 if ( ! binding . MomRBTN . isChecked ( ) && ! binding . DoctorRBTN . isChecked ( ) )
-                    Snack_Bar ( "يرجى تحديد صفتك قبل المتابعه" );
+                    Snack_Bar ( "يرجى تحديد صفتك قبل المتابعه" ) ;
             }
             return false;
         } );
