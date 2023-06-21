@@ -122,7 +122,7 @@ public class Sign_Up_Activity extends AppCompatActivity
             مسج انه لازم يحدد صفته قبل ما يكمل اما اذا كان محدد فعادي بخليه يكمل من دون اي مشاكل
         */
         if ( ! binding . MomRBTN . isChecked ( ) && ! binding . DoctorRBTN . isChecked ( ) )
-            Snack_Bar ( "يرجى تحديد صفتك قبل الانتقال الي  الصفحه التاليه" ) ;
+            Snack_Bar ( "يرجى تحديد صفتك قبل المتابعه" ) ;
 
         // هون كونه بس الام مطلوب منها الاسم بس فما رح يكون في الها بيانات تعبيها لهيك حاكي اله اذا المستخدم كان دكتور انقله لشاشة البيانات عشان يعبي البيانات اللازمه
         if ( binding . DoctorRBTN . isChecked ( ) )
