@@ -1,33 +1,31 @@
 package com.example.mamababyjourney.Create_An_Account_And_Sign_In.Info;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import com.example.mamababyjourney.R;
 import com.example.mamababyjourney.databinding.ActivityWorkplaceDataBinding;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
+import com.example.mamababyjourney.R;
+import androidx.annotation.Nullable;
+import android.widget.ArrayAdapter;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.TextView;
+import android.view.ViewGroup;
+import android.content.Intent;
 import java.util.ArrayList;
+import android.os.Bundle;
+import android.view.View;
+import java.util.Objects;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
-@SuppressLint ( {"SetTextI18n" } )
-@SuppressWarnings ( { "deprecation" , "ConstantConditions" , "unchecked" } )
+@SuppressLint ( { "SetTextI18n" , "SuspiciousIndentation" } )
+@SuppressWarnings ( { "deprecation" , "ConstantConditions" , "unchecked" , "SpellCheckingInspection" } )
+
 public class Workplace_Data_Activity extends AppCompatActivity implements AdapterView . OnItemSelectedListener
 {
 
@@ -53,13 +51,11 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
     {
         super . onCreate ( savedInstanceState ) ;
 
-        getWindow ( ) . setFlags (WindowManager . LayoutParams . FLAG_LAYOUT_NO_LIMITS ,WindowManager . LayoutParams . FLAG_LAYOUT_NO_LIMITS ) ;
-        Objects . requireNonNull (getSupportActionBar ( ) ) . hide ( ) ;
+        getWindow ( ) . setFlags ( WindowManager . LayoutParams . FLAG_LAYOUT_NO_LIMITS , WindowManager . LayoutParams . FLAG_LAYOUT_NO_LIMITS ) ;
+        Objects . requireNonNull ( getSupportActionBar ( ) ) . hide ( ) ;
 
         binding = ActivityWorkplaceDataBinding . inflate (getLayoutInflater ( ) ) ;
         setContentView ( binding . getRoot ( ) ) ;
-
-
 
         /*
             هسه ركزي منيح في الكلام الي رح احكيه هون لانه الي رح اشرح عنه رح تشوفيه في اماكن كثيره منها في كلاس ال Map و في كلاس ال Days_And_Working_Hours_Activity وكلاسات ثانيه كمان
@@ -83,16 +79,12 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
 
         // هسه هون بشيك ان كنت داخل عشان اضيف نفذ الي جوا الاف غير هيك بكون داخل عشان اعدل و نفذ الي جوا ال else
         if ( action . equals ( "Add" ) )
-        {
-
             /*
-                هسه في حالة كنت داخل عشان اضيف بينات رح اخلي ال id يساوي ال id الي في كلاس ال Doctor_Data_Activity والي هو ترتيب مكان العمل بين امكان العمل الي انضافت او رح تنضاف
+               هسه في حالة كنت داخل عشان اضيف بينات رح اخلي ال id يساوي ال id الي في كلاس
 
-                بعدها بستدعي الفنكشن الي بجهز الي الشاشه عشان اضيف بيانات مكان العمل الجديد
+                ال Doctor_Data_Activity والي هو ترتيب مكان العمل بين امكان العمل الي انضافت او رح تنضاف
             */
             id =  Doctor_Data_Activity . id ;
-            WorkPlace_Page_Initialization ( ) ;
-        }
         else
         {
             /*
@@ -101,7 +93,7 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
                 بعدها بستدعي الفنكشن الي بجيب الي بيانات مكان العمل الي بدي اعدل في بياناته من الفايربيس
             */
             id = getIntent ( ) . getExtras ( ) . getInt ( "Id" ) ;
-            Get_workPlace_Data_Object (  id );
+            Get_workPlace_Data_Object ( id ) ;
         }
 
         Adapter_Initialization ( ) ;
@@ -124,9 +116,9 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
         */
         Intent intent = new Intent (this , Map_Activity . class ) ;
 
-        intent . putExtra ("workPlace_Type" ,workPlace_Type ) ;
-        intent . putExtra ("longitude"      ,longitude      ) ;
-        intent . putExtra ("latitude"       ,latitude       ) ;
+        intent . putExtra ("workPlace_Type" , workPlace_Type  ) ;
+        intent . putExtra ("longitude"      , longitude       ) ;
+        intent . putExtra ("latitude"       , latitude        ) ;
 
         // هون قبل ما ابعث بشيك هل بدي اروح على الخارطه عشان اعدل مكان العمل على الخارطه ولا عشان اضيف مكان العمل على الخارطة
         if ( binding . GoToMapBTN . getText ( ) . toString ( ) . contains ( "تعديل" ) )
@@ -152,7 +144,8 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
             // هون بعمل تهيئه لهاي days_And_Working_Hours_Objects_List ال list الخاصه بهاد workPlace_Data_Object الاوبجكت الي في هاي WorkPlace_Data الكلاس مشان ما يعطيني خطا لما بدي اعمل اي عمليه عليها
             WorkPlace_Data . workPlace_Data_Object . days_And_Working_Hours_Objects_List = new ArrayList < > () ;
 
-            intent . putExtra ( "Action" , "Add" );
+            intent . putExtra ( "Action" , "Add" ) ;
+
             /*
                 هاد السطر الي تحت الي بعمله هو انه لما بدي اضيف ايام و ساعات العمل لمكان عمل جديد الي بعمله انه بفضي ال list الي بتخزن فيها ايام و ساعات
 
@@ -171,11 +164,11 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
         if
         (
             // كل هدول الي تحت هاد الكومنت و داخل قوسين الاف عشان اتاكد انه عبى كل البيانات المطلوبه
-            ! binding . WorkPlaceLocationCoordinates . getText ( ) . toString ( ) . contains ( "على" ) &&
-            ! binding . DaysAndWorkingHoursTextView  . getText ( ) . toString ( ) . contains ( "قم"  ) &&
-            ! binding . WorkPlaceAddress             . getText ( ) . toString ( ) . isEmpty  (       ) &&
-            ! binding . WorkPlaceName                . getText ( ) . toString ( ) . isEmpty  (       ) &&
-            ! binding . PhoneNumber                  . getText ( ) . toString ( ) . isEmpty  (       )
+                ! binding . WorkPlaceLocationCoordinates . getText ( ) . toString ( ) . contains ( "على" ) &&
+                        ! binding . DaysAndWorkingHoursTextView  . getText ( ) . toString ( ) . contains ( "قم"  ) &&
+                        ! binding . WorkPlaceAddress             . getText ( ) . toString ( ) . isEmpty  (       ) &&
+                        ! binding . WorkPlaceName                . getText ( ) . toString ( ) . isEmpty  (       ) &&
+                        ! binding . PhoneNumber                  . getText ( ) . toString ( ) . isEmpty  (       )
         )
         {
 
@@ -202,8 +195,8 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
             else
             {
                 // هون نفس الي بصير في حالة التعديل لكن الفرق انه في متغيرين زياده بعطيهم قيمه و هم ترتيب نوع مكان العمل الي اخترته من ال spinner في قائمة العناصر الي في ال spinner و نوع مكان العمل
-                WorkPlace_Data . workPlace_Data_Object . workPlace_Type_Index_In_Spinner = workPlace_Index_In_Spinner                                          ;
-                WorkPlace_Data . workPlace_Data_Object . workPlace_Type                  = workPlace_Type                                                      ;
+                WorkPlace_Data . workPlace_Data_Object . workPlace_Type_Index_In_Spinner = workPlace_Index_In_Spinner ;
+                WorkPlace_Data . workPlace_Data_Object . workPlace_Type                  = workPlace_Type             ;
 
                 WorkPlace_Data . workPlace_Data_Object . longitude         = longitude ;
                 WorkPlace_Data . workPlace_Data_Object . latitude          = latitude  ;
@@ -254,10 +247,10 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
             finish ( ) ;
         }
         else
-        Snack_Bar
-        (
-            "يرجى التاكد بانك قمت بتعبئة جميع البيانات المطلوبه ومن ضمنها ايام و ساعات العمل و مكان " + workPlace_Type + " على خرائط جوجل"
-        );
+            Snack_Bar
+                    (
+                            "يرجى التاكد بانك قمت بتعبئة جميع البيانات المطلوبه ومن ضمنها ايام و ساعات العمل و مكان " + workPlace_Type + " على خرائط جوجل"
+                    );
 
     }
 
@@ -268,21 +261,24 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
 
 
     // --------------- بداية الجزء الي فيه الفنكشن الي بخصو هاد الكلاس ---------------
+
+    /**/
+
     // هاد الفنشكن بتنفذ لما نضغط على زر الرجوع الي موجود في الشاشه من تحت الي هو تاع النظام
     @Override
     public void onBackPressed ( )
     {
 
         Snack_Bar
-        (
-            getIntent ( ) . getExtras ( ) . getString ( "Action" ) . equals ( "Add" ) ?
+                (
+                        getIntent ( ) . getExtras ( ) . getString ( "Action" ) . equals ( "Add" ) ?
 
-            "لايمكنك الرجوع للخلف\n\n" +
-            "يجب تعبئة بيانات مكان العمل جميعها بما فيها مكان العمل على خرائط قوقل و ايام و ساعات العمل "
-            :
-            "لايمكنك الرجوع للخلف\n\n اذا كنت لم تقم باي تعديل يمكنك الضغط على زر الحفظ للرجوع الى الشاشة السابقه \n\n" +
-            "لكن اذا قمت باي تعديل يجيب ان تقوم بتعديل اوقات العمل بالشكل الصحيح ثم قم بالضغط على زر الحفظ"
-        );
+                                "لايمكنك الرجوع للخلف\n\n" +
+                                        "يجب تعبئة بيانات مكان العمل جميعها بما فيها مكان العمل على خرائط قوقل و ايام و ساعات العمل "
+                                :
+                                "لايمكنك الرجوع للخلف\n\n اذا كنت لم تقم باي تعديل يمكنك الضغط على زر الحفظ للرجوع الى الشاشة السابقه \n\n" +
+                                        "لكن اذا قمت باي تعديل يجيب ان تقوم بتعديل اوقات العمل بالشكل الصحيح ثم قم بالضغط على زر الحفظ"
+                );
     }
 
 
@@ -291,11 +287,9 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
 
         ال Doctor_Data_Activity لكن هون بتعامل مع شاشة ايام و ساعات العمل و شاشة الخارطه
     */
-
     @Override
     protected void onActivityResult ( int requestCode , int resultCode , @Nullable Intent data )
     {
-
         super . onActivityResult ( requestCode , resultCode , data ) ;
 
         if ( resultCode == RESULT_OK )
@@ -338,7 +332,7 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
 
                     // هاد السطر بعدل ال text الي بكون مكتوب فيه "حدد مكان العمل على خرائط قوقل" وبحد بداله احداثيات مكان العمل الي اختاراها
                     binding . WorkPlaceLocationCoordinates . setText
-                    ( "احداثيات مكان " + workPlace_Type + " التي حددتها هي" + "\n\n" + latitude + " , " + longitude ) ;
+                            ( "احداثيات مكان " + workPlace_Type + " التي حددتها هي" + "\n\n" + latitude + " , " + longitude ) ;
 
                     // هاد بغير النص الي مكتوب في زر الذهاب الى الخارطه وبحط بداله النص الي مكتوب عندك تحت
                     binding . GoToMapBTN . setText ( "تعديل احداثيات مكان " + workPlace_Type ) ;
@@ -357,10 +351,10 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
 
                     // هون اول شي بعمله بغير ال النص الي معروض في ال text view الي بنعرض فيه ايام و ساعات العمل من "قم باضافة ايام و ساعات العمل" ل "ايام و ساعات العمل"
                     binding . DaysAndWorkingHoursTextView . setText
-                    (
-                        // هاد اول شي حيكون في النص الي بعرض في المكان الي رح يعرض لدكتور ايام و ساعات العمل الي حددها
-                        "ايام و ساعات العمل\n\n"
-                    ) ;
+                            (
+                                    // هاد اول شي حيكون في النص الي بعرض في المكان الي رح يعرض لدكتور ايام و ساعات العمل الي حددها
+                                    "ايام و ساعات العمل\n\n"
+                            ) ;
 
 
                     /*
@@ -379,7 +373,7 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
                     for ( Days_And_Working_Hours element : workPlace_data_Object . days_And_Working_Hours_Objects_List )
                     {
                         binding . DaysAndWorkingHoursTextView . setText
-                        (
+                                (
                             /*
                                هسه هاد السطر بجيب الي ال text الي مخزن في ال textView الي بنعرض فيه ايام و ساعات العمل و الي بكون هو هاد
 
@@ -389,36 +383,36 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
 
                                في هاي days_And_Working_Hours_Objects_List ال list
                             */
-                            binding . DaysAndWorkingHoursTextView . getText ( ) +
+                                        binding . DaysAndWorkingHoursTextView . getText ( ) +
 
-                            // بعدها هون قيمة اليوم و الي مخزنه في متغير day في الاوبجكت الي for each ماشره على ال index تبعه
-                            element . day + "\n" +
+                                                // بعدها هون قيمة اليوم و الي مخزنه في متغير day في الاوبجكت الي for each ماشره على ال index تبعه
+                                                element . day + "\n" +
 
-                            // بعدها هون قيمة من الساعه و الي مخزنه في متغير from_Hour في الاوبجكت الي for each ماشره على ال index تبعه
-                            " من الساعة : " + element . from_Hour + " " +
+                                                // بعدها هون قيمة من الساعه و الي مخزنه في متغير from_Hour في الاوبجكت الي for each ماشره على ال index تبعه
+                                                " من الساعة : " + element . from_Hour + " " +
 
-                            // بعدها هون القيمه الي بتحدد من الساعه صباحا او مساءا و الي مخزنه في متغير from_AM_Or_PM في الاوبجكت الي for each ماشره على ال index تبعه
-                            element . from_AM_Or_PM +
+                                                // بعدها هون القيمه الي بتحدد من الساعه صباحا او مساءا و الي مخزنه في متغير from_AM_Or_PM في الاوبجكت الي for each ماشره على ال index تبعه
+                                                element . from_AM_Or_PM +
 
-                            // بعدها هون قيمة الى الساعه و الي مخزنه في متغير to_Hour في الاوبجكت الي for each ماشره على ال index تبعه
-                            " الى الساعة : " + element . to_Hour + " " +
+                                                // بعدها هون قيمة الى الساعه و الي مخزنه في متغير to_Hour في الاوبجكت الي for each ماشره على ال index تبعه
+                                                " الى الساعة : " + element . to_Hour + " " +
 
-                            // بعدها هون القيمه الي بتحدد من الساعه صباحا او مساءا و الي مخزنه في متغير to_AM_Or_PM في الاوبجكت الي for each ماشره على ال index تبعه
-                            element . to_AM_Or_PM
-                        ) ;
+                                                // بعدها هون القيمه الي بتحدد من الساعه صباحا او مساءا و الي مخزنه في متغير to_AM_Or_PM في الاوبجكت الي for each ماشره على ال index تبعه
+                                                element . to_AM_Or_PM
+                                ) ;
 
                         // هون بقول اله اذا كان الاوبجكت الي ال for each ماشره على ال index تبعه مش اخر عنصر في هاي days_And_Working_Hours_Objects_List ال list ضيف هاد الفاصل على ال text تبع ال textView الي بنعرض فيه ايام و ساعات العمل
                         if
                         (
-                            workPlace_data_Object . days_And_Working_Hours_Objects_List . indexOf ( element )
-                            !=
-                            workPlace_data_Object . days_And_Working_Hours_Objects_List . size ( ) -1
+                                workPlace_data_Object . days_And_Working_Hours_Objects_List . indexOf ( element )
+                                        !=
+                                        workPlace_data_Object . days_And_Working_Hours_Objects_List . size ( ) - 1
                         )
                             binding . DaysAndWorkingHoursTextView . setText
-                            (
-                                binding . DaysAndWorkingHoursTextView . getText ( ) . toString ( ) +
-                                "\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n"
-                            ) ;
+                                    (
+                                            binding . DaysAndWorkingHoursTextView . getText ( ) . toString ( ) +
+                                                    "\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n"
+                                    ) ;
                     }
 
                     // هون بغير النص الي في زر اضافة ايام و ساعات العمل للنص الي موجود عندك تحت
@@ -428,166 +422,8 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
                 }
             }
         }
-
     }
 
-
-    // هاد الفنكشن بتنفذ لما ندخل هاي الشاشه عشان تضيف بيانات مكان عمل جديد او نعدل على بيانات واحد من اماكن العمل
-    private void WorkPlace_Page_Initialization ( )
-    {
-
-        // هاي ال array انا مخزن فيها ال id الخاصين بمكونات الشاشه عشان اتحكم في ظهورها و اخفاؤها حسب ما انا بدي و حسب حالة الشاشه
-        View [ ] screen_Components =
-        {
-            findViewById (R . id . Days_And_Working_Hours_Text_View ) ,
-            findViewById (R . id . Add_Days_And_Working_Hours_BTN   ) ,
-            findViewById (R . id . WorkPlace_location_coordinates   ) ,
-            findViewById (R . id . WorkPlace_Address                ) ,
-            findViewById (R . id . WorkPlace_Name                   ) ,
-            findViewById (R . id . Phone_Number                     ) ,
-            findViewById (R . id . Go_to_Map_BTN                    )
-        };
-
-
-        /*
-            هون بشيك اذا كنت داخل هاي الشاشة عشان اعدل ولا اعشان اضيف الداتا واذا كنت داخل عشان اضيف داتا ادخل و نفذ الي جوا الاف غير هيك يعني لو كنت
-
-            داخل هاي الشاشه عشان اعدل الداتا لا تنفذ الي جوا الاف لانه هاد الفنكشن المفروض يشتعل بس لما ادخل هاي الشاشه عشان اضيف داتا مش عشان اعدل الداتا
-        */
-        if ( action . equals ( "Add" ) )
-        {
-
-            // هدول الي تحت الي بعملوه و من دون شرح تفصيلي هو انه بمسح اي قيم ممكن يكون الدكتور اختارها قبل
-
-            binding . WorkplaceTypeSp . setSelection ( 0 ) ;
-
-            binding . DaysAndWorkingHoursTextView . setText ( "قم باضافة ايام و ساعات العمل" ) ;
-            binding . GoToMapBTN                  . setText ( "الذهاب الى الخارطه"           ) ;
-
-            binding . WorkPlaceAddress . setText ( "" ) ;
-            binding . WorkPlaceName    . setText ( "" ) ;
-            binding . PhoneNumber      . setText ( "" ) ;
-
-            longitude = 0 ;
-            latitude  = 0 ;
-
-            // هاي ال for each بتلف على عناصر هاي screen_Components ال array و بتخفي كل عنصر فيها لانه ما بدي يظهر للدكتور اشي الا بعد ما يختار نوع مكان العمل من spinner اختيار نوع مكان العمل
-            for ( View element : screen_Components )
-            {
-                element . setVisibility ( View . GONE ) ;
-            }
-        }
-        else
-        {
-
-            // هاد نفس الي في فنكشن ال onActivityResult في ال case رقم 2
-            WorkPlace_Data workPlace_data_Object = WorkPlace_Data . workPlace_Data_Object ;
-
-            // هون بخلي هاد workPlace_Type المتغير يساوي قيمة هاد workPlace_Type المتغير الخاص ب اوبجكت مكان العمل الي بدي اعدل على بياناته
-            workPlace_Type = workPlace_data_Object . workPlace_Type ;
-
-            // هاي ال for each بتلف على عناصر هاي screen_Components ال array و بتظهر كل عنصر فيها عشان اعرض الداتا  فيها
-            for ( View element : screen_Components )
-            {
-                element . setVisibility ( View . VISIBLE ) ;
-            }
-
-            // هون انا بحط ال hint لكل ال editText في هدول ال 3 اسطر الي تحت
-            binding . WorkPlaceAddress . setHint ( "عنوان "    + workPlace_Type ) ;
-            binding . WorkPlaceName    . setHint ( "اسم "      + workPlace_Type ) ;
-            binding . PhoneNumber      . setHint
-            (
-                // هون بشيك اذا كان نوع مكان العمل يساوي "العيادة" بخلي ال hint يساوي "رقم هاتف العيادة" غير هيك بخليه يساوي "رقم الهاتف"
-                workPlace_Type . equals ( "العيادة" ) ?
-                "رقم هاتف " + workPlace_Type :
-                "رقم الهاتف"
-            ) ;
-
-            // هون انا بخلي ال spinner ياشر على نوع مكان العمل الي اخترته لما ضفت بيانات مكان العمل
-            binding . WorkplaceTypeSp . setSelection ( workPlace_data_Object . workPlace_Type_Index_In_Spinner ) ;
-
-            // هون انا بحط عنوان مكان العمل الي كتبته لما ضفت بيانات مكان العمل في ال editText
-            binding . WorkPlaceAddress . setText ( workPlace_data_Object . workPlace_Address ) ;
-
-            // هون انا بحط اسم مكان العمل الي كتبته لما ضفت بيانات مكان العمل في ال editText
-            binding . WorkPlaceName    . setText ( workPlace_data_Object . workPlace_Name    ) ;
-
-            // هون انا بحط رقم الهاتف الي كتبته لما ضفت بيانات مكان العمل في ال editText
-            binding . PhoneNumber      . setText ( workPlace_data_Object . phoneNumber       ) ;
-
-            /*
-                الي بصير في هدول السطرين
-                longitude = workPlace_data_Object . longitude ;
-                latitude  = workPlace_data_Object . latitude  ;
-
-                هو اني بجيب احداثيات مكان العمل الي موجود في المتغيرات الخاصه باحداثيات مكان العمل في الاوبجكت الي بدي اعدل على بياناته
-
-                و بخزنها في متغيرات الخاصه باحداثيات مكان العمل في هاد الكلاس عشان بس بدي انتقل للخارطه لحتى اعدل مكان العمل استعمل هدول المتغيرين
-
-                عشان اعرض للدكتور مكان العمل الي اختاره اول مره
-            */
-            longitude = workPlace_data_Object . longitude ;
-            latitude  = workPlace_data_Object . latitude  ;
-
-            // هون انا بحط احداثيات مكان العمل الي حددتها لما ضفت بيانات مكان العمل
-            binding . WorkPlaceLocationCoordinates . setText ( "احداثيات مكان " + workPlace_Type + " التي حددتها هي" + "\n\n" + latitude + " , " + longitude ) ;
-
-            // هون انا بعدل من ال text تبع زر الذهاب الى الخارطه من "الذهاب الى الخارطة" ل "تعديل احداثيات مكان العمل"
-            binding . GoToMapBTN . setText ( "تعديل احداثيات مكان " + workPlace_Type ) ;
-
-
-            // هون بعدل ال text تبع ال textView الي بنعرض فيه ساعات العمل من "قم باضافة ايام و ساعات العمل" وبحط بداله ايام ساعات العمل الي حددتها لما ضفت بيانات مكان العمل
-            binding . DaysAndWorkingHoursTextView . setText
-            (
-                // هاد اول شي حيكون في النص الي بعرض في المكان الي رح يعرض لدكتور ايام و ساعات العمل الي حددها
-                "ايام و ساعات العمل\n\n"
-            ) ;
-
-            for ( Days_And_Working_Hours element : workPlace_data_Object . days_And_Working_Hours_Objects_List )
-            {
-                binding . DaysAndWorkingHoursTextView . setText
-                (
-                    /*
-                       هسه هاد السطر بجيب الي ال text الي مخزن في ال textView الي بنعرض فيه ايام و ساعات العمل و الي بكون هو هاد
-
-                       ال text "ايام و ساعات العمل" في حالة كانت ال for each في اول لفه الها وفي اللفه الثانيه بكون ال text الي مخزن
-
-                       في ال textView الي بنعرض فيه ايام و ساعات العمل هو عباره عن هاد ال text "ايام و ساعات العمل" + اول اوبجكت
-
-                       في هاي days_And_Working_Hours_Objects_List ال list
-                    */
-                    binding . DaysAndWorkingHoursTextView . getText ( ) +
-
-                    // بعدها هون قيمة اليوم و الي مخزنه في متغير day في الاوبجكت الي for each ماشره على ال index تبعه
-                    element . day +
-
-                    // بعدها هون قيمة من الساعه و الي مخزنه في متغير from_Hour في الاوبجكت الي for each ماشره على ال index تبعه
-                    " من الساعة : " + element . from_Hour + " " +
-
-                    // بعدها هون القيمه الي بتحدد من الساعه صباحا او مساءا و الي مخزنه في متغير from_AM_Or_PM في الاوبجكت الي for each ماشره على ال index تبعه
-                    element . from_AM_Or_PM +
-
-                    // بعدها هون قيمة الى الساعه و الي مخزنه في متغير to_Hour في الاوبجكت الي for each ماشره على ال index تبعه
-                    " الى الساعة : " + element . to_Hour + " " +
-
-                    // بعدها هون القيمه الي بتحدد من الساعه صباحا او مساءا و الي مخزنه في متغير to_AM_Or_PM في الاوبجكت الي for each ماشره على ال index تبعه
-                    element . to_AM_Or_PM
-                ) ;
-
-                // هون بقول اله اذا كان الاوبجكت الي ال for each ماشره على ال index تبعه مش اخر عنصر في هاي days_And_Working_Hours_Objects_List ال list ضيف هاد الفاصل على ال text تبع ال textView الي بنعرض فيه ايام و ساعات العمل
-                if ( workPlace_data_Object . days_And_Working_Hours_Objects_List . indexOf ( element ) != workPlace_data_Object . days_And_Working_Hours_Objects_List . size ( ) -1 )
-                    binding . DaysAndWorkingHoursTextView . setText
-                    (
-                        binding . DaysAndWorkingHoursTextView . getText ( ) . toString ( )+
-                        "\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n"
-                    ) ;
-            }
-
-            // هون انا بعدل من ال text تبع زر الذهاب الى الخارطه من "اضافة ايام و ساعات العمل" ل "تعديل ايام و ساعات العمل"
-            binding . AddDaysAndWorkingHoursBTN . setText ( "تعديل ايام و ساعات العمل" ) ;
-
-        }
-    }
 
     // هاد الفنشكن هو الي بجيب النا داتا مكان العمل الي بدي اعدل علي بياناته ومستدعيه في ال onCreate و بتنفذ لما بدي اعدل بس
     private void Get_workPlace_Data_Object ( int id )
@@ -597,10 +433,10 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
 
         // هون انا من خلال المتغير الي اسمه db بصل ل ال collection الي فيها ال document الي فيه الاوبجكت الي بدي اعدل على بياناته بعدها حاكي اله get يعمي جيب الي هاد الاوبجكت الي بدي اعدل علي بياناته
         db . collection ( "A" ) . document ( "C" ) . get ( ) . addOnCompleteListener ( task ->
-        {
-            // هون بشيك انه عملية جلب بيانات هاد الاوبجكت كانت ناجحه ادخل و نفذ الي جوا الاف
-            if ( task . isSuccessful ( ) )
-            {
+                {
+                    // هون بشيك انه عملية جلب بيانات هاد الاوبجكت كانت ناجحه ادخل و نفذ الي جوا الاف
+                    if ( task . isSuccessful ( ) )
+                    {
                 /*
                     هون بعرف اوبحكت اسمه document من الكلاس DocumentSnapshot و بعطيه قيمة النتيجه الي رجعت الي من هاد الفنكشن getResult باستعمال هاد task المتغير
 
@@ -608,11 +444,11 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
 
                     بس عكل حال هي عباره عن كلاس مسؤوله عن التعامل مع اي عملية بتخص ال document في الفايرستور في الفايربيس
                  */
-                DocumentSnapshot document = task . getResult ( ) ;
+                        DocumentSnapshot document = task . getResult ( ) ;
 
-                // هون بشيك هل ال document الي بحثت عنه انا موجود اذا موجود ادخل و نفذ الي جوا الاف
-                if ( document . exists ( ) )
-                {
+                        // هون بشيك هل ال document الي بحثت عنه انا موجود اذا موجود ادخل و نفذ الي جوا الاف
+                        if ( document . exists ( ) )
+                        {
 
                     /*
                         هون معرف Map اسمها workPlace_Data_Object وهي الي رح يتخزن فيها بيانات اوبجكت مكان العمل الي بدي اعدل على بياناته
@@ -625,7 +461,7 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
 
                         الخاص بهاد الاوبجكت
                     */
-                    Map < String , Object > workPlace_Data_Object = ( Map < String , Object > ) document . get ( "workPlace Data Object Number " + id ) ;
+                            Map < String , Object > workPlace_Data_Object = ( Map < String , Object > ) document . get ( "workPlace Data Object Number " + id ) ;
 
 
                     /*
@@ -699,55 +535,177 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
                         WorkPlace_Data . workPlace_Data_Object . days_And_Working_Hours_Objects_List = days_And_Working_Hours_List_Objects ;
 
                     */
-                    //--------------------------
+                            //--------------------------
 
-                    ArrayList < Map < String , Object > > days_And_Working_Hours_Objects_List_From_Firebase
-                    = ( ArrayList < Map < String , Object > > ) workPlace_Data_Object . get ( "days_And_Working_Hours_Objects_List" ) ;
+                            ArrayList < Map < String , Object > > days_And_Working_Hours_Objects_List_From_Firebase
+                                    = ( ArrayList < Map < String , Object > > ) workPlace_Data_Object . get ( "days_And_Working_Hours_Objects_List" ) ;
 
-                    List < Days_And_Working_Hours > days_And_Working_Hours_List_Objects = new ArrayList < > (  ) ;
+                            List < Days_And_Working_Hours > days_And_Working_Hours_List_Objects = new ArrayList < > (  ) ;
 
-                    for ( int i = 0 ; i < days_And_Working_Hours_Objects_List_From_Firebase . size ( ) ; i++ )
+                            for ( int i = 0 ; i < days_And_Working_Hours_Objects_List_From_Firebase . size ( ) ; i++ )
+                            {
+                                Map < String, Object > days_And_Working_Hours_Object_From_Firebase = days_And_Working_Hours_Objects_List_From_Firebase . get ( i ) ;
+
+                                Days_And_Working_Hours days_And_Working_Hours_Object = new Days_And_Working_Hours ( ) ;
+
+                                days_And_Working_Hours_Object . from_AM_Or_PM = days_And_Working_Hours_Object_From_Firebase . get ( "from_AM_Or_PM" ) + "" ;
+                                days_And_Working_Hours_Object . to_AM_Or_PM   = days_And_Working_Hours_Object_From_Firebase . get ( "to_AM_Or_PM"   ) + "" ;
+                                days_And_Working_Hours_Object . from_Hour     = days_And_Working_Hours_Object_From_Firebase . get ( "from_Hour"     ) + "" ;
+                                days_And_Working_Hours_Object . to_Hour       = days_And_Working_Hours_Object_From_Firebase . get ( "to_Hour"       ) + "" ;
+                                days_And_Working_Hours_Object . day           = days_And_Working_Hours_Object_From_Firebase . get ( "day"           ) + "" ;
+
+                                days_And_Working_Hours_List_Objects . add ( days_And_Working_Hours_Object ) ;
+                            }
+
+                            //-------------------------------------------------
+
+                            // هسه هاد الي تحت ما هو الا عباره عن جلب بيانات مكان العمل الي بدي اعدل عليها و وضعها في هاد workPlace_Data_Object الاوبجكت الي في هاي ال WorkPlace_Data الكلاس
+                            WorkPlace_Data . workPlace_Data_Object . days_And_Working_Hours_Objects_List = days_And_Working_Hours_List_Objects                                                              ;
+                            WorkPlace_Data . workPlace_Data_Object . workPlace_Type_Index_In_Spinner
+                                    = Integer . parseInt ( workPlace_Data_Object . get ( "workPlace_Type_Index_In_Spinner" ) + "" ) ;
+
+                            WorkPlace_Data . workPlace_Data_Object . longitude = Double . parseDouble ( workPlace_Data_Object . get ( "longitude" ) + "" ) ;
+                            WorkPlace_Data . workPlace_Data_Object . latitude  = Double . parseDouble ( workPlace_Data_Object . get ( "latitude" ) + "" ) ;
+
+                            WorkPlace_Data . workPlace_Data_Object . workPlace_Address              = workPlace_Data_Object . get ( "workPlace_Address"              ) + "" ;
+                            WorkPlace_Data . workPlace_Data_Object . workPlace_Name                 = workPlace_Data_Object . get ( "workPlace_Name"                 ) + "" ;
+                            WorkPlace_Data . workPlace_Data_Object . workPlace_Type                 = workPlace_Data_Object . get ( "workPlace_Type"                 ) + "" ;
+                            WorkPlace_Data . workPlace_Data_Object . phoneNumber                    = workPlace_Data_Object . get ( "phoneNumber"                    ) + "" ;
+
+                        }
+                    }
+                })
+                /*
+                     و هاد السطر
+                     addOnSuccessListener ( aVoid -> WorkPlace_Page_Initialization ( ) );
+
+                     بقول بس تجيب كل البيانات و تحطها في هاد workPlace_Data_Object الاوبجكت الي في هاي ال WorkPlace_Data الكلاس
+
+                     استدعي هاد WorkPlace_Page_Initialization الفنكشن الي بعرض الي الداتا الي جبتها و حطيتها في هاد workPlace_Data_Object الاوبجكت الي في هاي ال WorkPlace_Data الكلاس
+                 */
+                . addOnSuccessListener ( aVoid ->
+                {
+                    // هاي ال array انا مخزن فيها ال id الخاصين بمكونات الشاشه عشان اتحكم في ظهورها و اخفاؤها حسب ما انا بدي و حسب حالة الشاشه
+                    View [ ] screen_Components =
+                            {
+                                    findViewById ( R . id . Days_And_Working_Hours_Text_View ) ,
+                                    findViewById ( R . id . Add_Days_And_Working_Hours_BTN   ) ,
+                                    findViewById ( R . id . WorkPlace_location_coordinates   ) ,
+                                    findViewById ( R . id . WorkPlace_Address                ) ,
+                                    findViewById ( R . id . WorkPlace_Name                   ) ,
+                                    findViewById ( R . id . Phone_Number                     ) ,
+                                    findViewById ( R . id . Go_to_Map_BTN                    )
+                            };
+
+                    // هاد نفس الي في فنكشن ال onActivityResult في ال case رقم 2
+                    WorkPlace_Data workPlace_data_Object = WorkPlace_Data . workPlace_Data_Object ;
+
+                    // هون بخلي هاد workPlace_Type المتغير يساوي قيمة هاد workPlace_Type المتغير الخاص ب اوبجكت مكان العمل الي بدي اعدل على بياناته
+                    workPlace_Type = workPlace_data_Object . workPlace_Type ;
+
+                    // هاي ال for each بتلف على عناصر هاي screen_Components ال array و بتظهر كل عنصر فيها عشان اعرض الداتا  فيها
+                    for ( View element : screen_Components )
                     {
-                        Map < String, Object > days_And_Working_Hours_Object_From_Firebase = days_And_Working_Hours_Objects_List_From_Firebase . get ( i ) ;
-
-                        Days_And_Working_Hours days_And_Working_Hours_Object = new Days_And_Working_Hours ( ) ;
-
-                        days_And_Working_Hours_Object . from_AM_Or_PM = days_And_Working_Hours_Object_From_Firebase . get ( "from_AM_Or_PM" ) + "" ;
-                        days_And_Working_Hours_Object . to_AM_Or_PM   = days_And_Working_Hours_Object_From_Firebase . get ( "to_AM_Or_PM"   ) + "" ;
-                        days_And_Working_Hours_Object . from_Hour     = days_And_Working_Hours_Object_From_Firebase . get ( "from_Hour"     ) + "" ;
-                        days_And_Working_Hours_Object . to_Hour       = days_And_Working_Hours_Object_From_Firebase . get ( "to_Hour"       ) + "" ;
-                        days_And_Working_Hours_Object . day           = days_And_Working_Hours_Object_From_Firebase . get ( "day"           ) + "" ;
-
-                        days_And_Working_Hours_List_Objects . add ( days_And_Working_Hours_Object ) ;
+                        element . setVisibility ( View . VISIBLE ) ;
                     }
 
-                    //-------------------------------------------------
+                    // هون انا بحط ال hint لكل ال editText في هدول ال 3 اسطر الي تحت
+                    binding . WorkPlaceAddress . setHint ( "عنوان "    + workPlace_Type ) ;
+                    binding . WorkPlaceName    . setHint ( "اسم "      + workPlace_Type ) ;
+                    binding . PhoneNumber      . setHint
+                            (
+                                    // هون بشيك اذا كان نوع مكان العمل يساوي "العيادة" بخلي ال hint يساوي "رقم هاتف العيادة" غير هيك بخليه يساوي "رقم الهاتف"
+                                    workPlace_Type . equals ( "العيادة" ) ?
+                                            "رقم هاتف " + workPlace_Type :
+                                            "رقم الهاتف"
+                            ) ;
 
-                    // هسه هاد الي تحت ما هو الا عباره عن جلب بيانات مكان العمل الي بدي اعدل عليها و وضعها في هاد workPlace_Data_Object الاوبجكت الي في هاي ال WorkPlace_Data الكلاس
-                    WorkPlace_Data . workPlace_Data_Object . days_And_Working_Hours_Objects_List = days_And_Working_Hours_List_Objects                                                              ;
-                    WorkPlace_Data . workPlace_Data_Object . workPlace_Type_Index_In_Spinner
-                    = Integer . parseInt ( workPlace_Data_Object . get ( "workPlace_Type_Index_In_Spinner" ) + "" ) ;
+                    // هون انا بخلي ال spinner ياشر على نوع مكان العمل الي اخترته لما ضفت بيانات مكان العمل
+                    binding . WorkplaceTypeSp . setSelection ( workPlace_data_Object . workPlace_Type_Index_In_Spinner ) ;
 
-                    WorkPlace_Data . workPlace_Data_Object . longitude = Double . parseDouble ( workPlace_Data_Object . get ( "longitude" ) + "" ) ;
-                    WorkPlace_Data . workPlace_Data_Object . latitude  = Double . parseDouble ( workPlace_Data_Object . get ( "latitude" ) + "" ) ;
+                    // هون انا بحط عنوان مكان العمل الي كتبته لما ضفت بيانات مكان العمل في ال editText
+                    binding . WorkPlaceAddress . setText ( workPlace_data_Object . workPlace_Address ) ;
 
-                    WorkPlace_Data . workPlace_Data_Object . workPlace_Address              = workPlace_Data_Object . get ( "workPlace_Address"              ) + "" ;
-                    WorkPlace_Data . workPlace_Data_Object . workPlace_Name                 = workPlace_Data_Object . get ( "workPlace_Name"                 ) + "" ;
-                    WorkPlace_Data . workPlace_Data_Object . workPlace_Type                 = workPlace_Data_Object . get ( "workPlace_Type"                 ) + "" ;
-                    WorkPlace_Data . workPlace_Data_Object . phoneNumber                    = workPlace_Data_Object . get ( "phoneNumber"                    ) + "" ;
+                    // هون انا بحط اسم مكان العمل الي كتبته لما ضفت بيانات مكان العمل في ال editText
+                    binding . WorkPlaceName    . setText ( workPlace_data_Object . workPlace_Name    ) ;
 
-                }
-            }
-        })
-        /*
-             و هاد السطر
-             addOnSuccessListener ( aVoid -> WorkPlace_Page_Initialization ( ) );
+                    // هون انا بحط رقم الهاتف الي كتبته لما ضفت بيانات مكان العمل في ال editText
+                    binding . PhoneNumber      . setText ( workPlace_data_Object . phoneNumber       ) ;
 
-             بقول بس تجيب كل البيانات و تحطها في هاد workPlace_Data_Object الاوبجكت الي في هاي ال WorkPlace_Data الكلاس
+            /*
+                الي بصير في هدول السطرين
+                longitude = workPlace_data_Object . longitude ;
+                latitude  = workPlace_data_Object . latitude  ;
 
-             استدعي هاد WorkPlace_Page_Initialization الفنكشن الي بعرض الي الداتا الي جبتها و حطيتها في هاد workPlace_Data_Object الاوبجكت الي في هاي ال WorkPlace_Data الكلاس
-         */
-        . addOnSuccessListener ( aVoid -> WorkPlace_Page_Initialization ( ) );
+                هو اني بجيب احداثيات مكان العمل الي موجود في المتغيرات الخاصه باحداثيات مكان العمل في الاوبجكت الي بدي اعدل على بياناته
+
+                و بخزنها في متغيرات الخاصه باحداثيات مكان العمل في هاد الكلاس عشان بس بدي انتقل للخارطه لحتى اعدل مكان العمل استعمل هدول المتغيرين
+
+                عشان اعرض للدكتور مكان العمل الي اختاره اول مره
+            */
+                    longitude = workPlace_data_Object . longitude ;
+                    latitude  = workPlace_data_Object . latitude  ;
+
+                    // هون انا بحط احداثيات مكان العمل الي حددتها لما ضفت بيانات مكان العمل
+                    binding . WorkPlaceLocationCoordinates . setText ( "احداثيات مكان " + workPlace_Type + " التي حددتها هي" + "\n\n" + latitude + " , " + longitude ) ;
+
+                    // هون انا بعدل من ال text تبع زر الذهاب الى الخارطه من "الذهاب الى الخارطة" ل "تعديل احداثيات مكان العمل"
+                    binding . GoToMapBTN . setText ( "تعديل احداثيات مكان " + workPlace_Type ) ;
+
+
+                    // هون بعدل ال text تبع ال textView الي بنعرض فيه ساعات العمل من "قم باضافة ايام و ساعات العمل" وبحط بداله ايام ساعات العمل الي حددتها لما ضفت بيانات مكان العمل
+                    binding . DaysAndWorkingHoursTextView . setText
+                            (
+                                    // هاد اول شي حيكون في النص الي بعرض في المكان الي رح يعرض لدكتور ايام و ساعات العمل الي حددها
+                                    "ايام و ساعات العمل\n\n"
+                            ) ;
+
+                    for ( Days_And_Working_Hours element : workPlace_data_Object . days_And_Working_Hours_Objects_List )
+                    {
+                        binding . DaysAndWorkingHoursTextView . setText
+                                (
+                    /*
+                       هسه هاد السطر بجيب الي ال text الي مخزن في ال textView الي بنعرض فيه ايام و ساعات العمل و الي بكون هو هاد
+
+                       ال text "ايام و ساعات العمل" في حالة كانت ال for each في اول لفه الها وفي اللفه الثانيه بكون ال text الي مخزن
+
+                       في ال textView الي بنعرض فيه ايام و ساعات العمل هو عباره عن هاد ال text "ايام و ساعات العمل" + اول اوبجكت
+
+                       في هاي days_And_Working_Hours_Objects_List ال list
+                    */
+                                        binding . DaysAndWorkingHoursTextView . getText ( ) +
+
+                                                // بعدها هون قيمة اليوم و الي مخزنه في متغير day في الاوبجكت الي for each ماشره على ال index تبعه
+                                                element . day +
+
+                                                // بعدها هون قيمة من الساعه و الي مخزنه في متغير from_Hour في الاوبجكت الي for each ماشره على ال index تبعه
+                                                " من الساعة : " + element . from_Hour + " " +
+
+                                                // بعدها هون القيمه الي بتحدد من الساعه صباحا او مساءا و الي مخزنه في متغير from_AM_Or_PM في الاوبجكت الي for each ماشره على ال index تبعه
+                                                element . from_AM_Or_PM +
+
+                                                // بعدها هون قيمة الى الساعه و الي مخزنه في متغير to_Hour في الاوبجكت الي for each ماشره على ال index تبعه
+                                                " الى الساعة : " + element . to_Hour + " " +
+
+                                                // بعدها هون القيمه الي بتحدد من الساعه صباحا او مساءا و الي مخزنه في متغير to_AM_Or_PM في الاوبجكت الي for each ماشره على ال index تبعه
+                                                element . to_AM_Or_PM
+                                ) ;
+
+                        // هون بقول اله اذا كان الاوبجكت الي ال for each ماشره على ال index تبعه مش اخر عنصر في هاي days_And_Working_Hours_Objects_List ال list ضيف هاد الفاصل على ال text تبع ال textView الي بنعرض فيه ايام و ساعات العمل
+                        if (
+                                workPlace_data_Object . days_And_Working_Hours_Objects_List . indexOf ( element ) !=
+                                        workPlace_data_Object . days_And_Working_Hours_Objects_List . size ( ) -1
+                        )
+                            binding . DaysAndWorkingHoursTextView . setText
+                                    (
+                                            binding . DaysAndWorkingHoursTextView . getText ( ) . toString ( )+
+                                                    "\nـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ\n"
+                                    ) ;
+                    }
+
+                    // هون انا بعدل من ال text تبع زر الذهاب الى الخارطه من "اضافة ايام و ساعات العمل" ل "تعديل ايام و ساعات العمل"
+                    binding . AddDaysAndWorkingHoursBTN . setText ( "تعديل ايام و ساعات العمل" ) ;
+                } );
     }
 
     private void Snack_Bar ( String Message )
@@ -771,12 +729,12 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
         ViewGroup . MarginLayoutParams marginLayoutParams = ( ViewGroup.MarginLayoutParams ) snackbarView . getLayoutParams ( ) ;
 
         marginLayoutParams . setMargins
-        (
-            marginLayoutParams  . leftMargin  ,
-            marginLayoutParams  . topMargin   ,
-            marginLayoutParams . rightMargin ,
-            65
-        ) ;
+                (
+                        marginLayoutParams  . leftMargin  ,
+                        marginLayoutParams  . topMargin   ,
+                        marginLayoutParams . rightMargin ,
+                        65
+                ) ;
 
         snackbarView . setLayoutParams ( marginLayoutParams ) ;
 
@@ -798,7 +756,7 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
     {
         // هون احنا بنحدد العناصر الي رح تنعرض النا لما نضغط على ال spinner
         ArrayAdapter < CharSequence > adapter = ArrayAdapter . createFromResource
-        ( this , R . array . Workplace_Locations , R . layout . spinner_drop_down_items_text ) ;
+                ( this , R . array . Workplace_Locations , R . layout . spinner_drop_down_items_text ) ;
 
         // فيي هاد السطر بعطيه شكل النص تبع القائمه الي رح تظهر النا لما نضغط على ال spinner
         adapter . setDropDownViewResource ( R . layout . spinner_drop_down_items_text ) ;
@@ -816,15 +774,15 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
     {
 
         View [ ] screen_Components =
-        {
-            findViewById (R . id . Days_And_Working_Hours_Text_View ) ,
-            findViewById (R . id . Add_Days_And_Working_Hours_BTN   ) ,
-            findViewById (R . id . WorkPlace_location_coordinates   ) ,
-            findViewById (R . id . WorkPlace_Address                ) ,
-            findViewById (R . id . WorkPlace_Name                   ) ,
-            findViewById (R . id . Phone_Number                     ) ,
-            findViewById (R . id . Go_to_Map_BTN                    )
-        };
+                {
+                        findViewById ( R . id . Days_And_Working_Hours_Text_View ) ,
+                        findViewById ( R . id . Add_Days_And_Working_Hours_BTN   ) ,
+                        findViewById ( R . id . WorkPlace_location_coordinates   ) ,
+                        findViewById ( R . id . WorkPlace_Address                ) ,
+                        findViewById ( R . id . WorkPlace_Name                   ) ,
+                        findViewById ( R . id . Phone_Number                     ) ,
+                        findViewById ( R . id . Go_to_Map_BTN                    )
+                };
 
         /*
            هون بحكي اله اذا كان العنصر الي اختاره الدكتور من القائمه ترتبيبه مش الاول في قائمة العناصر الي اختار منها الدكتور
@@ -947,7 +905,7 @@ public class Workplace_Data_Activity extends AppCompatActivity implements Adapte
 
 }
 
-
+@SuppressLint ( "SuspiciousIndentation" )
 @SuppressWarnings ( { "unused" , "SpellCheckingInspection" } )
 class WorkPlace_Data
 {
@@ -1020,10 +978,9 @@ class WorkPlace_Data
     {
         return latitude ;
     }
+
     public List < Days_And_Working_Hours > getdays_And_Working_Hours_Objects_List ( )
     {
         return days_And_Working_Hours_Objects_List ;
     }
 }
-
-
