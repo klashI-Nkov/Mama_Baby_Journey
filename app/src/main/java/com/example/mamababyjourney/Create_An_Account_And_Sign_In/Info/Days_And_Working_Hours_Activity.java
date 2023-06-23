@@ -654,9 +654,8 @@ public class Days_And_Working_Hours_Activity extends AppCompatActivity implement
                         4- بظهر النا spinners تاعين ساعات العمل الخاصين باليوم الي اخترناه
                      */
 
-                    Days_And_Working_Hours . is_From_Hour_Empty = true;
-
-                    Days_And_Working_Hours . is_To_Hour_Empty = true ;
+                    Days_And_Working_Hours . is_From_Hour_Empty = true ;
+                    Days_And_Working_Hours . is_To_Hour_Empty   = true ;
 
                     Days_And_Working_Hours days_And_Working_Hours_Object = new Days_And_Working_Hours ( ) ;
 
@@ -695,9 +694,8 @@ public class Days_And_Working_Hours_Activity extends AppCompatActivity implement
                       تبع اليوم و بين spinners ساعات العمل تبعين اليوم الخاصين باليوم الي عملنا الغاء تحديد اله
                     */
 
-                    Days_And_Working_Hours . is_From_Hour_Empty = false;
-
-                    Days_And_Working_Hours . is_To_Hour_Empty = false ;
+                    Days_And_Working_Hours . is_From_Hour_Empty = false ;
+                    Days_And_Working_Hours . is_To_Hour_Empty   = false ;
 
                     // هون بنستدعي الفنكشن الي بجيب النا ال index الخاص ب اوبجكت اليوم الي بدنا نحذفه من ال List وهاد الفنكشن انا عامله في كلاس ال Days_And_Working_Hours
                     Days_And_Working_Hours . Index_Of ( day ) ;
@@ -709,7 +707,7 @@ public class Days_And_Working_Hours_Activity extends AppCompatActivity implement
 
                         الي بعمله الفنكشن هو انه بخزن النا index الخاص ب اوبجكت اليوم الي بدنا نحذفه من ال List في هاد المتغير الي اسمه index
                      */
-                    WorkPlace_Data . workPlace_Data_Object . days_And_Working_Hours_Objects_List . remove ( Days_And_Working_Hours.index ) ;
+                    WorkPlace_Data . workPlace_Data_Object . days_And_Working_Hours_Objects_List . remove (Days_And_Working_Hours . index ) ;
 
                     //هون بخفي ال text view الي بكون مكتوب فيه ساعات العمل الي بين ال check box تبع اليوم و بين spinners ساعات العمل تبعين اليوم
                     work_Hours_Text_View . setVisibility ( View . GONE ) ;
@@ -1067,9 +1065,6 @@ public class Days_And_Working_Hours_Activity extends AppCompatActivity implement
 
             // اذا في اسطر ما في شرح قبلها معناتها انا بكون شارحها في فنكشن ال Adapter_Initialization في كلاس ال Workplace_Data_Activity
 
-            /**/
-
-            // فيي هاد السطر بعطيه شكل النص تبع القائمه الي رح تظهر النا لما نضغط على واحد من ال spinners بغض النظر شو هو ال spinner
             adapter . setDropDownViewResource ( R . layout . spinner_drop_down_items_text ) ;
 
             spinner . setAdapter ( adapter ) ;
@@ -1280,7 +1275,7 @@ public class Days_And_Working_Hours_Activity extends AppCompatActivity implement
 
 }
 
-
+@SuppressWarnings ( { "RedundantSuppression" , "SpellCheckingInspection" , "SuspiciousIndentation" } )
 class Days_And_Working_Hours
 {
 
